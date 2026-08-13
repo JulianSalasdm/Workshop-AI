@@ -1,216 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Masterclass with Juli</title>
-    <meta name="description" content="A visual masterclass on AI types and automation for designers.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="workspace.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design AI Workshop · Temario</title>
+<meta name="description" content="Taller interno sobre IA para el equipo de diseño: cuatro clases, de lo básico a MCP, conectores e IA generativa.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <nav class="navbar">
-        <div class="logo">AJ.</div>
-        <div class="nav-links">
-            <a href="#hero">Start</a>
-            <a href="#ai-types">AI Types</a>
-            <a href="#ai-automation">Automation</a>
-        </div>
+
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Design AI Workshop <span>· temario</span></div>
+    </a>
+    <nav>
+      <a href="#clases">Clases</a>
     </nav>
+  </div>
+</header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="section hero-section">
-            <div class="hero-content fade-in-up">
-                <div class="emoji-wrapper">
-                    <span class="animated-emoji">😆</span>
-                </div>
-                <h1 class="hero-title">
-                    AI Masterclass <br>
-                    <span class="text-gradient">with Juli</span>
-                </h1>
-                <p class="hero-subtitle">Generative, Agentic & Automation for Designers.</p>
-                <a href="#ai-types" class="btn-primary">Explore Now</a>
-            </div>
-            
-            <div class="scroll-indicator fade-in-delayed">
-                <span>SCROLL</span>
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-            </div>
-        </section>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="material-icons-round">celebration</span> Taller interno · Equipo de diseño</div>
+    <h1>Cuatro clases para dejar de tenerle miedo a la IA y empezar a <span class="gr">construir con ella</span></h1>
+    <p class="lead">Nada de teoría eterna. Cada clase es una web que se recorre en 20 minutos, con ejemplos que uso yo todos los días. Empezá por la 01 o saltá directo a la que te haga falta.</p>
+    <div class="who"><div class="avatar"><span class="material-icons-round" style="font-size:18px">smart_toy</span></div> Armado por Juli, para el equipo. Se actualiza cuando aparece algo nuevo (que es seguido).</div>
+  </div>
+</section>
 
-        <!-- Section 1: AI Types -->
-        <section id="ai-types" class="section">
-            <div class="container">
-                <h2 class="section-title fade-in-up">The AI Triad</h2>
-                <p class="section-desc fade-in-up">Understanding the different models and how they help us.</p>
-                
-                <div class="grid-3 ai-cards">
-                    
-                    <!-- Generative AI -->
-                    <div class="card fade-in-up staggered-1">
-                        <div class="card-icon gradient-bg">🎨</div>
-                        <h3 class="card-title">Generative AI</h3>
-                        <div class="card-badge">Nano Banana, Midjourney, DALL-E</div>
-                        <p class="card-text">Creates new content from patterns. Excellent for ideation, imagery, and starting points.</p>
-                        
-                        <div class="workflow-visual">
-                            <div class="wf-node user-node">Prompt</div>
-                            <div class="wf-line">
-                                <div class="pulse"></div>
-                            </div>
-                            <div class="wf-node ai-node">Generation</div>
-                            <div class="wf-line">
-                                <div class="pulse"></div>
-                            </div>
-                            <div class="wf-node output-node">Final Art</div>
-                        </div>
-                    </div>
+<section id="clases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">school</span> El temario</div>
+      <h2>Elegí tu clase</h2>
+      <p>Las cuatro se pueden mirar en cualquier orden, pero si es tu primera vez, andá en fila.</p>
+    </div>
 
-                    <!-- Conversational / General AI -->
-                    <div class="card fade-in-up staggered-2">
-                        <div class="card-icon border-gradient">💬</div>
-                        <h3 class="card-title">Conversational AI</h3>
-                        <div class="card-badge">Gemini, ChatGPT, Claude</div>
-                        <p class="card-text">Understands context and reasons with you. Great for copywriting, synthesis, and research.</p>
-                        
-                        <div class="workflow-visual">
-                            <div class="wf-node user-node">Query</div>
-                            <div class="wf-line bidirectional">
-                                <div class="pulse-back-forth"></div>
-                            </div>
-                            <div class="wf-node ai-node">Dialogue</div>
-                            <div class="wf-line">
-                                <div class="pulse"></div>
-                            </div>
-                            <div class="wf-node output-node">Insight</div>
-                        </div>
-                    </div>
+    <div class="syllabus">
 
-                    <!-- Agentic AI -->
-                    <div class="card fade-in-up staggered-3">
-                        <div class="card-icon solid-dark">⚙️</div>
-                        <h3 class="card-title">Agentic AI</h3>
-                        <div class="card-badge">Antigravity, AutoGPT, Devin</div>
-                        <p class="card-text">Takes actions, uses tools, and completes complex tasks across multiple steps autonomously.</p>
-                        
-                        <div class="workflow-visual complex-workflow">
-                            <div class="wf-node user-node">Goal</div>
-                            <div class="wf-line">
-                                <div class="pulse"></div>
-                            </div>
-                            <div class="wf-group">
-                                <div class="wf-node agent-node">Plan</div>
-                                <div class="wf-node agent-node">Tools</div>
-                                <div class="wf-node agent-node">Code</div>
-                            </div>
-                            <div class="wf-line">
-                                <div class="pulse"></div>
-                            </div>
-                            <div class="wf-node output-node">Product</div>
-                        </div>
-                    </div>
+      <div class="class-card rv active">
+        <div class="num">01</div>
+        <div class="body">
+          <h3>Los 3 tipos de IA (y cómo se automatizan) <span class="badge live">Listo</span></h3>
+          <p>El mapa general: qué diferencia a la IA generativa, la conversacional y la agéntica, y un ejemplo real de automatización con webhooks y APIs. Incluye un simulador de workflows para armar el tuyo arrastrando nodos.</p>
+          <div class="tags"><span class="tag">IA generativa vs agéntica</span><span class="tag">APIs y webhooks</span><span class="tag">Simulador interactivo</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="clase-01/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
+        </div>
+      </div>
 
-                </div>
-            </div>
-        </section>
+      <div class="class-card rv active">
+        <div class="num">02</div>
+        <div class="body">
+          <h3>Los 4 Claude: skills, proyectos y conexiones <span class="badge live">Listo</span></h3>
+          <p>Los cuatro Claude (Chat, Code, Cowork, Design), cómo hablarle para que rinda, y las tres piezas que lo vuelven un colaborador real: skills, proyectos y conexiones.</p>
+          <div class="tags"><span class="tag">Skills</span><span class="tag">Proyectos</span><span class="tag">Cómo hablarle bien</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="clase-02/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
+        </div>
+      </div>
 
-        <!-- Section 2: AI Automation -->
-        <section id="ai-automation" class="section dark-section">
-            <div class="container">
-                <h2 class="section-title light-text fade-in-up">AI Automation & APIs</h2>
-                <p class="section-desc light-text fade-in-up opacity-80">Connecting the dots without writing code.</p>
+      <div class="class-card rv active">
+        <div class="num">03</div>
+        <div class="body">
+          <h3>Instrucciones, MCP y conectores <span class="badge live">Listo</span></h3>
+          <p>Instrucciones personalizadas (con mi propio template real), la diferencia entre API, webhook y MCP, y qué conectores tengo prendidos: Chrome, HubSpot, Drive y más.</p>
+          <div class="tags"><span class="tag">Instrucciones</span><span class="tag">API · Webhook · MCP</span><span class="tag">Conectores</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="clase-03/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
+        </div>
+      </div>
 
-                <div class="automation-grid">
-                    <div class="automation-content fade-in-left">
-                        <h3 class="automation-subtitle">En acción con n8n</h3>
-                        <p class="automation-text">Para automatizar agrupamos herramientas. Veamos un ejemplo real: Recibís un email gigante de un cliente y querés leer solo lo importante al instante.</p>
-                        
-                        <div class="api-explainer">
-                            <h4>1. Trigger: El Webhook</h4>
-                            <p>Un <strong>Webhook</strong> es una "puerta abierta" esperando datos. Llega ese correo eterno, y Gmail empuja la alerta directamente a esa puerta en n8n.</p>
+      <div class="class-card rv active">
+        <div class="num">04</div>
+        <div class="body">
+          <h3>IA Generativa: texto, imagen, video y Google Labs <span class="badge new">Nuevo</span></h3>
+          <p>Qué es la IA generativa y quién hace qué (ChatGPT, Gemini con Nano Banana, Google Flow con Veo), Google Labs actualizado (Flow, Flow Music, Pomelli, Stitch), y un caso real: de una foto de producto a un video, en dos pasos.</p>
+          <div class="tags"><span class="tag">ChatGPT y Nano Banana</span><span class="tag">Google Flow y Veo</span><span class="tag">Google Labs 2026</span><span class="tag">Caso real: foto → video</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="clase-04/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
+        </div>
+      </div>
 
-                            <h4>2. API & Procesamiento IA</h4>
-                            <p>Una <strong>API</strong> es un mensajero universal. n8n usa la API de Gemini enviándole el correo con una instrucción muy clara: <em>"Extrae los 3 puntos clave de este texto"</em>.</p>
+    </div>
 
-                            <h4>3. Output</h4>
-                            <p>Gemini lee y devuelve el resumen. n8n utiliza otra vez la API de Gmail para auto-enviarte un correo limpio, destacando exclusivamente esos 3 puntos vitales.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="automation-visual fade-in-right">
-                        <div class="n8n-workflow">
-                            <div class="n8n-node trigger">
-                                <span>Gmail<br>(Recibido)</span>
-                            </div>
-                            <svg class="n8n-line" viewBox="0 0 50 20">
-                                <path d="M0,10 C25,10 25,10 50,10" />
-                                <circle cx="0" cy="10" r="3" class="traveling-dot"></circle>
-                            </svg>
-                            <div class="n8n-node processor">
-                                <span>Gemini API<br>(Resume)</span>
-                            </div>
-                            <svg class="n8n-line" viewBox="0 0 50 20">
-                                <path d="M0,10 C25,10 25,10 50,10" />
-                                <circle cx="0" cy="10" r="3" class="traveling-dot delay-1"></circle>
-                            </svg>
-                            <div class="n8n-node action">
-                                <span>Gmail<br>(Resumen)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Section 3: Interactive Demo -->
-        <section id="interactive-demo" class="section interactive-section">
-            <div class="container">
-                <h2 class="section-title fade-in-up">Probálo vos mismo: Simulador de Workflows</h2>
-                <p class="section-desc fade-in-up">Arrastrá los nodos desde la izquierda hacia el lienzo y conectá sus puntos para crear tu propia automatización.</p>
+    <div class="howto rv">
+      <span class="material-icons-round">lightbulb</span>
+      <p><b>No hace falta saber nada previo.</b> Cada clase asume que venís de la anterior, pero si ya usás Claude seguido, arrancá directo por la 03: es la que tiene lo que más preguntan.</p>
+    </div>
+  </div>
+</section>
 
-                <div class="workspace-wrapper fade-in-up">
-                    <!-- Sidebar -->
-                    <div class="node-sidebar">
-                        <div class="draggable-node" draggable="true" data-type="trigger" data-title="Gmail (Webhook)" data-icon="📧">
-                            📧 Gmail (Trigger)
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="trigger" data-title="Typeform" data-icon="📝">
-                            📝 Typeform
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="processor" data-title="Gemini AI" data-icon="✨">
-                            ✨ Gemini AI
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="processor" data-title="Format Data" data-icon="🔤">
-                            🔤 Intermediario
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="action" data-title="Slack" data-icon="💬">
-                            💬 Slack (Output)
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="action" data-title="Google Sheets" data-icon="📊">
-                            📊 Sheets (Output)
-                        </div>
-                    </div>
-                    
-                    <!-- Canvas -->
-                    <div class="workspace-canvas" id="canvas">
-                        <svg id="canvas-svg" class="canvas-svg"></svg>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>Created by Antigravity for Juli's Design Team &copy; 2026</p>
-    </footer>
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Design AI Workshop · material interno, uso educativo · 2026</p>
+      <div class="fnav">
+        <a href="clase-01/index.html">Clase 01</a>
+        <a href="clase-02/index.html">Clase 02</a>
+        <a href="clase-03/index.html">Clase 03</a>
+        <a href="clase-04/index.html">Clase 04</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <script src="app.js"></script>
-    <script src="workspace.js"></script>
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+</script>
 </body>
 </html>

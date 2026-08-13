@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 04 · IA Generativa: texto, imagen, video y Google Labs</title>
+<meta name="description" content="Qué es la IA generativa, ejemplos por tipo de contenido (ChatGPT, Nano Banana, Veo), Google Labs actualizado y un caso real de foto a video.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Design AI Workshop</div>
+    </a>
+    <nav>
+      <a href="#que-es">Qué es</a>
+      <a href="#ejemplos">Ejemplos</a>
+      <a href="#labs">Google Labs</a>
+      <a href="#caso-real">Caso real</a>
+    </nav>
+    <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 04</span></div>
+    <div class="eyebrow"><span class="material-icons-round">auto_awesome</span> Clase 04 · Nuevo</div>
+    <h1>IA Generativa: texto, imagen, <span class="gr">video</span> y Google Labs</h1>
+    <p class="lead">En la Clase 01 vimos que la IA generativa es una de las tres familias de IA. Acá entramos a fondo: qué modelo conviene para cada formato, qué hay hoy en Google Labs, y un caso real armado en dos pasos, de una foto de producto a un video.</p>
+  </div>
+</section>
+
+<!-- QUÉ ES -->
+<section id="que-es">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">psychology</span> El concepto</div>
+      <h2>Qué es la IA generativa</h2>
+      <p>Crea contenido nuevo, texto, imagen, audio o video, a partir de patrones que aprendió de datos existentes. No busca ni recupera algo que ya existe: le das un prompt (y a veces una referencia) y el modelo arma algo que no existía literalmente así hasta ese momento.</p>
+    </div>
+    <div class="callbox rv">
+      <p><b>No es lo mismo que conversar o que actuar:</b> la IA conversacional entiende y razona con vos (Claude, Gemini como chat), y la agéntica usa herramientas para completar tareas solas. La generativa es la que produce el archivo final: la imagen, el video, la canción.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EJEMPLOS POR TIPO -->
+<section id="ejemplos" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">grid_view</span> Un modelo por formato</div>
+      <h2>Los mismos nombres, distintos trabajos</h2>
+      <p>ChatGPT, Gemini y Flow suenan parecido pero no compiten en lo mismo. Cada uno tiene un modelo especializado atrás según el formato que le pidas.</p>
+    </div>
+
+    <div class="defs">
+      <div class="def chat rv">
+        <div class="ic"><span class="material-icons-round">chat_bubble</span></div>
+        <h4>ChatGPT</h4>
+        <div class="who">OpenAI · texto y conversación</div>
+        <p>El modelo de conversación de OpenAI. Redacta, razona, resume, programa y también genera imágenes (GPT Image) directo desde el chat, sin cambiar de herramienta.</p>
+        <div class="ex">Lo usamos para pedirle que tome una foto de producto y arme una escena con un estilo definido (ver caso real más abajo).</div>
+      </div>
+      <div class="def image rv">
+        <div class="ic"><span class="material-icons-round">image</span></div>
+        <h4>Gemini + Nano Banana</h4>
+        <div class="who">Google · imagen</div>
+        <p>Nano Banana es el modelo de imagen de Gemini: genera y edita fotos a partir de texto y referencias, entiende contexto real y mantiene coherencia entre variaciones. Vive dentro de la app de Gemini y también dentro de Google Flow.</p>
+        <div class="ex">Nano Banana Pro sube la fidelidad para escenas complejas y detalle fino.</div>
+      </div>
+      <div class="def video rv">
+        <div class="ic"><span class="material-icons-round">movie</span></div>
+        <h4>Google Flow + Veo</h4>
+        <div class="who">Google · video</div>
+        <p>Veo es el modelo de video dentro del workspace Flow: acepta una imagen de partida como primer frame y la anima, con audio sincronizado, en clips cortos listos para usar.</p>
+        <div class="ex">Es el paso 2 de nuestro caso real: la imagen que generó ChatGPT entra a Flow como primer frame.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE LABS -->
+<section id="labs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">science</span> labs.google</div>
+      <h2>Qué hay hoy en Google Labs</h2>
+      <p>El espacio donde Google libera herramientas de IA antes de que sean "producto final". Acceso con tu cuenta de Google, sin instalar nada. Hoy tiene cuatro frentes: video, música, marca y diseño de UI.</p>
+    </div>
+
+    <div class="labs">
+      <div class="lab-card rv">
+        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">movie</span><span class="pill">Video</span></div>
+        <h4>Google Flow</h4>
+        <p>El workspace de creación audiovisual: Gemini entiende la instrucción, Nano Banana genera y edita las imágenes, y Veo las anima con audio sincronizado. Absorbió lo que antes eran Whisk e ImageFX.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">music_note</span><span class="pill">Música</span></div>
+        <h4>Google Flow Music</h4>
+        <p>El estudio de música con un productor de IA: compone canciones originales y video musicales, permite editar por secciones y armar covers completos de un track.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">storefront</span><span class="pill">Marca</span></div>
+        <h4>Pomelli</h4>
+        <p>Genera contenido de marketing on-brand y escalable: parte de tu identidad de marca y arma variaciones de contenido para conectar con tu audiencia más rápido.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">design_services</span><span class="pill">Diseño de UI</span></div>
+        <h4>Stitch</h4>
+        <p>Convierte una idea en pantallas de interfaz reales, en tiempo real. Es la respuesta de Google a herramientas como Claude Design: de la idea a la UI, sin pasar por Figma primero.</p>
+      </div>
+    </div>
+
+    <div class="market rv">
+      <h4>¿En qué se diferencia de Midjourney, Runway o Suno?</h4>
+      <p>La diferencia no es la calidad, es el acceso: Google lo mete gratis dentro de tu cuenta de Google, mientras que la mayoría de la competencia cobra suscripción desde el primer uso serio. A cambio, son herramientas experimentales: cambian de nombre, se fusionan (como pasó con Whisk e ImageFX dentro de Flow) y a veces desaparecen sin aviso. Buenas para probar una idea rápido, no para depender de ellas en un flujo de producción estable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASO REAL -->
+<section id="caso-real" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">auto_fix_high</span> De la teoría a un archivo real</div>
+      <h2>Foto de producto → escena con IA → video</h2>
+      <p>Un flujo real, en dos pasos: le dimos a ChatGPT una foto de producto lisa y le pedimos una escena con un estilo definido. Con esa imagen como primer frame, Google Flow generó el video.</p>
+    </div>
+
+    <div class="case-flow">
+      <div class="case-step rv">
+        <div class="media"><img src="media/imagen-referencia.png" alt="Foto de producto original en fondo blanco, usada como referencia"></div>
+        <div class="cap">
+          <div class="step-n">Paso 0 · La referencia</div>
+          <h4>Foto de producto</h4>
+          <p>Fondo blanco, sin escena ni estilo. Es lo único que definimos a mano.</p>
+        </div>
+      </div>
+      <span class="case-arrow material-icons-round">arrow_forward</span>
+      <div class="case-step rv">
+        <div class="media"><img src="media/imagen-generada-chatgpt.png" alt="Imagen generada por ChatGPT ubicando el producto en una escena real con estilo cinematográfico"></div>
+        <div class="cap">
+          <div class="step-n">Paso 1 · ChatGPT</div>
+          <h4>Escena con estilo</h4>
+          <p>Le pedimos que ubique el producto en una escena de uso real, con un estilo cálido y cinematográfico, manteniéndolo fiel a la referencia.</p>
+        </div>
+      </div>
+      <span class="case-arrow material-icons-round">arrow_forward</span>
+      <div class="case-step rv">
+        <div class="media"><video src="media/video-generado-flow.mp4" controls muted loop playsinline></video></div>
+        <div class="cap">
+          <div class="step-n">Paso 2 · Google Flow</div>
+          <h4>Video animado</h4>
+          <p>Esa imagen entra a Flow como primer frame, y Veo la anima con sonido sincronizado.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:24px;">
+      <p><b>Por qué importa este orden:</b> generar el video directo desde un prompt de texto suele perder el producto real. Anclar primero una imagen fiel (con ChatGPT o con Nano Banana) y recién ahí animarla con Veo es lo que mantiene el producto reconocible en movimiento.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Design AI Workshop · Clase 04 · uso educativo interno · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-02/index.html">Clase 02</a>
+        <a href="../clase-03/index.html">Clase 03</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>

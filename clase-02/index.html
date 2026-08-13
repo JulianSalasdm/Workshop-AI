@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 02 · Los 4 Claude: skills, proyectos y conexiones</title>
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #121212;
+    color: #FAFAFC;
+    font-family: var(--kc-font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .material-icons-round { font-family: 'Material Icons Round'; font-weight: normal; font-style: normal; line-height: 1; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  ::selection { background: #9414FA; color: #fff; }
+
+  /* ── TOPPER ─────────────────────────────────────────── */
+  .topper {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(18,18,18,0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #282828;
+  }
+  .topper .bar {
+    max-width: 1180px; margin: 0 auto; padding: 14px 40px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .topper .brand { display: flex; align-items: center; gap: 14px; }
+  .topper .brand img { height: 22px; }
+  .topper .brand .tag {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #C098FD; border-left: 1px solid #3E3E3E; padding-left: 14px;
+  }
+  .topper nav { display: flex; gap: 26px; font-size: 14px; font-weight: 500; }
+  .topper nav a { color: #DFDFDF; text-decoration: none; opacity: 0.85; transition: opacity 150ms, color 150ms; }
+  .topper nav a:hover { opacity: 1; color: #FAFAFC; }
+  @media (max-width: 900px) { .topper nav { display: none; } }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero { position: relative; overflow: hidden; isolation: isolate; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse 55% 60% at 88% 105%, rgba(148,20,250,0.50), transparent 60%),
+      radial-gradient(ellipse 45% 55% at 2% 8%, rgba(179,58,240,0.16), transparent 60%);
+  }
+  .hero .wrap { padding-top: 96px; padding-bottom: 104px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #C098FD; font-weight: 600; margin-bottom: 22px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow .material-icons-round { font-size: 16px; }
+  .hero h1 {
+    font-weight: 700; font-size: clamp(40px, 6vw, 72px); line-height: 1.02;
+    letter-spacing: -0.02em; margin: 0; max-width: 15ch;
+  }
+  .hero h1 em { font-style: normal; color: #4CCBFF; }
+  .hero .lead { font-size: 19px; line-height: 1.65; color: #A6A6A6; max-width: 60ch; margin: 26px 0 34px; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    font-family: inherit; font-weight: 700; font-size: 15px; cursor: pointer;
+    border-radius: 10px; padding: 13px 24px; border: none; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 9px; transition: background 150ms, border-color 150ms, transform 150ms;
+  }
+  .btn .material-icons-round { font-size: 19px; }
+  .btn-primary { background: #8812E3; color: #FAFAFC; }
+  .btn-primary:hover { background: #9414FA; }
+  .btn-ghost { background: transparent; color: #FAFAFC; border: 1.5px solid #575757; }
+  .btn-ghost:hover { border-color: #FAFAFC; }
+  .hero .quick {
+    display: flex; gap: 30px; flex-wrap: wrap; margin-top: 56px;
+    padding-top: 30px; border-top: 1px solid #282828; max-width: 760px;
+  }
+  .hero .quick div { font-size: 13px; color: #8B8B8B; }
+  .hero .quick b { display: block; color: #FAFAFC; font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+
+  /* ── SECTION SCAFFOLD ───────────────────────────────── */
+  section { padding: 92px 0; }
+  section.light { background: #FAFAFC; color: #121212; }
+  .sec-head { max-width: 62ch; margin-bottom: 52px; }
+  .kicker {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700;
+    color: #9414FA; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  section.light .kicker { color: #8812E3; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -0.015em; line-height: 1.1; margin: 0 0 16px; }
+  .sec-head p { font-size: 17px; line-height: 1.6; color: #A6A6A6; margin: 0; }
+  section.light .sec-head p { color: #575757; }
+
+  /* ── THE FOUR CLAUDES ───────────────────────────────── */
+  .four { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 760px) { .four { grid-template-columns: 1fr; } }
+  .cc {
+    background: #1C1C1C; border: 1px solid #282828; border-radius: 16px; padding: 28px;
+    transition: transform 160ms cubic-bezier(.2,.8,.2,1), border-color 160ms;
+  }
+  .cc:hover { transform: translateY(-3px); border-color: #4A057D; }
+  .cc .ic {
+    width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+    margin-bottom: 18px;
+  }
+  .cc .ic .material-icons-round { font-size: 24px; color: #fff; }
+  .cc.chat  .ic { background: linear-gradient(135deg, #9414FA, #4A057D); }
+  .cc.code  .ic { background: linear-gradient(135deg, #121212, #3E3E3E); border: 1px solid #575757; }
+  .cc.cowork .ic { background: linear-gradient(135deg, #B33AF0, #680BAF); }
+  .cc.design .ic { background: linear-gradient(135deg, #4CCBFF, #008EB8); }
+  .cc h3 { font-size: 22px; font-weight: 700; margin: 0 0 3px; letter-spacing: -0.01em; }
+  .cc .where { font-size: 12px; color: #4CCBFF; font-family: var(--kc-font-mono); margin-bottom: 14px; }
+  .cc p { font-size: 14.5px; color: #B8B8B8; margin: 0 0 16px; line-height: 1.6; }
+  .cc .use { font-size: 13px; color: #DFDFDF; display: flex; gap: 9px; align-items: flex-start; }
+  .cc .use .material-icons-round { font-size: 17px; color: #C098FD; margin-top: 1px; }
+  .four-note {
+    margin-top: 22px; font-size: 14px; color: #8B8B8B; background: #1A1A1A; border: 1px solid #282828;
+    border-radius: 12px; padding: 16px 20px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .four-note .material-icons-round { color: #C098FD; font-size: 20px; }
+
+  /* ── PRINCIPLES ─────────────────────────────────────── */
+  .princ { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 820px) { .princ { grid-template-columns: 1fr; } }
+  .pcard { background: #fff; border: 1px solid #E4E4EA; border-radius: 14px; padding: 24px; }
+  .pcard .n { font-family: var(--kc-font-mono); font-size: 13px; color: #9414FA; font-weight: 500; }
+  .pcard h4 { font-size: 18px; font-weight: 700; margin: 8px 0 8px; letter-spacing: -0.01em; }
+  .pcard p { font-size: 14px; color: #575757; margin: 0; line-height: 1.55; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  @media (max-width: 720px) { .compare { grid-template-columns: 1fr; } }
+  .cbox { border-radius: 14px; padding: 22px 24px; }
+  .cbox .lbl { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 7px; margin-bottom: 12px; }
+  .cbox.bad { background: #FFF4F5; border: 1px solid #F5C9C9; }
+  .cbox.bad .lbl { color: #D90429; }
+  .cbox.good { background: #F0FBF4; border: 1px solid #AAE5BE; }
+  .cbox.good .lbl { color: #08A045; }
+  .cbox p { font-size: 14.5px; line-height: 1.6; margin: 0; color: #282828; }
+  .cbox .material-icons-round { font-size: 17px; }
+
+  /* ── ANATOMY (Skill) ────────────────────────────────── */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+  .steps { display: flex; flex-direction: column; gap: 14px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; }
+  .step .b { flex: none; width: 30px; height: 30px; border-radius: 9px; background: #2F0544; color: #C098FD; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+  .step h4 { font-size: 16px; margin: 3px 0 4px; font-weight: 600; }
+  .step p { font-size: 14px; color: #A6A6A6; margin: 0; line-height: 1.55; }
+
+  .code {
+    background: #0E0E0E; border: 1px solid #282828; border-radius: 14px; overflow: hidden;
+    font-family: var(--kc-font-mono); font-size: 13px;
+  }
+  .code .top { background: #1A1A1A; border-bottom: 1px solid #282828; padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+  .code .top .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .code .top .fn { margin-left: 10px; color: #8B8B8B; font-size: 12px; }
+  .code pre { margin: 0; padding: 18px 18px; overflow-x: auto; line-height: 1.7; color: #DFDFDF; }
+  .code .c-key { color: #C098FD; }
+  .code .c-str { color: #4CCBFF; }
+  .code .c-com { color: #6F6F6F; }
+  .code .c-dir { color: #B33AF0; }
+
+  .callbox { margin-top: 26px; background: #1A1A1A; border: 1px solid #282828; border-left: 3px solid #9414FA; border-radius: 10px; padding: 18px 20px; }
+  .callbox b { color: #FAFAFC; }
+  .callbox p { font-size: 14.5px; color: #B8B8B8; margin: 0; line-height: 1.6; }
+
+  /* ── TABLE (Projects) ───────────────────────────────── */
+  .tbl { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14.5px; }
+  .tbl th, .tbl td { text-align: left; padding: 15px 18px; border-bottom: 1px solid #E4E4EA; vertical-align: top; }
+  .tbl thead th { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: #6F6F6F; font-weight: 700; }
+  .tbl tbody th { font-weight: 700; color: #121212; width: 26%; }
+  .tbl td { color: #575757; line-height: 1.55; }
+  .tbl .yes { color: #08A045; font-weight: 600; }
+  .adv { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 34px; }
+  @media (max-width: 820px) { .adv { grid-template-columns: 1fr; } }
+  .acard { background: #fff; border: 1px solid #E4E4EA; border-radius: 14px; padding: 22px; }
+  .acard .material-icons-round { font-size: 26px; color: #8812E3; margin-bottom: 12px; }
+  .acard h4 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+  .acard p { font-size: 13.5px; color: #575757; margin: 0; line-height: 1.55; }
+
+  /* ── CONNECTIONS ────────────────────────────────────── */
+  .conn-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; margin-bottom: 48px; }
+  @media (max-width: 820px) { .conn-intro { grid-template-columns: 1fr; } }
+  .flowchip { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .chip { background: #1C1C1C; border: 1px solid #3E3E3E; border-radius: 12px; padding: 14px 18px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 9px; }
+  .chip.claude { background: linear-gradient(135deg, #9414FA, #4A057D); border-color: #9414FA; }
+  .chip.mcp { background: #1A1A1A; border-style: dashed; color: #C098FD; }
+  .flowchip .material-icons-round { color: #575757; font-size: 22px; }
+  .conns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 900px) { .conns { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .conns { grid-template-columns: 1fr; } }
+  .tool { background: #1C1C1C; border: 1px solid #282828; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px; transition: border-color 150ms; }
+  .tool:hover { border-color: #4A057D; }
+  .tool .material-icons-round { font-size: 20px; color: #C098FD; }
+  .tool b { font-size: 14px; font-weight: 600; display: block; }
+  .tool span { font-size: 12px; color: #8B8B8B; }
+  .conn-types { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 34px; }
+  @media (max-width: 820px) { .conn-types { grid-template-columns: 1fr; } }
+  .ct { background: #1A1A1A; border: 1px solid #282828; border-radius: 14px; padding: 22px; }
+  .ct .material-icons-round { color: #4CCBFF; font-size: 24px; margin-bottom: 10px; }
+  .ct h4 { font-size: 16px; margin: 0 0 6px; font-weight: 700; }
+  .ct p { font-size: 13.5px; color: #A6A6A6; margin: 0; line-height: 1.55; }
+
+  /* ── TIPS ───────────────────────────────────────────── */
+  .tips { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+  @media (max-width: 760px) { .tips { grid-template-columns: 1fr; } }
+  .tip { background: #fff; border: 1px solid #E4E4EA; border-radius: 14px; padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start; }
+  .tip .material-icons-round { flex: none; width: 40px; height: 40px; border-radius: 10px; background: #F0E6FF; color: #8812E3; display: grid; place-items: center; font-size: 21px; }
+  .tip h4 { font-size: 16px; font-weight: 700; margin: 4px 0 6px; }
+  .tip p { font-size: 14px; color: #575757; margin: 0; line-height: 1.55; }
+
+  .roadmap { margin-top: 40px; background: #121212; border-radius: 20px; padding: 36px 40px; }
+  .roadmap h3 { color: #FAFAFC; font-size: 22px; margin: 0 0 8px; font-weight: 700; }
+  .roadmap .sub { color: #A6A6A6; font-size: 14.5px; margin: 0 0 24px; }
+  .rlist { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px 30px; }
+  @media (max-width: 720px) { .rlist { grid-template-columns: 1fr; } }
+  .rlist div { display: flex; gap: 11px; align-items: flex-start; color: #DFDFDF; font-size: 14px; line-height: 1.5; }
+  .rlist .material-icons-round { color: #4CCBFF; font-size: 18px; margin-top: 1px; }
+
+  /* ── FOOTER (compartido en todo el taller) ───────────── */
+  footer { border-top: 1px solid #282828; padding: 40px 0; }
+  footer .row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer p { font-size: 13px; color: #6F6F6F; margin: 0; }
+  footer .fnav { display: flex; gap: 22px; font-size: 13px; flex-wrap: wrap; }
+  footer .fnav a { color: #A6A6A6; text-decoration: none; }
+  footer .fnav a:hover { color: #FAFAFC; }
+
+  /* reveal */
+  .rv { opacity: 0; transform: translateY(16px); transition: opacity 500ms ease, transform 500ms cubic-bezier(.2,.8,.2,1); }
+  .rv.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<header class="topper">
+  <div class="bar">
+    <div class="brand">
+      <img src="assets/logos/logo-blanco.png" alt="Kidscorp">
+      <span class="tag">Clase 02 · Claude Class</span>
+    </div>
+    <nav>
+      <a href="#claudes">Los 4 Claude</a>
+      <a href="#interactuar">Interactuar</a>
+      <a href="#skills">Skills</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#conexiones">Conexiones</a>
+      <a href="#consejos">Consejos</a>
+    </nav>
+    <a class="back" href="../index.html" style="display:flex; align-items:center; gap:6px; font-size:14px; font-weight:600; text-decoration:none; color:#DFDFDF; opacity:0.85; flex:none;"><span class="material-icons-round" style="font-size:18px;">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="material-icons-round">auto_awesome</span> Guía interna · Equipo de diseño</div>
+    <h1>Aprendé a trabajar <em>con</em> Claude, no solo a pedirle cosas.</h1>
+    <p class="lead">Una guía corta para entender qué es Claude, cómo se le habla, y las tres piezas que lo vuelven un colaborador real: <b style="color:#FAFAFC">skills</b>, <b style="color:#FAFAFC">proyectos</b> y <b style="color:#FAFAFC">conexiones</b>. Pensada para acompañar la demo práctica en vivo.</p>
+    <div class="cta-row">
+      <a href="#claudes" class="btn btn-primary"><span class="material-icons-round">rocket_launch</span> Empezar</a>
+      <a href="#interactuar" class="btn btn-ghost">Cómo hablarle</a>
+    </div>
+    <div class="quick">
+      <div><b>Claude no es un buscador.</b>Es un colaborador con el que se conversa e itera.</div>
+      <div><b>El contexto es todo.</b>Cuanto mejor le explicás, mejor trabaja.</div>
+      <div><b>Se le puede dar herramientas.</b>Skills, memoria y acceso a tus apps.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LOS 4 CLAUDE -->
+<section id="claudes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">grid_view</span> Dónde vive Claude</div>
+      <h2>Los cuatro Claude que vas a cruzarte</h2>
+      <p>Es el mismo modelo por debajo, pero cambia el lugar donde trabaja y las herramientas que tiene a mano. Elegí según la tarea.</p>
+    </div>
+    <div class="four">
+      <div class="cc chat rv">
+        <div class="ic"><span class="material-icons-round">chat_bubble</span></div>
+        <h3>Claude Chat</h3>
+        <div class="where">claude.ai · app de escritorio y móvil</div>
+        <p>La puerta de entrada. Conversás, pensás en voz alta, redactás, analizás y generás. Acá viven los <b style="color:#DFDFDF">Artifacts</b> (documentos, código y visuales que se editan a la par), los Proyectos y las conexiones.</p>
+        <div class="use"><span class="material-icons-round">bolt</span> Ideal para: brainstorm, copy, research, primeros borradores.</div>
+      </div>
+      <div class="cc code rv">
+        <div class="ic"><span class="material-icons-round">terminal</span></div>
+        <h3>Claude Code</h3>
+        <div class="where">terminal · VS Code · web</div>
+        <p>Claude agéntico que trabaja sobre archivos y proyectos reales: crea, edita y prueba. No solo sugiere, ejecuta. Es lo que estamos usando ahora mismo para armar esta web.</p>
+        <div class="use"><span class="material-icons-round">bolt</span> Ideal para: prototipos, sitios, automatizar tareas repetitivas.</div>
+      </div>
+      <div class="cc cowork rv">
+        <div class="ic"><span class="material-icons-round">workspaces</span></div>
+        <h3>Claude Cowork</h3>
+        <div class="where">app · modo de trabajo agéntico</div>
+        <p>Claude que hace tareas de punta a punta usando tus herramientas conectadas, skills y plugins. Le pedís un entregable, trabaja solo y vuelve con el resultado. Pensado para equipos, no solo devs.</p>
+        <div class="use"><span class="material-icons-round">bolt</span> Ideal para: flujos con Slack, Notion, Drive, entregables completos.</div>
+      </div>
+      <div class="cc design rv">
+        <div class="ic"><span class="material-icons-round">brush</span></div>
+        <h3>Claude Design</h3>
+        <div class="where">plugin de diseño · Figma conectado</div>
+        <p>Claude especializado en diseño. Vive donde diseñás y trae skills propias: crítica de diseño, design system, handoff a devs, accesibilidad y UX copy. Lee y escribe en Figma.</p>
+        <div class="use"><span class="material-icons-round">bolt</span> Ideal para: revisar pantallas, documentar el sistema, specs para devs.</div>
+      </div>
+    </div>
+    <div class="four-note">
+      <span class="material-icons-round">lightbulb</span>
+      <div><b style="color:#FAFAFC">Regla mental:</b> Chat es la base. Code, Cowork y Design son el mismo Claude pero con más herramientas y más autonomía según dónde lo necesites. Empezás en Chat y "subís de nivel" cuando la tarea lo pide.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTUAR -->
+<section class="light" id="interactuar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">forum</span> Cómo hablarle</div>
+      <h2>Interactuar bien es la mitad del trabajo</h2>
+      <p>No hace falta saber "prompts mágicos". Hace falta darle contexto como se lo darías a alguien nuevo en el equipo. Seis hábitos que cambian el resultado.</p>
+    </div>
+    <div class="princ">
+      <div class="pcard rv"><div class="n">01</div><h4>Dale contexto</h4><p>Quién sos, para qué marca, quién lo va a ver, qué tono. Claude no adivina lo obvio para vos.</p></div>
+      <div class="pcard rv"><div class="n">02</div><h4>Sé específico con el objetivo</h4><p>"Un banner" es vago. "Un banner 300×250 para awareness de una marca de snacks, tono divertido" trabaja mejor.</p></div>
+      <div class="pcard rv"><div class="n">03</div><h4>Pedí el formato de salida</h4><p>Lista, tabla, código, tres opciones. Decile en qué forma querés la respuesta y te la da lista para usar.</p></div>
+      <div class="pcard rv"><div class="n">04</div><h4>Iterá, no reempieces</h4><p>Es una conversación. "Más corto", "cambiá el tono", "probá otra dirección" sobre lo mismo, sin arrancar de cero.</p></div>
+      <div class="pcard rv"><div class="n">05</div><h4>Dividí lo grande</h4><p>Tareas largas en pasos. Primero el esquema, después cada parte. Mejor control y menos errores.</p></div>
+      <div class="pcard rv"><div class="n">06</div><h4>Mostrale ejemplos</h4><p>Pegá una referencia, una captura, un texto que te gustó. Un buen ejemplo vale más que tres párrafos de explicación.</p></div>
+    </div>
+
+    <div class="compare">
+      <div class="cbox bad rv">
+        <div class="lbl"><span class="material-icons-round">thumb_down</span> Prompt flojo</div>
+        <p>"Haceme una landing para Kidscorp."</p>
+      </div>
+      <div class="cbox good rv">
+        <div class="lbl"><span class="material-icons-round">thumb_up</span> Prompt que rinde</div>
+        <p>"Armá una landing para presentar un formato nuevo de Kidscorp a marcas. Público: brand managers. Tono corporativo y confiable. Estética de nuestra web (violeta, Montserrat, fondo oscuro). Secciones: hero, 3 beneficios, un caso, CTA a demo. Dame primero la estructura antes del código."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">extension</span> La pieza clave</div>
+      <h2>Skills: habilidades que Claude carga cuando las necesita</h2>
+      <p>Una skill es un paquete de instrucciones y archivos que le enseña a Claude a hacer algo específico a nuestra manera. Es la forma de que deje de ser genérico y trabaje como Kidscorp.</p>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="steps">
+          <div class="step rv"><div class="b">1</div><div><h4>Qué es</h4><p>Una carpeta con un archivo <span class="kc-mono" style="color:#4CCBFF">SKILL.md</span> que describe una habilidad: cómo escribir en nuestra voz, cómo aplicar el sistema de diseño, cómo armar un reporte. Puede incluir plantillas, fuentes, logos y scripts.</p></div></div>
+          <div class="step rv"><div class="b">2</div><div><h4>Cómo se usa</h4><p>No hay que hacer casi nada. Claude lee la descripción y la activa <b style="color:#DFDFDF">sola</b> cuando la tarea encaja. También podés invocarla a mano con <span class="kc-mono c-dir" style="color:#B33AF0">/nombre-de-skill</span>.</p></div></div>
+          <div class="step rv"><div class="b">3</div><div><h4>Cómo se arma (por arriba)</h4><p>Nombre, una descripción clara de cuándo usarla, las instrucciones, y los archivos de apoyo. Eso es todo. Lo importante es la descripción: es lo que hace que Claude sepa cuándo entra.</p></div></div>
+        </div>
+        <div class="callbox rv">
+          <p><b>Ya tenemos una:</b> el skill <span class="kc-mono" style="color:#4CCBFF">kidscorp-design-system</span> es el que le dio a esta misma web los colores, la tipografía Montserrat y el logo, sin que yo se lo explicara cada vez.</p>
+        </div>
+      </div>
+
+      <div class="code rv">
+        <div class="top">
+          <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+          <span class="fn">kidscorp-design-system / SKILL.md</span>
+        </div>
+<pre><span class="c-com">---</span>
+<span class="c-key">name</span>: kidscorp-design-system
+<span class="c-key">description</span>: <span class="c-str">Sistema visual y verbal
+  de Kidscorp. Usar en cualquier
+  entregable de la marca: decks,
+  landings, banners, docs.</span>
+<span class="c-com">---</span>
+
+<span class="c-com"># Instrucciones</span>
+- Tipografía: Montserrat
+- Violeta <span class="c-str">#9414FA</span> como color firma
+- Fondo oscuro <span class="c-str">#121212</span> o claro
+- Íconos: Material Icons Round
+- Voz: español LatAm, corporativa
+
+<span class="c-com"># Archivos incluidos</span>
+  /fonts       <span class="c-com"># Montserrat</span>
+  /logos       <span class="c-com"># iso + wordmark</span>
+  /backgrounds <span class="c-com"># fondos violeta</span>
+  colors.css   <span class="c-com"># tokens</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="light" id="proyectos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">folder_special</span> Contexto que no se pierde</div>
+      <h2>Proyectos: un espacio con memoria compartida</h2>
+      <p>Un Proyecto es una carpeta de chats que comparten el mismo contexto: instrucciones, archivos de referencia y conocimiento. Todo lo que le enseñás una vez, queda disponible en cada conversación de ese proyecto.</p>
+    </div>
+
+    <table class="tbl">
+      <thead>
+        <tr><th></th><th>Chat suelto</th><th>Proyecto</th><th>Skill</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Qué es</th><td>Una conversación única.</td><td>Un espacio con contexto persistente y archivos.</td><td>Una habilidad reutilizable que se activa sola.</td></tr>
+        <tr><th>Recuerda contexto</th><td>Solo dentro del chat.</td><td class="yes">Sí, en todos los chats del proyecto.</td><td>Trae su conocimiento cada vez que entra.</td></tr>
+        <tr><th>Ideal para</th><td>Preguntas rápidas, pruebas.</td><td>Un cliente, una campaña, un producto en curso.</td><td>Una forma de trabajar repetible (nuestra marca).</td></tr>
+        <tr><th>Quién lo usa</th><td>Vos, en el momento.</td><td>Vos o el equipo, sostenido en el tiempo.</td><td>Cualquiera, sin explicar nada.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="adv">
+      <div class="acard rv"><span class="material-icons-round">psychology</span><h4>Deja de repetirte</h4><p>Subís el brief, la guía de marca y los links una vez. No los volvés a pegar en cada chat.</p></div>
+      <div class="acard rv"><span class="material-icons-round">groups</span><h4>Coherencia de equipo</h4><p>Todos parten del mismo contexto, así que las respuestas salen alineadas entre personas.</p></div>
+      <div class="acard rv"><span class="material-icons-round">layers</span><h4>Se combinan</h4><p>Un Proyecto puede apoyarse en Skills y en Conexiones a la vez. Contexto + habilidad + acceso a tus apps.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONEXIONES -->
+<section id="conexiones">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">hub</span> Claude conectado a tu mundo</div>
+      <h2>Conexiones: darle acceso a tus herramientas</h2>
+      <p>Por defecto Claude solo tiene la conversación. Las conexiones le dan ojos y manos en las apps que ya usás, para que lea contexto real y devuelva trabajo sobre tus datos, no genérico.</p>
+    </div>
+
+    <div class="conn-intro">
+      <div>
+        <div class="flowchip">
+          <div class="chip claude"><span class="material-icons-round" style="font-size:18px">auto_awesome</span> Claude</div>
+          <span class="material-icons-round">swap_horiz</span>
+          <div class="chip mcp"><span class="material-icons-round" style="font-size:18px">cable</span> MCP</div>
+          <span class="material-icons-round">swap_horiz</span>
+          <div class="chip"><span class="material-icons-round" style="font-size:18px">apps</span> Tus apps</div>
+        </div>
+        <p style="color:#A6A6A6; font-size:15px; line-height:1.65; margin-top:22px;">Las conexiones funcionan sobre un estándar llamado <b style="color:#C098FD">MCP</b> (Model Context Protocol): un "enchufe universal" que deja que Claude hable con otras herramientas de forma segura. Vos autorizás cada una, y podés revocarla cuando quieras.</p>
+      </div>
+      <div class="conn-types" style="grid-template-columns:1fr; margin-top:0;">
+        <div class="ct rv"><span class="material-icons-round">visibility</span><h4>Leer</h4><p>Toma contexto de tus docs, tickets, mensajes o archivos de diseño para entender la tarea.</p></div>
+        <div class="ct rv"><span class="material-icons-round">edit_note</span><h4>Crear y editar</h4><p>Escribe un doc, arma un ticket, deja un comentario o genera nodos en Figma.</p></div>
+        <div class="ct rv"><span class="material-icons-round">bolt</span><h4>Accionar</h4><p>Manda un mensaje, agenda algo o dispara un flujo, siempre con tu confirmación.</p></div>
+      </div>
+    </div>
+
+    <div class="conns">
+      <div class="tool rv"><span class="material-icons-round">draw</span><div><b>Figma</b><span>Leer y crear diseño</span></div></div>
+      <div class="tool rv"><span class="material-icons-round">forum</span><div><b>Slack</b><span>Buscar y responder</span></div></div>
+      <div class="tool rv"><span class="material-icons-round">description</span><div><b>Notion</b><span>Docs y bases</span></div></div>
+      <div class="tool rv"><span class="material-icons-round">folder</span><div><b>Google Drive</b><span>Archivos y carpetas</span></div></div>
+      <div class="tool rv"><span class="material-icons-round">mail</span><div><b>Gmail</b><span>Leer y redactar</span></div></div>
+      <div class="tool rv"><span class="material-icons-round">event</span><div><b>Calendar</b><span>Agenda y eventos</span></div></div>
+      <div class="tool rv"><span class="material-icons-round">task_alt</span><div><b>Linear · Asana</b><span>Tareas y proyectos</span></div></div>
+      <div class="tool rv"><span class="material-icons-round">support_agent</span><div><b>Intercom · Jira</b><span>Soporte y tickets</span></div></div>
+    </div>
+    <p style="color:#6F6F6F; font-size:13px; margin-top:18px;">Y muchas más. Cada equipo conecta solo las que necesita.</p>
+  </div>
+</section>
+
+<!-- CONSEJOS -->
+<section class="light" id="consejos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">tips_and_updates</span> Para sacarle jugo</div>
+      <h2>Consejos para el equipo de diseño</h2>
+      <p>Hábitos simples que hacen la diferencia entre "probé Claude una vez" y "es parte de mi flujo".</p>
+    </div>
+    <div class="tips">
+      <div class="tip rv"><span class="material-icons-round">image</span><div><h4>Trabajá con referencias visuales</h4><p>Pegá capturas, moodboards o pantallas. Claude las lee y las usa como guía de estilo.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">tune</span><div><h4>Pedí variantes, no una sola opción</h4><p>"Dame 3 direcciones distintas" te da con qué comparar y decidir más rápido.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">rule</span><div><h4>Que critique tu trabajo</h4><p>Subí un diseño y pedí una crítica honesta: jerarquía, contraste, accesibilidad. Es un buen segundo par de ojos.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">bookmark</span><div><h4>Guardá lo que funciona</h4><p>Un prompt o brief que rindió bien, guardalo. Con el tiempo eso puede volverse una skill del equipo.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">verified_user</span><div><h4>Revisá siempre lo sensible</h4><p>Datos de menores, legales, cifras de campaña. Claude ayuda, pero la responsabilidad final es nuestra.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">handyman</span><div><h4>Usá el Claude correcto</h4><p>Brainstorm en Chat, revisar Figma con Design, entregable con Cowork, armar algo con Code.</p></div></div>
+    </div>
+
+    <div class="roadmap">
+      <h3>Propuestas para llevar esto más lejos</h3>
+      <p class="sub">Ideas para convertir esta intro en una forma de trabajar del estudio.</p>
+      <div class="rlist">
+        <div><span class="material-icons-round">check_circle</span> Armar un Proyecto compartido "Kidscorp Diseño" con brief, guía de marca y links de referencia.</div>
+        <div><span class="material-icons-round">check_circle</span> Empaquetar nuestras plantillas de banner y deck como skills reutilizables.</div>
+        <div><span class="material-icons-round">check_circle</span> Un canal en Slack para compartir prompts y trucos que funcionaron.</div>
+        <div><span class="material-icons-round">check_circle</span> Conectar Figma para revisiones y handoff asistidos.</div>
+        <div><span class="material-icons-round">check_circle</span> Una biblioteca interna de "prompts de arranque" por tipo de pieza.</div>
+        <div><span class="material-icons-round">check_circle</span> Un mini reto mensual: automatizar una tarea repetitiva con Claude.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Design AI Workshop · Clase 02 · uso educativo interno · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-03/index.html">Clase 03</a>
+        <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>

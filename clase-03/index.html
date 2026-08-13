@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 03 · Instrucciones, MCP y conectores</title>
+<meta name="description" content="Instrucciones personalizadas, API vs Webhook vs MCP, y los conectores que usamos todos los días.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Design AI Workshop</div>
+    </a>
+    <nav>
+      <a href="#instrucciones">Instrucciones</a>
+      <a href="#api-mcp">API · Webhook · MCP</a>
+      <a href="#conectores">Conectores</a>
+    </nav>
+    <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 03</span></div>
+    <div class="eyebrow"><span class="material-icons-round">bolt</span> Clase 03</div>
+    <h1>Instrucciones, <span class="gr">MCP</span> y conectores</h1>
+    <p class="lead">Ya sabés qué es Claude y cómo hablarle. Ahora vamos a lo que lo vuelve realmente tuyo: instrucciones que no repetís nunca más, y cómo se conecta a tus herramientas por debajo.</p>
+  </div>
+</section>
+
+<!-- INSTRUCCIONES -->
+<section id="instrucciones">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">tune</span> Configurá una vez, usá siempre</div>
+      <h2>Instrucciones para Claude</h2>
+      <p>Es un perfil que dejás guardado en tu cuenta (Configuración → Perfil, en claude.ai) o en un archivo <b style="color:var(--text)">CLAUDE.md</b> si trabajás en Claude Code. Claude lo lee antes de cada conversación, así que dejás de explicar quién sos y cómo te gusta trabajar en cada chat nuevo.</p>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Para qué sirve, en la práctica:</b> menos fricción (no repetís tu tono ni tu idioma cada vez), respuestas más cortas y precisas (Claude ya sabe cuánto contexto necesitás) y consistencia si varias personas del equipo usan la misma cuenta o proyecto.</p>
+    </div>
+
+    <div class="doc rv" style="margin-top:34px;">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">mis-instrucciones · ejemplo real</span>
+      </div>
+      <div class="body">
+        <div class="field">
+          <h5>Idiomas</h5>
+          <p><b>Español:</b> nativo. <b>Inglés:</b> competencia profesional completa (trabajo y leo técnico sin problema, pero prefiero conversar en español salvo que el contenido sea para audiencia internacional).</p>
+        </div>
+        <div class="field">
+          <h5>Cómo me gusta trabajar y comunicarme</h5>
+          <ul>
+            <li><b>Tono:</b> cercano, directo, con energía. Humor cuando cabe, a veces con emojis 😆🚀🤖. Curioso por naturaleza.</li>
+            <li><b>Mentalidad:</b> aprendizaje continuo, prototipado rápido, "probar y ver". Sin apego a una herramienta: hay una nueva cada dos semanas.</li>
+            <li><b>Estilo de liderazgo:</b> empático, mentor, escucha activa. Importa que el equipo aprenda, no solo que ejecute.</li>
+            <li><b>Forma de pensar:</b> puente entre lo estético y lo técnico, entre lo creativo y lo escalable. Soluciones que funcionen a escala sin perder craft.</li>
+            <li><b>Preferencia de output:</b> respuestas concretas y accionables, con ejemplos cuando se pueda.</li>
+          </ul>
+        </div>
+        <div class="field">
+          <h5>Temas en los que típicamente pido ayuda</h5>
+          <ul>
+            <li>Automatizar workflows creativos con IA: briefs, prompts, scripts, integraciones.</li>
+            <li>Rich media / ad units en HTML y JS: performance, tracking, responsive.</li>
+            <li>Estrategia y procesos para escalar producción creativa sin perder estándares.</li>
+            <li>Análisis de data de performance para decisiones creativas.</li>
+            <li>Diseño de experiencias U18-compliant (COPPA, GDPR, LGPD, Kidsafe).</li>
+            <li>Liderazgo de equipo, mentoría, comunicación cross-functional.</li>
+            <li>Branding, identidad visual, UX/UI, prototipado.</li>
+            <li>Contenido para LinkedIn y comunicación profesional en español, tono propio.</li>
+            <li>Herramientas nuevas de IA aplicadas a diseño y desarrollo.</li>
+          </ul>
+        </div>
+        <div class="field">
+          <h5>Cómo prefiero que me respondan</h5>
+          <ul>
+            <li>En español por defecto, salvo que el contenido sea para audiencia en inglés.</li>
+            <li>Sin sobreexplicar: doy por sentado background técnico y de diseño.</li>
+            <li>Concreto y accionable: si hay tres opciones, las tres con pros y contras, no una elegida a ciegas.</li>
+            <li>Mostrame el cómo: ejemplo, snippet o paso a paso ejecutable.</li>
+            <li>Que me discuta cuando corresponda: si una idea mía es floja, decirlo con argumentos.</li>
+            <li>Sin formato excesivo: bullets cuando suman, prosa cuando alcanza.</li>
+          </ul>
+          <div class="rule"><span class="material-icons-round">auto_fix_high</span><span>Regla extra que dejo escrita: aplicar siempre el skill de limpieza de texto (stop-slop) a cualquier prosa que me devuelva, sin que tenga que pedirlo. Y nunca usar em dash, en ningún contexto.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:20px;">
+      <p><b>Armá el tuyo:</b> no hace falta copiar este. Anotá tu idioma de trabajo, tu tono, los temas que más le vas a pedir y cómo querés recibir la respuesta. Cinco minutos ahora te ahorran repetirlo cien veces.</p>
+    </div>
+  </div>
+</section>
+
+<!-- API / WEBHOOK / MCP -->
+<section id="api-mcp" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">cable</span> Las tres piezas que se confunden</div>
+      <h2>API, Webhook y MCP no son lo mismo</h2>
+      <p>Los tres conectan sistemas entre sí, pero cambia quién pregunta, quién avisa y quién decide qué usar.</p>
+    </div>
+
+    <div class="defs">
+      <div class="def api rv">
+        <div class="ic"><span class="material-icons-round">swap_horiz</span></div>
+        <h4>API</h4>
+        <div class="who">vos preguntás, ella responde</div>
+        <p>Un contrato fijo de endpoints. Tu código llama a una URL concreta, con parámetros concretos, y sabe de antemano qué va a recibir de vuelta.</p>
+        <div class="ex">Ejemplo: n8n llama a la API de Gmail para leer un correo nuevo.</div>
+      </div>
+      <div class="def hook rv">
+        <div class="ic"><span class="material-icons-round">door_front</span></div>
+        <h4>Webhook</h4>
+        <div class="who">ella avisa, vos escuchás</div>
+        <p>Una puerta abierta esperando un evento. No vas a buscar el dato: el sistema de origen te empuja el aviso apenas algo pasa.</p>
+        <div class="ex">Ejemplo: llega un email y Gmail empuja ese evento a un flujo en n8n.</div>
+      </div>
+      <div class="def mcp rv">
+        <div class="ic"><span class="material-icons-round">auto_awesome</span></div>
+        <h4>MCP</h4>
+        <div class="who">Claude pregunta qué hay disponible, y elige</div>
+        <p>Model Context Protocol: un estándar abierto para que un modelo de IA descubra herramientas en el momento de la conversación y decida solo cuál usar, sin que un desarrollador programe esa integración a mano.</p>
+        <div class="ex">Ejemplo: le pedís a Claude que revise un ticket, y Claude decide llamar al conector de HubSpot porque ve que está disponible.</div>
+      </div>
+    </div>
+
+    <table class="tbl rv">
+      <thead>
+        <tr><th></th><th>API</th><th>Webhook</th><th>MCP</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Quién inicia la llamada</th><td>Tu código, cuando vos decidís.</td><td>El sistema de origen, cuando ocurre el evento.</td><td>El modelo, en medio de la conversación.</td></tr>
+        <tr><th>Cuándo se define qué se puede hacer</th><td>Antes, en la documentación de la API.</td><td>Antes, al suscribirte al evento.</td><td>En el momento: el modelo lee qué herramientas tiene y sus descripciones.</td></tr>
+        <tr><th>Quién arma la integración</th><td>Una persona developer.</td><td>Una persona developer.</td><td>Nadie por tarea puntual: se conecta una vez y el modelo la reutiliza.</td></tr>
+        <tr><th>Dónde lo vas a ver</th><td>n8n, Zapier, scripts propios.</td><td>Automatizaciones tipo n8n, Zapier, Make.</td><td>Conexiones de Claude: Figma, Slack, Drive, HubSpot.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="flow rv">
+      <div class="node"><span class="material-icons-round">chat_bubble</span> "Resumime este ticket"</div>
+      <span class="arrow material-icons-round">arrow_forward</span>
+      <div class="node"><span class="material-icons-round">auto_awesome</span> Claude ve sus MCP disponibles</div>
+      <span class="arrow material-icons-round">arrow_forward</span>
+      <div class="node"><span class="material-icons-round">support_agent</span> Elige HubSpot y trae el dato</div>
+      <span class="arrow material-icons-round">arrow_forward</span>
+      <div class="node"><span class="material-icons-round">task_alt</span> Te devuelve el resumen</div>
+      <div class="note">Nadie escribió código para esa integración puntual: la decisión de qué usar la tomó el modelo, en el momento.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONECTORES -->
+<section id="conectores">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">hub</span> MCP en la práctica</div>
+      <h2>Conectores: los que uso todos los días</h2>
+      <p>Cada conector es un servidor MCP ya armado que autorizás una vez, desde tu cuenta. Podés revocarlo cuando quieras y Claude solo ve lo que ese conector expone, nada más.</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">public</span></div>
+        <h4>Chrome</h4>
+        <p>Le da a Claude un navegador de verdad: puede abrir páginas, leer lo que hay en pantalla, hacer clic y completar formularios con tu confirmación en cada paso sensible.</p>
+        <div class="use"><b>Lo uso para:</b> revisar un sitio en vivo, probar un flujo, comparar precios o leer una página que no tiene API.</div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">support_agent</span></div>
+        <h4>HubSpot</h4>
+        <p>Acceso a tickets, contactos y datos de CRM. Claude puede buscar un ticket, leer su historial o ayudarte a redactar la respuesta, sin que abras la plataforma.</p>
+        <div class="use"><b>Lo uso para:</b> resumir un caso de soporte o preparar contexto antes de una call con un cliente.</div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">folder</span></div>
+        <h4>Google Drive</h4>
+        <p>Lee, busca y puede editar documentos y hojas de cálculo directamente en tu Drive. Nada de descargar, pegar y volver a subir.</p>
+        <div class="use"><b>Lo uso para:</b> traer un brief guardado, actualizar una planilla de seguimiento o sacar contexto de un doc viejo.</div>
+      </div>
+    </div>
+
+    <div class="conns-grid rv">
+      <div class="tool"><span class="material-icons-round">draw</span><div><b>Figma</b><span>Leer y crear diseño</span></div></div>
+      <div class="tool"><span class="material-icons-round">forum</span><div><b>Slack</b><span>Buscar y responder</span></div></div>
+      <div class="tool"><span class="material-icons-round">mail</span><div><b>Gmail</b><span>Leer y redactar</span></div></div>
+      <div class="tool"><span class="material-icons-round">event</span><div><b>Calendar</b><span>Agenda y eventos</span></div></div>
+      <div class="tool"><span class="material-icons-round">task_alt</span><div><b>Linear · Asana</b><span>Tareas y proyectos</span></div></div>
+      <div class="tool"><span class="material-icons-round">description</span><div><b>Notion</b><span>Docs y bases</span></div></div>
+      <div class="tool"><span class="material-icons-round">smart_toy</span><div><b>HeyGen</b><span>Video con IA</span></div></div>
+      <div class="tool"><span class="material-icons-round">query_stats</span><div><b>Analytics</b><span>Datos de performance</span></div></div>
+    </div>
+    <p style="color:var(--text-dimmer); font-size:13px; margin-top:16px;">Y siguen sumando. Cada persona conecta solo lo que necesita para su trabajo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Design AI Workshop · Clase 03 · material interno, uso educativo · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-02/index.html">Clase 02</a>
+        <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
