@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Design AI Workshop · Temario</title>
-<meta name="description" content="Taller interno sobre IA para el equipo de diseño: cuatro clases, de lo básico a MCP, conectores e IA generativa.">
+<title>Kidscorp Design AI Workshop · Temario</title>
+<meta name="description" content="Taller interno sobre IA para el equipo de Kidscorp: de lo básico a MCP, conectores, IA generativa y cómo publicar lo que armás.">
 <link rel="stylesheet" href="assets/colors_and_type.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<div class="scroll-progress"></div>
 <header class="topper">
   <div class="bar">
     <a class="brand" href="index.html">
       <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
-      <div class="name">Design AI Workshop <span>· temario</span></div>
+      <div class="name">Kidscorp Design AI Workshop <span>· temario</span></div>
     </a>
     <nav>
       <a href="#clases">Clases</a>
@@ -25,14 +26,13 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow"><span class="material-icons-round">celebration</span> Taller interno · Equipo de diseño</div>
+    <div class="eyebrow"><span class="material-icons-round">celebration</span> Taller interno · Kidscorp</div>
     <h1>Cuatro clases para dejar de tenerle miedo a la IA y empezar a <span class="gr">construir con ella</span></h1>
-    <p class="lead">Nada de teoría eterna. Cada clase es una web que se recorre en 20 minutos, con ejemplos que uso yo todos los días. Empezá por la 01 o saltá directo a la que te haga falta.</p>
-    <div class="who"><div class="avatar"><span class="material-icons-round" style="font-size:18px">smart_toy</span></div> Armado por Juli, para el equipo. Se actualiza cuando aparece algo nuevo (que es seguido).</div>
+    <p class="lead">Nada de teoría eterna. Cada clase es una web que se recorre en 10 minutos, con ejemplos que uso yo todos los días. No hace falta venir de diseño: sirve para cualquier equipo de Kidscorp. Empezá por la 01 o saltá directo a la que te haga falta.</p>
   </div>
 </section>
 
-<section id="clases">
+<section id="clases" style="padding-top:24px;">
   <div class="wrap">
     <div class="sec-head">
       <div class="kicker"><span class="material-icons-round" style="font-size:16px">school</span> El temario</div>
@@ -40,26 +40,32 @@
       <p>Las cuatro se pueden mirar en cualquier orden, pero si es tu primera vez, andá en fila.</p>
     </div>
 
+    <div class="group-head rv"><span class="gnum">Parte 1</span><h3>Fundamentos de la IA</h3><span class="rule"></span></div>
     <div class="syllabus">
 
       <div class="class-card rv active">
         <div class="num">01</div>
         <div class="body">
-          <h3>Los 3 tipos de IA (y cómo se automatizan) <span class="badge live">Listo</span></h3>
-          <p>El mapa general: qué diferencia a la IA generativa, la conversacional y la agéntica, y un ejemplo real de automatización con webhooks y APIs. Incluye un simulador de workflows para armar el tuyo arrastrando nodos.</p>
-          <div class="tags"><span class="tag">IA generativa vs agéntica</span><span class="tag">APIs y webhooks</span><span class="tag">Simulador interactivo</span></div>
+          <h3>Los 3 tipos de IA, automatización y conexiones</h3>
+          <p>El mapa general: qué diferencia a la IA generativa, la conversacional y la agéntica; qué es una API, un Webhook y MCP; un ejemplo real conectando la API de Claude a tu propia app; instrucciones personalizadas y los conectores que uso todos los días.</p>
+          <div class="tags"><span class="tag">IA generativa vs agéntica</span><span class="tag">API · Webhook · MCP</span><span class="tag">API de Claude</span></div>
         </div>
         <div class="actions">
           <a class="btn btn-primary" href="clase-01/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
         </div>
       </div>
 
+    </div>
+
+    <div class="group-head rv"><span class="gnum">Parte 2</span><h3>Trabajar con Claude</h3><span class="rule"></span></div>
+    <div class="syllabus">
+
       <div class="class-card rv active">
         <div class="num">02</div>
         <div class="body">
-          <h3>Los 4 Claude: skills, proyectos y conexiones <span class="badge live">Listo</span></h3>
-          <p>Los cuatro Claude (Chat, Code, Cowork, Design), cómo hablarle para que rinda, y las tres piezas que lo vuelven un colaborador real: skills, proyectos y conexiones.</p>
-          <div class="tags"><span class="tag">Skills</span><span class="tag">Proyectos</span><span class="tag">Cómo hablarle bien</span></div>
+          <h3>Los 4 Claude: contexto, skills, proyectos y conexiones</h3>
+          <p>Los cuatro Claude (Chat, Code, Cowork, Design), los modelos que hay detrás (Haiku, Sonnet, Opus, Fable) y cuándo conviene cada uno, cómo hablarle para que rinda, cuándo iterar vos y cuándo delegarle todo a un agente, qué es el contexto y los tokens con comandos prácticos, y las tres piezas que lo vuelven un colaborador real: skills, proyectos y conexiones.</p>
+          <div class="tags"><span class="tag">Modelos: Haiku a Opus</span><span class="tag">Iterar o delegar</span><span class="tag">Contexto y tokens</span><span class="tag">Skills</span></div>
         </div>
         <div class="actions">
           <a class="btn btn-primary" href="clase-02/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
@@ -69,9 +75,9 @@
       <div class="class-card rv active">
         <div class="num">03</div>
         <div class="body">
-          <h3>Instrucciones, MCP y conectores <span class="badge live">Listo</span></h3>
-          <p>Instrucciones personalizadas (con mi propio template real), la diferencia entre API, webhook y MCP, y qué conectores tengo prendidos: Chrome, HubSpot, Drive y más.</p>
-          <div class="tags"><span class="tag">Instrucciones</span><span class="tag">API · Webhook · MCP</span><span class="tag">Conectores</span></div>
+          <h3>IA Generativa: texto, imagen, video y Google Labs</h3>
+          <p>Qué es la IA generativa y quién hace qué (ChatGPT, Gemini con Nano Banana, Google Flow con Veo), Google Labs actualizado (Flow, Flow Music, Pomelli, Stitch), y un caso real: de una foto de producto a un video, en dos pasos.</p>
+          <div class="tags"><span class="tag">ChatGPT y Nano Banana</span><span class="tag">Google Flow y Veo</span><span class="tag">Google Labs 2026</span><span class="tag">Caso real: foto → video</span></div>
         </div>
         <div class="actions">
           <a class="btn btn-primary" href="clase-03/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
@@ -81,9 +87,9 @@
       <div class="class-card rv active">
         <div class="num">04</div>
         <div class="body">
-          <h3>IA Generativa: texto, imagen, video y Google Labs <span class="badge new">Nuevo</span></h3>
-          <p>Qué es la IA generativa y quién hace qué (ChatGPT, Gemini con Nano Banana, Google Flow con Veo), Google Labs actualizado (Flow, Flow Music, Pomelli, Stitch), y un caso real: de una foto de producto a un video, en dos pasos.</p>
-          <div class="tags"><span class="tag">ChatGPT y Nano Banana</span><span class="tag">Google Flow y Veo</span><span class="tag">Google Labs 2026</span><span class="tag">Caso real: foto → video</span></div>
+          <h3>Hosting, dominios y riesgos de publicar online</h3>
+          <p>Las formas de usar una app hecha con Claude (local, Artifact, hosteada), qué es un host y un dominio, cómo publicar gratis con Vercel paso a paso, y los riesgos de exponer una API o datos sensibles online.</p>
+          <div class="tags"><span class="tag">Local vs hosteada</span><span class="tag">Host y dominio</span><span class="tag">Vercel gratis</span><span class="tag">Riesgos de API keys</span></div>
         </div>
         <div class="actions">
           <a class="btn btn-primary" href="clase-04/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
@@ -92,9 +98,61 @@
 
     </div>
 
+    <div class="group-head rv"><span class="gnum">Parte 3</span><h3>Claude Design para proyectos</h3><span class="rule"></span></div>
+    <div class="syllabus">
+
+      <div class="class-card disabled rv">
+        <div class="num"><span class="material-icons-round">lock_clock</span></div>
+        <div class="body">
+          <h3>Entendiendo el Design System <span class="badge soon">Próximamente</span></h3>
+          <p>Qué es un design system, cómo está armado (tokens, componentes, variantes) y cómo Claude Design lo lee para trabajar con nuestra marca sin que se lo expliquemos cada vez.</p>
+          <div class="tags"><span class="tag">Qué es un design system</span><span class="tag">Tokens y componentes</span><span class="tag">Cómo lo lee Claude</span></div>
+        </div>
+        <div class="actions">
+          <span class="btn-soon"><span class="material-icons-round">schedule</span> Próximamente</span>
+        </div>
+      </div>
+
+      <div class="class-card disabled rv">
+        <div class="num"><span class="material-icons-round">lock_clock</span></div>
+        <div class="body">
+          <h3>Generando proyectos con Claude Design <span class="badge soon">Próximamente</span></h3>
+          <p>Con el Design System ya entendido, cómo usar Claude Design para armar pantallas, flujos y piezas reales dentro de un proyecto.</p>
+          <div class="tags"><span class="tag">Crear pantallas</span><span class="tag">Flujos completos</span><span class="tag">De la idea al archivo</span></div>
+        </div>
+        <div class="actions">
+          <span class="btn-soon"><span class="material-icons-round">schedule</span> Próximamente</span>
+        </div>
+      </div>
+
+    </div>
+
     <div class="howto rv">
       <span class="material-icons-round">lightbulb</span>
-      <p><b>No hace falta saber nada previo.</b> Cada clase asume que venís de la anterior, pero si ya usás Claude seguido, arrancá directo por la 03: es la que tiene lo que más preguntan.</p>
+      <p><b>No hace falta saber nada previo.</b> Cada clase asume que venís de la anterior, pero si ya usás Claude seguido, arrancá directo por la 02: es la que tiene lo que más preguntan.</p>
+    </div>
+  </div>
+</section>
+
+<section id="bonus">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">quiz</span> Modo interactivo</div>
+      <h2>¿Cuánto te quedó del taller?</h2>
+      <p>10 preguntas al azar de un banco de 30, sacadas de las 4 clases. Sin nota, solo para repasar.</p>
+    </div>
+    <div class="syllabus">
+      <div class="class-card rv active">
+        <div class="num"><span class="material-icons-round">quiz</span></div>
+        <div class="body">
+          <h3>Cuestionario del taller</h3>
+          <p>Multiple choice, 10 preguntas al azar en cada intento, con la respuesta correcta y una explicación corta después de cada una.</p>
+          <div class="tags"><span class="tag">10 preguntas</span><span class="tag">Banco de 30</span><span class="tag">Repetible</span></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="cuestionario/index.html"><span class="material-icons-round">arrow_forward</span> Entrar</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -103,12 +161,13 @@
 <footer>
   <div class="wrap">
     <div class="row">
-      <p>Design AI Workshop · material interno, uso educativo · 2026</p>
+      <p>Kidscorp Design AI Workshop · material interno, uso educativo · 2026</p>
       <div class="fnav">
         <a href="clase-01/index.html">Clase 01</a>
         <a href="clase-02/index.html">Clase 02</a>
         <a href="clase-03/index.html">Clase 03</a>
         <a href="clase-04/index.html">Clase 04</a>
+        <a href="cuestionario/index.html">Cuestionario</a>
       </div>
     </div>
   </div>
@@ -122,6 +181,35 @@
     el.style.transitionDelay = (i % 4 * 60) + 'ms';
     io.observe(el);
   });
+
+  // scroll progress bar + header lift
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // scrollspy: highlight the nav link for the section in view
+  const navLinks = document.querySelectorAll('.topper nav a[href^="#"]');
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.topper nav a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
 </script>
 </body>
 </html>

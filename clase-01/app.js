@@ -48,4 +48,54 @@ document.addEventListener('DOMContentLoaded', () => {
             heroContent.classList.add('visible');
         }, 100);
     }
+
+    // Scroll progress bar + header lift
+    const progressBar = document.querySelector('.scroll-progress');
+    const topper = document.querySelector('.topper');
+    const onScroll = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        if (progressBar) progressBar.style.width = pct + '%';
+        if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Table-of-contents dropdown: toggle, outside-click close, active section label
+    const toc = document.querySelector('.toc');
+    const tocBtn = document.querySelector('.toc-btn');
+    const tocLabel = document.querySelector('.toc-label');
+    const tocDefaultLabel = tocLabel ? tocLabel.textContent : '';
+    const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+    if (toc && tocBtn) {
+        tocBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const willOpen = !toc.classList.contains('open');
+            toc.classList.toggle('open', willOpen);
+            tocBtn.setAttribute('aria-expanded', String(willOpen));
+        });
+        document.addEventListener('click', (e) => {
+            if (!toc.contains(e.target)) toc.classList.remove('open');
+        });
+        navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+    }
+
+    // Scrollspy: highlight the active section in the dropdown + button label
+    const navSections = Array.from(navLinks)
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+    if (navSections.length) {
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+                if (!link) return;
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                if (tocLabel) tocLabel.textContent = link.textContent;
+            });
+        }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+        navSections.forEach(s => spy.observe(s));
+    }
 });

@@ -3,26 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clase 01 · Los 3 tipos de IA (y cómo se automatizan)</title>
-    <meta name="description" content="IA generativa, conversacional y agéntica, más un ejemplo real de automatización con webhooks y APIs.">
+    <title>Clase 01 · Los 3 tipos de IA, automatización y conexiones</title>
+    <meta name="description" content="IA generativa, conversacional y agéntica; qué es una API, un Webhook y MCP; un ejemplo con la API de Claude; instrucciones y conectores.">
     <link rel="stylesheet" href="assets/colors_and_type.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="workspace.css">
 </head>
 <body>
 
+    <div class="scroll-progress"></div>
     <header class="topper">
       <div class="bar">
         <a class="brand" href="../index.html">
           <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
-          <div class="name">Design AI Workshop <span>· clase 01</span></div>
+          <div class="name">Kidscorp Design AI Workshop <span>· clase 01</span></div>
         </a>
-        <nav>
+        <div class="toc" id="toc">
+          <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+            <span class="material-icons-round">toc</span>
+            <span class="toc-label">Contenidos</span>
+            <span class="material-icons-round toc-chev">expand_more</span>
+          </button>
+          <div class="toc-menu">
             <a href="#ai-types">Tipos de IA</a>
-            <a href="#ai-automation">Automatización</a>
-            <a href="#interactive-demo">Simulador</a>
-        </nav>
+            <a href="#api-webhook">API y Webhook</a>
+            <a href="#mcp">MCP</a>
+            <a href="#ejemplo-api-claude">Ejemplo</a>
+            <a href="#instrucciones">Instrucciones</a>
+            <a href="#conectores">Conectores</a>
+          </div>
+        </div>
         <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
       </div>
     </header>
@@ -38,7 +48,7 @@
                     Los 3 tipos de IA <br>
                     <span class="text-gradient">(y cómo se automatizan)</span>
                 </h1>
-                <p class="hero-subtitle">Generativa, conversacional y agéntica, explicadas para diseñadores.</p>
+                <p class="hero-subtitle">Generativa, conversacional y agéntica; cómo se automatizan; y cómo Claude se conecta a tus herramientas.</p>
                 <a href="#ai-types" class="btn-primary">Empezar</a>
             </div>
 
@@ -62,8 +72,8 @@
                     <div class="card fade-in-up staggered-1">
                         <div class="card-icon gradient-bg">🎨</div>
                         <h3 class="card-title">IA Generativa</h3>
-                        <div class="card-badge">Nano Banana, Midjourney, DALL-E</div>
-                        <p class="card-text">Crea contenido nuevo a partir de patrones. Ideal para brainstorming, imágenes y primeros borradores.</p>
+                        <div class="card-badge">Nano Banana, Midjourney, Suno</div>
+                        <p class="card-text">Crea contenido nuevo a partir de patrones. Ideal para brainstorming, imágenes, audio y primeros borradores, sea cual sea tu área.</p>
 
                         <div class="workflow-visual">
                             <div class="wf-node user-node">Prompt</div>
@@ -126,26 +136,26 @@
             </div>
         </section>
 
-        <!-- Section 2: AI Automation -->
-        <section id="ai-automation" class="section dark-section">
+        <!-- Section 2: API & Webhook -->
+        <section id="api-webhook" class="section dark-section">
             <div class="container">
-                <h2 class="section-title light-text fade-in-up">Automatización y APIs</h2>
-                <p class="section-desc light-text fade-in-up opacity-80">Conectar todo, sin escribir código.</p>
+                <h2 class="section-title light-text fade-in-up">Qué es una API, qué es un Webhook</h2>
+                <p class="section-desc light-text fade-in-up opacity-80">Las dos piezas que hacen posible conectar sistemas sin escribir todo desde cero.</p>
 
                 <div class="automation-grid">
                     <div class="automation-content fade-in-left">
-                        <h3 class="automation-subtitle">En acción con n8n</h3>
-                        <p class="automation-text">Para automatizar agrupamos herramientas. Veamos un ejemplo real: Recibís un email gigante de un cliente y querés leer solo lo importante al instante.</p>
+                        <h3 class="automation-subtitle">Un ejemplo en acción</h3>
+                        <p class="automation-text">No hace falta programar para automatizar: herramientas sin código como n8n, Zapier o Make dejan armar flujos conectando piezas visualmente. Veamos un ejemplo real: recibís un email gigante de un cliente y querés leer solo lo importante al instante.</p>
 
                         <div class="api-explainer">
-                            <h4>1. Trigger: El Webhook</h4>
-                            <p>Un <strong>Webhook</strong> es una "puerta abierta" esperando datos. Llega ese correo eterno, y Gmail empuja la alerta directamente a esa puerta en n8n.</p>
+                            <h4>1. Trigger: el Webhook</h4>
+                            <p>Un <strong>Webhook</strong> es una "puerta abierta" esperando datos. Llega ese correo eterno, y Gmail empuja la alerta directamente a esa puerta.</p>
 
-                            <h4>2. API & Procesamiento IA</h4>
-                            <p>Una <strong>API</strong> es un mensajero universal. n8n usa la API de Gemini enviándole el correo con una instrucción muy clara: <em>"Extrae los 3 puntos clave de este texto"</em>.</p>
+                            <h4>2. API y procesamiento con IA</h4>
+                            <p>Una <strong>API</strong> es un mensajero universal: le pedís algo puntual y te devuelve algo puntual. El flujo usa la API de Gemini enviándole el correo con una instrucción muy clara: <em>"Extrae los 3 puntos clave de este texto"</em>.</p>
 
                             <h4>3. Resultado</h4>
-                            <p>Gemini lee y devuelve el resumen. n8n utiliza otra vez la API de Gmail para auto-enviarte un correo limpio, destacando exclusivamente esos 3 puntos vitales.</p>
+                            <p>Gemini lee y devuelve el resumen. El flujo usa otra vez la API de Gmail para auto-enviarte un correo limpio, destacando exclusivamente esos 3 puntos vitales.</p>
                         </div>
                     </div>
 
@@ -173,48 +183,225 @@
                 </div>
             </div>
         </section>
-        <!-- Section 3: Interactive Demo -->
-        <section id="interactive-demo" class="section interactive-section">
-            <div class="container">
-                <h2 class="section-title fade-in-up">Probálo vos mismo: Simulador de Workflows</h2>
-                <p class="section-desc fade-in-up">Arrastrá los nodos desde la izquierda hacia el lienzo y conectá sus puntos para crear tu propia automatización.</p>
 
-                <div class="workspace-wrapper fade-in-up">
-                    <!-- Sidebar -->
-                    <div class="node-sidebar">
-                        <div class="draggable-node" draggable="true" data-type="trigger" data-title="Gmail (Webhook)" data-icon="📧">
-                            📧 Gmail (Trigger)
+        <!-- Section: MCP -->
+        <section id="mcp" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in-up">La tercera pieza: MCP</h2>
+                <p class="section-desc fade-in-up">API, Webhook y MCP conectan sistemas entre sí, pero cambia quién pregunta, quién avisa y quién decide qué usar.</p>
+
+                <div class="def-grid">
+                    <div class="def-card fade-in-up staggered-1">
+                        <div class="ic"><span class="material-icons-round">swap_horiz</span></div>
+                        <h4>API</h4>
+                        <div class="who">vos preguntás, ella responde</div>
+                        <p>Un contrato fijo de endpoints. Tu código llama a una URL concreta, con parámetros concretos, y sabe de antemano qué va a recibir de vuelta.</p>
+                        <div class="ex">Ejemplo: el flujo de automatización llama a la API de Gmail para leer un correo nuevo.</div>
+                    </div>
+                    <div class="def-card fade-in-up staggered-2">
+                        <div class="ic"><span class="material-icons-round">door_front</span></div>
+                        <h4>Webhook</h4>
+                        <div class="who">ella avisa, vos escuchás</div>
+                        <p>Una puerta abierta esperando un evento. No vas a buscar el dato: el sistema de origen te empuja el aviso apenas algo pasa.</p>
+                        <div class="ex">Ejemplo: llega un email y Gmail empuja ese evento a tu flujo de automatización.</div>
+                    </div>
+                    <div class="def-card fade-in-up staggered-3">
+                        <div class="ic"><span class="material-icons-round">auto_awesome</span></div>
+                        <h4>MCP</h4>
+                        <div class="who">Claude pregunta qué hay disponible, y elige</div>
+                        <p>Model Context Protocol: un estándar abierto para que un modelo de IA descubra herramientas en el momento de la conversación y decida solo cuál usar, sin que alguien programe esa integración a mano.</p>
+                        <div class="ex">Ejemplo: le pedís a Claude que revise un ticket, y Claude decide llamar al conector de HubSpot porque ve que está disponible.</div>
+                    </div>
+                </div>
+
+                <div class="mtbl-wrap fade-in-up">
+                    <table class="mtbl">
+                        <thead>
+                            <tr><th></th><th>API</th><th>Webhook</th><th>MCP</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th>Quién inicia la llamada</th><td>Tu código, cuando vos decidís.</td><td>El sistema de origen, cuando ocurre el evento.</td><td>El modelo, en medio de la conversación.</td></tr>
+                            <tr><th>Cuándo se define qué se puede hacer</th><td>Antes, en la documentación de la API.</td><td>Antes, al suscribirte al evento.</td><td>En el momento: el modelo lee qué herramientas tiene y sus descripciones.</td></tr>
+                            <tr><th>Quién arma la integración</th><td>Una persona developer.</td><td>Una persona developer.</td><td>Nadie por tarea puntual: se conecta una vez y el modelo la reutiliza.</td></tr>
+                            <tr><th>Dónde lo vas a ver</th><td>n8n, Zapier, scripts propios.</td><td>Automatizaciones tipo n8n, Zapier, Make.</td><td>Conexiones de Claude: Figma, Slack, Drive, HubSpot.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card fade-in-up" style="margin-top:2rem;">
+                    <p style="font-weight:700; margin-bottom:1.2rem;">Así se ve en la práctica</p>
+                    <div class="workflow-visual" style="border-top:none; padding-top:0;">
+                        <div class="wf-node user-node">"Resumime este ticket"</div>
+                        <div class="wf-line"><div class="pulse"></div></div>
+                        <div class="wf-node ai-node">Claude ve sus MCP</div>
+                        <div class="wf-line"><div class="pulse"></div></div>
+                        <div class="wf-node output-node">Elige HubSpot y responde</div>
+                    </div>
+                    <p style="margin-top:1.4rem; font-size:0.88rem; color:var(--text-dim);">Nadie escribió código para esa integración puntual: la decisión de qué usar la tomó el modelo, en el momento.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Ejemplo con la API de Claude -->
+        <section id="ejemplo-api-claude" class="section dark-section">
+            <div class="container">
+                <h2 class="section-title light-text fade-in-up">Armá tu propia mini-app con la API de Claude</h2>
+                <p class="section-desc light-text fade-in-up opacity-80">Ya vimos cómo Claude se conecta a herramientas que ya existen (eso es MCP). Ahora al revés: vos podés construir algo propio que llame directamente a la API de Claude para sumarle IA.</p>
+
+                <div class="automation-grid">
+                    <div class="automation-content fade-in-left">
+                        <div class="api-explainer">
+                            <h4>1. Tenés un formulario simple</h4>
+                            <p>Por ejemplo, uno donde el equipo pega el feedback de una campaña o de un usuario. Nada del otro mundo: un campo de texto y un botón de enviar.</p>
+
+                            <h4>2. Tu código llama a la API de Claude</h4>
+                            <p>Cuando alguien lo envía, tu app manda ese texto a la API de Claude junto con una instrucción clara: <em>"Resumí este feedback en 3 puntos y decime el sentimiento general"</em>.</p>
+
+                            <h4>3. Claude responde, tu app lo muestra</h4>
+                            <p>La API devuelve el resumen en segundos. Tu app lo guarda o lo muestra en pantalla, sin que nadie tenga que leer el feedback completo a mano.</p>
                         </div>
-                        <div class="draggable-node" draggable="true" data-type="trigger" data-title="Typeform" data-icon="📝">
-                            📝 Typeform
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="processor" data-title="Gemini AI" data-icon="✨">
-                            ✨ Gemini AI
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="processor" data-title="Format Data" data-icon="🔤">
-                            🔤 Intermediario
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="action" data-title="Slack" data-icon="💬">
-                            💬 Slack (Output)
-                        </div>
-                        <div class="draggable-node" draggable="true" data-type="action" data-title="Google Sheets" data-icon="📊">
-                            📊 Sheets (Output)
+                        <div class="callout">
+                            <p><b>El mismo patrón sirve para casi cualquier cosa:</b> clasificar tickets, generar copy, revisar contenido antes de publicarlo. La API es la puerta; vos decidís qué le mandás y qué hacés con la respuesta.</p>
                         </div>
                     </div>
 
-                    <!-- Canvas -->
-                    <div class="workspace-canvas" id="canvas">
-                        <svg id="canvas-svg" class="canvas-svg"></svg>
+                    <div class="automation-visual fade-in-right">
+                        <div class="n8n-workflow">
+                            <div class="n8n-node trigger">
+                                <span>Formulario<br>(Enviado)</span>
+                            </div>
+                            <svg class="n8n-line" viewBox="0 0 50 20">
+                                <path d="M0,10 C25,10 25,10 50,10" />
+                                <circle cx="0" cy="10" r="3" class="traveling-dot"></circle>
+                            </svg>
+                            <div class="n8n-node processor">
+                                <span>API de Claude<br>(Analiza)</span>
+                            </div>
+                            <svg class="n8n-line" viewBox="0 0 50 20">
+                                <path d="M0,10 C25,10 25,10 50,10" />
+                                <circle cx="0" cy="10" r="3" class="traveling-dot delay-1"></circle>
+                            </svg>
+                            <div class="n8n-node action">
+                                <span>Resultado<br>(Mostrado)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Section: Instrucciones -->
+        <section id="instrucciones" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in-up">Instrucciones para Claude</h2>
+                <p class="section-desc fade-in-up">Es un perfil que dejás guardado en tu cuenta (Configuración → Perfil, en claude.ai) o en un archivo CLAUDE.md si trabajás en Claude Code. Claude lo lee antes de cada conversación, así que dejás de explicar quién sos y cómo te gusta trabajar en cada chat nuevo.</p>
+
+                <div class="callout fade-in-up">
+                    <p><b>Para qué sirve, en la práctica:</b> menos fricción (no repetís tu tono ni tu idioma cada vez), respuestas más cortas y precisas (Claude ya sabe cuánto contexto necesitás) y consistencia si varias personas del equipo usan la misma cuenta o proyecto.</p>
+                </div>
+
+                <div class="doc fade-in-up">
+                    <div class="dtop">
+                        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+                        <span class="fn">mis-instrucciones · ejemplo real</span>
+                    </div>
+                    <div class="dbody">
+                        <div class="field">
+                            <h5>Idiomas</h5>
+                            <p><b>Español:</b> nativo. <b>Inglés:</b> competencia profesional completa (trabajo y leo técnico sin problema, pero prefiero conversar en español salvo que el contenido sea para audiencia internacional).</p>
+                        </div>
+                        <div class="field">
+                            <h5>Cómo me gusta trabajar y comunicarme</h5>
+                            <ul>
+                                <li><b>Tono:</b> cercano, directo, con energía. Humor cuando cabe, a veces con emojis 😆🚀🤖. Curioso por naturaleza.</li>
+                                <li><b>Mentalidad:</b> aprendizaje continuo, prototipado rápido, "probar y ver". Sin apego a una herramienta: hay una nueva cada dos semanas.</li>
+                                <li><b>Estilo de liderazgo:</b> empático, mentor, escucha activa. Importa que el equipo aprenda, no solo que ejecute.</li>
+                                <li><b>Forma de pensar:</b> puente entre lo estético y lo técnico, entre lo creativo y lo escalable. Soluciones que funcionen a escala sin perder craft.</li>
+                                <li><b>Preferencia de output:</b> respuestas concretas y accionables, con ejemplos cuando se pueda.</li>
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <h5>Temas en los que típicamente pido ayuda</h5>
+                            <ul>
+                                <li>Automatizar workflows creativos con IA: briefs, prompts, scripts, integraciones.</li>
+                                <li>Rich media / ad units en HTML y JS: performance, tracking, responsive.</li>
+                                <li>Estrategia y procesos para escalar producción creativa sin perder estándares.</li>
+                                <li>Análisis de data de performance para decisiones creativas.</li>
+                                <li>Diseño de experiencias U18-compliant (COPPA, GDPR, LGPD, Kidsafe).</li>
+                                <li>Liderazgo de equipo, mentoría, comunicación cross-functional.</li>
+                                <li>Branding, identidad visual, UX/UI, prototipado.</li>
+                                <li>Contenido para LinkedIn y comunicación profesional en español, tono propio.</li>
+                                <li>Herramientas nuevas de IA aplicadas a diseño y desarrollo.</li>
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <h5>Cómo prefiero que me respondan</h5>
+                            <ul>
+                                <li>En español por defecto, salvo que el contenido sea para audiencia en inglés.</li>
+                                <li>Sin sobreexplicar: doy por sentado background técnico y de diseño.</li>
+                                <li>Concreto y accionable: si hay tres opciones, las tres con pros y contras, no una elegida a ciegas.</li>
+                                <li>Mostrame el cómo: ejemplo, snippet o paso a paso ejecutable.</li>
+                                <li>Que me discuta cuando corresponda: si una idea mía es floja, decirlo con argumentos.</li>
+                                <li>Sin formato excesivo: bullets cuando suman, prosa cuando alcanza.</li>
+                            </ul>
+                            <p style="margin-top:0.8rem;"><b>Regla extra que dejo escrita:</b> aplicar siempre el skill de limpieza de texto (stop-slop) a cualquier prosa que me devuelva, sin que tenga que pedirlo. Y nunca usar em dash, en ningún contexto.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout fade-in-up">
+                    <p><b>Armá el tuyo:</b> no hace falta copiar este. Anotá tu idioma de trabajo, tu tono, los temas que más le vas a pedir y cómo querés recibir la respuesta. Cinco minutos ahora te ahorran repetirlo cien veces.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Conectores -->
+        <section id="conectores" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in-up">Conectores: los que uso todos los días</h2>
+                <p class="section-desc fade-in-up">Cada conector es un servidor MCP ya armado que autorizás una vez, desde tu cuenta. Podés revocarlo cuando quieras y Claude solo ve lo que ese conector expone, nada más.</p>
+
+                <div class="hi-grid">
+                    <div class="hi-card fade-in-up staggered-1">
+                        <span class="material-icons-round">public</span>
+                        <h4>Chrome</h4>
+                        <p>Le da a Claude un navegador de verdad: puede abrir páginas, leer lo que hay en pantalla, hacer clic y completar formularios con tu confirmación en cada paso sensible.</p>
+                        <div class="use"><b>Lo uso para:</b> revisar un sitio en vivo, probar un flujo, comparar precios o leer una página que no tiene API.</div>
+                    </div>
+                    <div class="hi-card fade-in-up staggered-2">
+                        <span class="material-icons-round">support_agent</span>
+                        <h4>HubSpot</h4>
+                        <p>Acceso a tickets, contactos y datos de CRM. Claude puede buscar un ticket, leer su historial o ayudarte a redactar la respuesta, sin que abras la plataforma.</p>
+                        <div class="use"><b>Lo uso para:</b> resumir un caso de soporte o preparar contexto antes de una call con un cliente.</div>
+                    </div>
+                    <div class="hi-card fade-in-up staggered-3">
+                        <span class="material-icons-round">folder</span>
+                        <h4>Google Drive</h4>
+                        <p>Lee, busca y puede editar documentos y hojas de cálculo directamente en tu Drive. Nada de descargar, pegar y volver a subir.</p>
+                        <div class="use"><b>Lo uso para:</b> traer un brief guardado, actualizar una planilla de seguimiento o sacar contexto de un doc viejo.</div>
+                    </div>
+                </div>
+
+                <div class="toolgrid fade-in-up">
+                    <div class="tool"><span class="material-icons-round">draw</span><div><b>Figma</b><span>Leer y crear diseño</span></div></div>
+                    <div class="tool"><span class="material-icons-round">forum</span><div><b>Slack</b><span>Buscar y responder</span></div></div>
+                    <div class="tool"><span class="material-icons-round">mail</span><div><b>Gmail</b><span>Leer y redactar</span></div></div>
+                    <div class="tool"><span class="material-icons-round">event</span><div><b>Calendar</b><span>Agenda y eventos</span></div></div>
+                    <div class="tool"><span class="material-icons-round">task_alt</span><div><b>Linear · Asana</b><span>Tareas y proyectos</span></div></div>
+                    <div class="tool"><span class="material-icons-round">description</span><div><b>Notion</b><span>Docs y bases</span></div></div>
+                    <div class="tool"><span class="material-icons-round">smart_toy</span><div><b>HeyGen</b><span>Video con IA</span></div></div>
+                    <div class="tool"><span class="material-icons-round">query_stats</span><div><b>Analytics</b><span>Datos de performance</span></div></div>
+                </div>
+                <p class="fade-in-up" style="color:#71717a; font-size:0.85rem; margin-top:1.2rem;">Y siguen sumando. Cada persona conecta solo lo que necesita para su trabajo.</p>
+            </div>
+        </section>
+
     </main>
 
     <footer>
         <div class="wrap">
             <div class="row">
-                <p>Design AI Workshop · Clase 01 · uso educativo interno · 2026</p>
+                <p>Kidscorp Design AI Workshop · Clase 01 · uso educativo interno · 2026</p>
                 <div class="fnav">
                     <a href="../clase-02/index.html">Clase 02</a>
                     <a href="../clase-03/index.html">Clase 03</a>
@@ -226,6 +413,5 @@
     </footer>
 
     <script src="app.js"></script>
-    <script src="workspace.js"></script>
 </body>
 </html>

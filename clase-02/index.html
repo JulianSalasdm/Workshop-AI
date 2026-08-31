@@ -29,6 +29,14 @@
     background: rgba(18,18,18,0.82);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid #282828;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transition: box-shadow 220ms cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .topper.scrolled { box-shadow: 0 8px 26px rgba(0,0,0,0.35); }
+  .scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2.5px; width: 0%; z-index: 200;
+    background: linear-gradient(90deg, #9414FA, #B33AF0);
+    transition: width 100ms linear;
   }
   .topper .bar {
     max-width: 1180px; margin: 0 auto; padding: 14px 40px;
@@ -40,10 +48,36 @@
     font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
     color: #C098FD; border-left: 1px solid #3E3E3E; padding-left: 14px;
   }
-  .topper nav { display: flex; gap: 26px; font-size: 14px; font-weight: 500; }
-  .topper nav a { color: #DFDFDF; text-decoration: none; opacity: 0.85; transition: opacity 150ms, color 150ms; }
-  .topper nav a:hover { opacity: 1; color: #FAFAFC; }
-  @media (max-width: 900px) { .topper nav { display: none; } }
+  /* Table-of-contents dropdown (replaces the old link row) */
+  .toc { position: relative; flex: 1 1 auto; min-width: 0; display: flex; justify-content: center; }
+  .toc-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: #1C1C1C; border: 1px solid #3E3E3E; border-radius: 10px;
+    padding: 9px 14px; font-family: inherit; font-size: 14px; font-weight: 600; color: #FAFAFC;
+    cursor: pointer; transition: border-color 180ms, background 180ms; max-width: 100%;
+  }
+  .toc-btn .material-icons-round { font-size: 18px; color: #A6A6A6; flex: none; }
+  .toc-btn .toc-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .toc-btn .toc-chev { font-size: 20px; margin-left: 2px; transition: transform 220ms cubic-bezier(0.2,0.8,0.2,1); }
+  .toc-btn:hover, .toc.open .toc-btn { border-color: #9414FA; }
+  .toc.open .toc-btn .toc-chev { transform: rotate(180deg); }
+  .toc-menu {
+    position: absolute; top: calc(100% + 10px); left: 50%; transform: translate(-50%, -8px);
+    min-width: 240px; background: #191919; border: 1px solid #282828; border-radius: 14px;
+    padding: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; gap: 2px;
+    opacity: 0; visibility: hidden;
+    transition: opacity 200ms cubic-bezier(0.2,0.8,0.2,1), transform 200ms cubic-bezier(0.2,0.8,0.2,1), visibility 200ms;
+    z-index: 150;
+  }
+  .toc.open .toc-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  .toc-menu a {
+    display: block; padding: 10px 12px; border-radius: 8px; font-size: 13.5px; font-weight: 500;
+    color: #A6A6A6; text-decoration: none; transition: background 150ms, color 150ms;
+  }
+  .toc-menu a:hover { background: rgba(255,255,255,0.06); color: #FAFAFC; }
+  .toc-menu a.active { color: #FAFAFC; background: rgba(148,20,250,0.16); font-weight: 700; }
+  @media (max-width: 640px) { .toc-btn .toc-label { max-width: 110px; } }
 
   /* ── HERO ───────────────────────────────────────────── */
   .hero { position: relative; overflow: hidden; isolation: isolate; }
@@ -64,7 +98,7 @@
     font-weight: 700; font-size: clamp(40px, 6vw, 72px); line-height: 1.02;
     letter-spacing: -0.02em; margin: 0; max-width: 15ch;
   }
-  .hero h1 em { font-style: normal; color: #4CCBFF; }
+  .hero h1 .gr { background: linear-gradient(135deg, #C098FD, #B33AF0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero .lead { font-size: 19px; line-height: 1.65; color: #A6A6A6; max-width: 60ch; margin: 26px 0 34px; }
   .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
@@ -130,7 +164,7 @@
   @media (max-width: 820px) { .princ { grid-template-columns: 1fr; } }
   .pcard { background: #fff; border: 1px solid #E4E4EA; border-radius: 14px; padding: 24px; }
   .pcard .n { font-family: var(--kc-font-mono); font-size: 13px; color: #9414FA; font-weight: 500; }
-  .pcard h4 { font-size: 18px; font-weight: 700; margin: 8px 0 8px; letter-spacing: -0.01em; }
+  .pcard h4 { font-size: 18px; font-weight: 700; margin: 8px 0 8px; letter-spacing: -0.01em; color: #121212; }
   .pcard p { font-size: 14px; color: #575757; margin: 0; line-height: 1.55; }
 
   .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
@@ -170,6 +204,17 @@
   .callbox b { color: #FAFAFC; }
   .callbox p { font-size: 14.5px; color: #B8B8B8; margin: 0; line-height: 1.6; }
 
+  /* ── MODEL CHIPS (Haiku / Sonnet / Opus / Fable) ─────── */
+  .modelchips { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; }
+  .mchip { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #E4E4EA; border-radius: 14px; padding: 14px 18px; flex: 1 1 200px; }
+  .mchip .ic { font-size: 20px; flex: none; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: #fff; }
+  .mchip b { display: block; font-size: 15px; font-weight: 700; color: #121212; }
+  .mchip span { font-size: 12.5px; color: #575757; }
+  .mchip.haiku .ic { background: linear-gradient(135deg, #4CCBFF, #0079A6); }
+  .mchip.sonnet .ic { background: linear-gradient(135deg, #9414FA, #4A057D); }
+  .mchip.opus .ic { background: linear-gradient(135deg, #B33AF0, #680BAF); }
+  .mchip.fable .ic { background: linear-gradient(135deg, #2FE6A6, #08A045); }
+
   /* ── TABLE (Projects) ───────────────────────────────── */
   .tbl { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14.5px; }
   .tbl th, .tbl td { text-align: left; padding: 15px 18px; border-bottom: 1px solid #E4E4EA; vertical-align: top; }
@@ -181,7 +226,7 @@
   @media (max-width: 820px) { .adv { grid-template-columns: 1fr; } }
   .acard { background: #fff; border: 1px solid #E4E4EA; border-radius: 14px; padding: 22px; }
   .acard .material-icons-round { font-size: 26px; color: #8812E3; margin-bottom: 12px; }
-  .acard h4 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+  .acard h4 { font-size: 16px; font-weight: 700; margin: 0 0 6px; color: #121212; }
   .acard p { font-size: 13.5px; color: #575757; margin: 0; line-height: 1.55; }
 
   /* ── CONNECTIONS ────────────────────────────────────── */
@@ -212,7 +257,7 @@
   @media (max-width: 760px) { .tips { grid-template-columns: 1fr; } }
   .tip { background: #fff; border: 1px solid #E4E4EA; border-radius: 14px; padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start; }
   .tip .material-icons-round { flex: none; width: 40px; height: 40px; border-radius: 10px; background: #F0E6FF; color: #8812E3; display: grid; place-items: center; font-size: 21px; }
-  .tip h4 { font-size: 16px; font-weight: 700; margin: 4px 0 6px; }
+  .tip h4 { font-size: 16px; font-weight: 700; margin: 4px 0 6px; color: #121212; }
   .tip p { font-size: 14px; color: #575757; margin: 0; line-height: 1.55; }
 
   .roadmap { margin-top: 40px; background: #121212; border-radius: 20px; padding: 36px 40px; }
@@ -234,24 +279,73 @@
   /* reveal */
   .rv { opacity: 0; transform: translateY(16px); transition: opacity 500ms ease, transform 500ms cubic-bezier(.2,.8,.2,1); }
   .rv.in { opacity: 1; transform: none; }
+
+  /* ── MODES (iterar vs delegar) ───────────────────────── */
+  .modes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 760px) { .modes { grid-template-columns: 1fr; } }
+  .mode-card { background: #1C1C1C; border: 1px solid #282828; border-radius: 16px; padding: 28px; }
+  .mode-card .mic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 18px; background: linear-gradient(135deg, #9414FA, #4A057D); }
+  .mode-card .mic.dark { background: linear-gradient(135deg, #121212, #3E3E3E); border: 1px solid #575757; }
+  .mode-card .mic .material-icons-round { font-size: 24px; color: #fff; }
+  .mode-card h4 { font-size: 20px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.01em; }
+  .mode-card > p { font-size: 14.5px; color: #B8B8B8; margin: 0 0 18px; line-height: 1.6; }
+  .proscons { display: flex; flex-direction: column; gap: 10px; }
+  .pc { display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: #DFDFDF; }
+  .pc .material-icons-round { font-size: 17px; margin-top: 1px; flex: none; }
+  .pc.good .material-icons-round { color: #4CCBFF; }
+  .pc.bad .material-icons-round { color: #8B8B8B; }
+
+  /* ── LOOP DIAGRAM (solicitud → respuesta) ────────────── */
+  .loopdiagram { margin-top: 40px; }
+  .loop-main-row { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .loop-arrow { color: #575757; font-size: 22px; flex: none; }
+  .loop-node { background: #1C1C1C; border: 1px solid #282828; border-radius: 14px; padding: 16px 18px; text-align: center; width: 168px; }
+  .loop-node b { display: block; font-size: 14px; font-weight: 700; color: #FAFAFC; margin-bottom: 5px; }
+  .loop-node span { font-size: 12px; color: #A6A6A6; line-height: 1.45; display: block; }
+  .loop-node.start { background: #161616; }
+  .loop-node.dashed { border-style: dashed; border-color: #4A057D; background: transparent; width: 200px; padding: 12px 16px; }
+  .loop-node.dashed b { color: #C098FD; font-size: 13px; }
+  .loop-node.main { background: linear-gradient(135deg, #9414FA, #6A0FBE); border-color: #9414FA; width: 200px; padding: 22px 20px; }
+  .loop-node.main b { font-size: 16px; }
+  .loop-node.main span { color: #EBDBFF; }
+  .loop-node.tool { border-color: #4CCBFF; width: 200px; }
+  .loop-node.tool b { color: #4CCBFF; }
+  .loop-node.done { background: #08A045; border-color: #08A045; }
+  .loop-node.done b, .loop-node.done span { color: #fff; }
+  .loop-center { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .loop-tool-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .loop-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6F6F6F; font-weight: 700; margin-bottom: 2px; }
+  .loop-sync { color: #4CCBFF; font-size: 18px; }
+  @media (max-width: 1040px) { .loop-main-row { flex-direction: column; } .loop-arrow { transform: rotate(90deg); } }
 </style>
 </head>
 <body>
 
+<div class="scroll-progress"></div>
 <header class="topper">
   <div class="bar">
     <div class="brand">
       <img src="assets/logos/logo-blanco.png" alt="Kidscorp">
-      <span class="tag">Clase 02 · Claude Class</span>
+      <span class="tag">Kidscorp Design AI Workshop · Clase 02</span>
     </div>
-    <nav>
-      <a href="#claudes">Los 4 Claude</a>
-      <a href="#interactuar">Interactuar</a>
-      <a href="#skills">Skills</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#conexiones">Conexiones</a>
-      <a href="#consejos">Consejos</a>
-    </nav>
+    <div class="toc" id="toc">
+      <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="material-icons-round">toc</span>
+        <span class="toc-label">Contenidos</span>
+        <span class="material-icons-round toc-chev">expand_more</span>
+      </button>
+      <div class="toc-menu">
+        <a href="#claudes">Los 4 Claude</a>
+        <a href="#modelos">Modelos</a>
+        <a href="#interactuar">Interactuar</a>
+        <a href="#prompting">Iterar o delegar</a>
+        <a href="#contexto">Contexto y tokens</a>
+        <a href="#skills">Skills</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#conexiones">Conexiones</a>
+        <a href="#consejos">Consejos</a>
+      </div>
+    </div>
     <a class="back" href="../index.html" style="display:flex; align-items:center; gap:6px; font-size:14px; font-weight:600; text-decoration:none; color:#DFDFDF; opacity:0.85; flex:none;"><span class="material-icons-round" style="font-size:18px;">arrow_back</span> Temario</a>
   </div>
 </header>
@@ -259,8 +353,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow"><span class="material-icons-round">auto_awesome</span> Guía interna · Equipo de diseño</div>
-    <h1>Aprendé a trabajar <em>con</em> Claude, no solo a pedirle cosas.</h1>
+    <div class="eyebrow"><span class="material-icons-round">auto_awesome</span> Guía interna · Kidscorp</div>
+    <h1>Aprendé a trabajar con <span class="gr">Claude</span>, no solo a pedirle cosas.</h1>
     <p class="lead">Una guía corta para entender qué es Claude, cómo se le habla, y las tres piezas que lo vuelven un colaborador real: <b style="color:#FAFAFC">skills</b>, <b style="color:#FAFAFC">proyectos</b> y <b style="color:#FAFAFC">conexiones</b>. Pensada para acompañar la demo práctica en vivo.</p>
     <div class="cta-row">
       <a href="#claudes" class="btn btn-primary"><span class="material-icons-round">rocket_launch</span> Empezar</a>
@@ -319,6 +413,40 @@
   </div>
 </section>
 
+<!-- MODELOS -->
+<section class="light" id="modelos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">memory</span> Qué motor está trabajando</div>
+      <h2>Los modelos: Haiku, Sonnet, Opus y Fable</h2>
+      <p>Esto no es lo mismo que "los 4 Claude" de arriba: eso era dónde vive Claude (Chat, Code, Cowork, Design). Esto es qué modelo puntual hace el trabajo por detrás, en cualquiera de esos lugares. Elegir bien cuál usar es la diferencia entre una respuesta en 2 segundos y una en 30, o entre gastar poco y gastar de más.</p>
+    </div>
+
+    <div class="modelchips">
+      <div class="mchip haiku rv"><span class="material-icons-round ic">bolt</span><div><b>Haiku</b><span>Rápido y económico</span></div></div>
+      <div class="mchip sonnet rv"><span class="material-icons-round ic">balance</span><div><b>Sonnet</b><span>El equilibrio, el default</span></div></div>
+      <div class="mchip opus rv"><span class="material-icons-round ic">psychology</span><div><b>Opus</b><span>El más potente</span></div></div>
+      <div class="mchip fable rv"><span class="material-icons-round ic">auto_awesome</span><div><b>Fable</b><span>El más nuevo</span></div></div>
+    </div>
+
+    <table class="tbl rv">
+      <thead>
+        <tr><th></th><th>Haiku</th><th>Sonnet</th><th>Opus</th><th>Fable</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Velocidad</th><td>Muy rápida</td><td>Rápida</td><td>Más lenta: piensa más antes de responder</td><td>Rápida</td></tr>
+        <tr><th>Capacidad</th><td>Tareas simples y directas</td><td>Uso general, la gran mayoría de tareas</td><td>Razonamiento profundo, problemas de varios pasos</td><td>Recién llegado a la familia, seguimos aprendiendo dónde brilla</td></tr>
+        <tr><th>Consumo de tokens</th><td>Bajo</td><td>Medio</td><td>Alto: da más vueltas internas y suele escribir respuestas más largas</td><td>Medio</td></tr>
+        <tr><th>Ideal para</th><td>Clasificar, extraer datos, tareas de mucho volumen</td><td>Escribir, programar, el día a día (así armamos esta web)</td><td>Análisis complejos, decisiones críticas, código difícil</td><td>Explorar y comparar contra Sonnet en tu propio caso</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callbox rv" style="margin-top:22px;">
+      <p><b>La regla práctica:</b> arrancá con Sonnet, el default en la mayoría de los planes y en Claude Code. Subí a Opus solo cuando la tarea realmente lo necesita (cuesta más y tarda más, pero razona mejor). Bajá a Haiku para tareas simples o de mucho volumen, donde la velocidad y el costo pesan más que la profundidad.</p>
+    </div>
+  </div>
+</section>
+
 <!-- INTERACTUAR -->
 <section class="light" id="interactuar">
   <div class="wrap">
@@ -349,6 +477,111 @@
   </div>
 </section>
 
+<!-- PROMPTING: ITERAR O DELEGAR -->
+<section id="prompting">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">tune</span> Dos formas de trabajar con IA</div>
+      <h2>Prompting: iterar vos o delegarle todo a un agente</h2>
+      <p>El prompting es, ni más ni menos, darle instrucciones a la IA: la calidad de lo que le pedís define la calidad de lo que te devuelve. Pero hay dos formas muy distintas de hacerlo, y conviene saber cuándo usar cada una.</p>
+    </div>
+
+    <div class="modes">
+      <div class="mode-card rv">
+        <div class="mic"><span class="material-icons-round">forum</span></div>
+        <h4>Iterar vos mismo</h4>
+        <p>Le pedís algo, revisás el resultado, ajustás, volvés a pedir. Vos estás en cada vuelta de la conversación, como en Claude Chat.</p>
+        <div class="proscons">
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Control total en cada paso: podés cambiar de dirección a mitad de camino.</div>
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Ideal cuando el resultado final todavía no está claro, o es algo puntual y corto.</div>
+          <div class="pc bad"><span class="material-icons-round">remove_circle</span> Consume tu tiempo: cada vuelta te necesita a vos.</div>
+          <div class="pc bad"><span class="material-icons-round">remove_circle</span> No escala para tareas largas o repetitivas.</div>
+        </div>
+      </div>
+      <div class="mode-card rv">
+        <div class="mic dark"><span class="material-icons-round">smart_toy</span></div>
+        <h4>Delegarle a un agente</h4>
+        <p>Le das el objetivo completo, con el contexto necesario, y el agente itera solo: prueba, revisa su propio resultado y corrige, hasta terminar, como en Claude Code o Cowork.</p>
+        <div class="proscons">
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Te libera tiempo: ideal para tareas largas, repetitivas o con pasos claros.</div>
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Escala: repite el mismo trabajo sobre 20 casos igual que sobre 1.</div>
+          <div class="pc bad"><span class="material-icons-round">remove_circle</span> Menos control momento a momento mientras trabaja.</div>
+          <div class="pc bad"><span class="material-icons-round">remove_circle</span> Necesita un objetivo bien definido de entrada: no está pensando en voz alta con vos.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:26px;">
+      <p><b>En la práctica se mezclan:</b> iterás primero para definir el enfoque y el criterio (qué tono, qué estructura, qué está bien), y una vez que lo tenés claro, se lo delegás a un agente para que lo repita o lo escale. Es, en el fondo, la misma diferencia que hay entre Claude Chat y Claude Code o Cowork que vimos arriba.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXTO Y TOKENS -->
+<section id="contexto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">memory</span> Lo que pasa detrás de escena</div>
+      <h2>Contexto y tokens: cómo piensa Claude por dentro</h2>
+      <p>No hace falta ser técnico para entender esto, y te cambia cómo usás Claude todos los días: por qué a veces "se olvida" de algo, y qué comandos usar cuando pasa.</p>
+    </div>
+    <div class="princ">
+      <div class="pcard rv"><div class="n">01</div><h4>Qué es el contexto</h4><p>Todo lo que Claude puede ver en tu conversación en este momento: tus mensajes, los archivos que subiste, lo que devolvió una herramienta. Cuanto más contexto relevante tiene, mejor responde.</p></div>
+      <div class="pcard rv"><div class="n">02</div><h4>Qué son los tokens</h4><p>La unidad en la que Claude lee y piensa: no son palabras enteras, son pedacitos de palabras. Toda conversación tiene un límite de tokens, como una hoja con un tamaño fijo.</p></div>
+      <div class="pcard rv"><div class="n">03</div><h4>Qué pasa cuando se llena</h4><p>Como la hoja tiene un límite, en algún punto Claude empieza a perder lo más viejo de la conversación para poder seguir. Por eso una charla larguísima puede "olvidar" algo del principio.</p></div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:26px;">
+      <p><b>Una forma simple de pensarlo:</b> es como una mesa de trabajo. Todo lo que está sobre la mesa (mensajes, archivos, resultados) Claude lo puede usar al instante. Cuando la mesa se llena, hay que guardar lo viejo para hacer lugar a lo nuevo.</p>
+    </div>
+
+    <div class="sec-head" style="margin-top:56px;">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">loop</span> El mecanismo por dentro</div>
+      <h2 style="font-size:26px;">Qué pasa entre que le pedís algo y te responde</h2>
+      <p>Cada mensaje dispara un pequeño ciclo: Claude piensa si ya puede responder o si necesita usar una herramienta primero (leer un archivo, buscar en una carpeta, llamar a un conector), mira el resultado, y repite ese paso las veces que haga falta antes de contestarte.</p>
+    </div>
+
+    <div class="loopdiagram rv">
+      <div class="loop-main-row">
+        <div class="loop-node start"><b>Tu prompt</b><span>Lo que le pedís</span></div>
+        <span class="material-icons-round loop-arrow">arrow_forward</span>
+        <div class="loop-center">
+          <div class="loop-node dashed"><b>Contexto (siempre)</b><span>CLAUDE.md y memoria: lo que ya sabe</span></div>
+          <div class="loop-node main"><b>Claude piensa</b><span>¿Ya puedo responder o necesito una herramienta?</span></div>
+          <div class="loop-node dashed"><b>Skill (opcional)</b><span>Playbook que guía cómo piensa y qué tools elige</span></div>
+        </div>
+        <span class="material-icons-round loop-arrow">arrow_forward</span>
+        <div class="loop-tool-col">
+          <div class="loop-tag">Loop · 1 a N veces</div>
+          <div class="loop-node tool"><b>Usa una tool</b><span>archivos · carpetas · .md · conectores · comandos · web</span></div>
+          <span class="material-icons-round loop-sync">sync</span>
+          <div class="loop-node tool"><b>Ve el resultado</b><span>Lo incorpora al pensamiento y vuelve a pensar</span></div>
+        </div>
+        <span class="material-icons-round loop-arrow">arrow_forward</span>
+        <div class="loop-node done"><b>Responde</b><span>Fin del loop</span></div>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:26px;">
+      <p><b>Por qué te importa:</b> es la razón por la que a veces una respuesta tarda unos segundos más, es Claude yendo y viniendo con una herramienta antes de contestar, no que se haya quedado pensando en la nada. Y es la razón por la que las instrucciones y los skills pesan tanto: guían cada vuelta del loop, no solo la primera.</p>
+    </div>
+
+    <div class="sec-head" style="margin-top:56px;">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">terminal</span> Para usar ya</div>
+      <h2 style="font-size:26px;">Comandos prácticos que sirven todos los días</h2>
+    </div>
+    <div class="tips">
+      <div class="tip rv"><span class="material-icons-round">summarize</span><div><h4>TL;DR</h4><p>Le pedís un resumen cortito de todo lo que se dijo. Sirve cuando la respuesta salió larga o la conversación se extendió mucho, y solo necesitás lo esencial.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">child_care</span><div><h4>ELI5</h4><p>"Explicámelo como si tuviera 5 años." Baja el nivel técnico al mínimo. Sirve para entender algo nuevo rápido, o preparar una explicación simple para alguien del equipo.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">rule</span><div><h4><span class="kc-mono" style="color:#8812E3">/CRITICA</span></h4><p>Le pedís que critique lo que armaste (un diseño, un texto, un análisis): qué funciona, qué falta, qué mejorarías. Un buen segundo par de ojos antes de entregar algo.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">grid_view</span><div><h4><span class="kc-mono" style="color:#8812E3">/SWOT</span></h4><p>Le pedís un análisis FODA (fortalezas, debilidades, oportunidades, amenazas) sobre una idea, un proyecto o una decisión, antes de avanzar con ella.</p></div></div>
+    </div>
+    <div class="callbox rv" style="margin-top:22px;">
+      <p><b>TL;DR y ELI5</b> son simplemente frases que escribís tal cual, no hace falta configurar nada. <b>/CRITICA y /SWOT</b> son comandos personalizados: no vienen instalados, te los armás vos con el mismo mecanismo de las Skills que vimos arriba, para no tener que escribir el prompt completo cada vez.</p>
+    </div>
+  </div>
+</section>
+
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
@@ -366,7 +599,7 @@
           <div class="step rv"><div class="b">3</div><div><h4>Cómo se arma (por arriba)</h4><p>Nombre, una descripción clara de cuándo usarla, las instrucciones, y los archivos de apoyo. Eso es todo. Lo importante es la descripción: es lo que hace que Claude sepa cuándo entra.</p></div></div>
         </div>
         <div class="callbox rv">
-          <p><b>Ya tenemos una:</b> el skill <span class="kc-mono" style="color:#4CCBFF">kidscorp-design-system</span> es el que le dio a esta misma web los colores, la tipografía Montserrat y el logo, sin que yo se lo explicara cada vez.</p>
+          <p><b>Ya tenemos una:</b> el skill <span class="kc-mono" style="color:#4CCBFF">kidscorp-design-system</span> es el que le dio a esta misma web los colores, la tipografía Montserrat y el logo, sin que yo se lo explicara cada vez. El mismo patrón sirve para cualquier equipo: un skill de tono para comunicación, uno de formato para reportes de finanzas, uno de checklist para compliance.</p>
         </div>
       </div>
 
@@ -421,6 +654,24 @@
       </tbody>
     </table>
 
+    <div class="code rv" style="margin-top:28px;">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Proyecto "Kidscorp Diseño" · base de conocimiento</span>
+      </div>
+<pre><span class="c-com"># Instrucciones del proyecto</span>
+<span class="c-str">Tono, público y objetivo de cada pieza que se pide acá.</span>
+
+<span class="c-com"># Archivos cargados</span>
+  brief-de-marca.pdf       <span class="c-com"># identidad, valores, tono</span>
+  guia-de-voz.md           <span class="c-com"># cómo escribimos</span>
+  ultimos-decks/           <span class="c-com"># referencias ya aprobadas</span>
+  planilla-contactos.xlsx  <span class="c-com"># a quién le hablamos</span></pre>
+    </div>
+    <div class="callbox rv">
+      <p><b>Así se arma, en la práctica:</b> cargás esos archivos una sola vez, en la sección de conocimiento del Proyecto (no en un chat puntual). Desde ese momento, cualquier chat nuevo que abras ahí ya arranca con esa base: no hace falta pegarla ni volver a explicarla.</p>
+    </div>
+
     <div class="adv">
       <div class="acard rv"><span class="material-icons-round">psychology</span><h4>Deja de repetirte</h4><p>Subís el brief, la guía de marca y los links una vez. No los volvés a pegar en cada chat.</p></div>
       <div class="acard rv"><span class="material-icons-round">groups</span><h4>Coherencia de equipo</h4><p>Todos parten del mismo contexto, así que las respuestas salen alineadas entre personas.</p></div>
@@ -447,7 +698,7 @@
           <span class="material-icons-round">swap_horiz</span>
           <div class="chip"><span class="material-icons-round" style="font-size:18px">apps</span> Tus apps</div>
         </div>
-        <p style="color:#A6A6A6; font-size:15px; line-height:1.65; margin-top:22px;">Las conexiones funcionan sobre un estándar llamado <b style="color:#C098FD">MCP</b> (Model Context Protocol): un "enchufe universal" que deja que Claude hable con otras herramientas de forma segura. Vos autorizás cada una, y podés revocarla cuando quieras.</p>
+        <p style="color:#A6A6A6; font-size:15px; line-height:1.65; margin-top:22px;">Las conexiones funcionan sobre un estándar llamado <b style="color:#C098FD">MCP</b>. Vos autorizás cada una y podés revocarla cuando quieras. (Más detalle de cómo funciona en la <a href="../clase-01/index.html#mcp" style="color:#C098FD">Clase 01</a>.)</p>
       </div>
       <div class="conn-types" style="grid-template-columns:1fr; margin-top:0;">
         <div class="ct rv"><span class="material-icons-round">visibility</span><h4>Leer</h4><p>Toma contexto de tus docs, tickets, mensajes o archivos de diseño para entender la tarea.</p></div>
@@ -475,27 +726,27 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="kicker"><span class="material-icons-round" style="font-size:16px">tips_and_updates</span> Para sacarle jugo</div>
-      <h2>Consejos para el equipo de diseño</h2>
-      <p>Hábitos simples que hacen la diferencia entre "probé Claude una vez" y "es parte de mi flujo".</p>
+      <h2>Consejos para cualquier equipo</h2>
+      <p>Hábitos simples que hacen la diferencia entre "probé Claude una vez" y "es parte de mi flujo", vengas de diseño, growth, finanzas o data.</p>
     </div>
     <div class="tips">
-      <div class="tip rv"><span class="material-icons-round">image</span><div><h4>Trabajá con referencias visuales</h4><p>Pegá capturas, moodboards o pantallas. Claude las lee y las usa como guía de estilo.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">image</span><div><h4>Trabajá con referencias</h4><p>Pegá capturas, docs, planillas o ejemplos que te gustaron. Claude los lee y los usa como guía.</p></div></div>
       <div class="tip rv"><span class="material-icons-round">tune</span><div><h4>Pedí variantes, no una sola opción</h4><p>"Dame 3 direcciones distintas" te da con qué comparar y decidir más rápido.</p></div></div>
-      <div class="tip rv"><span class="material-icons-round">rule</span><div><h4>Que critique tu trabajo</h4><p>Subí un diseño y pedí una crítica honesta: jerarquía, contraste, accesibilidad. Es un buen segundo par de ojos.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">rule</span><div><h4>Que critique tu trabajo</h4><p>Subí lo que armaste (un diseño, un texto, un análisis) y pedí una crítica honesta: qué funciona, qué falta, qué mejorarías. Es un buen segundo par de ojos.</p></div></div>
       <div class="tip rv"><span class="material-icons-round">bookmark</span><div><h4>Guardá lo que funciona</h4><p>Un prompt o brief que rindió bien, guardalo. Con el tiempo eso puede volverse una skill del equipo.</p></div></div>
       <div class="tip rv"><span class="material-icons-round">verified_user</span><div><h4>Revisá siempre lo sensible</h4><p>Datos de menores, legales, cifras de campaña. Claude ayuda, pero la responsabilidad final es nuestra.</p></div></div>
-      <div class="tip rv"><span class="material-icons-round">handyman</span><div><h4>Usá el Claude correcto</h4><p>Brainstorm en Chat, revisar Figma con Design, entregable con Cowork, armar algo con Code.</p></div></div>
+      <div class="tip rv"><span class="material-icons-round">handyman</span><div><h4>Usá el Claude correcto</h4><p>Brainstorm en Chat, un análisis o automatización con Code, entregable de punta a punta con Cowork, y Design si tu tarea pasa por Figma.</p></div></div>
     </div>
 
     <div class="roadmap">
       <h3>Propuestas para llevar esto más lejos</h3>
-      <p class="sub">Ideas para convertir esta intro en una forma de trabajar del estudio.</p>
+      <p class="sub">Ideas para convertir esta intro en una forma de trabajar de Kidscorp, adaptable a cualquier equipo.</p>
       <div class="rlist">
-        <div><span class="material-icons-round">check_circle</span> Armar un Proyecto compartido "Kidscorp Diseño" con brief, guía de marca y links de referencia.</div>
-        <div><span class="material-icons-round">check_circle</span> Empaquetar nuestras plantillas de banner y deck como skills reutilizables.</div>
+        <div><span class="material-icons-round">check_circle</span> Armar un Proyecto compartido por equipo (ej. "Kidscorp Diseño", "Kidscorp Sales") con brief, guía y links de referencia.</div>
+        <div><span class="material-icons-round">check_circle</span> Empaquetar las plantillas más usadas de cada equipo (banners, decks, reportes, contratos) como skills reutilizables.</div>
         <div><span class="material-icons-round">check_circle</span> Un canal en Slack para compartir prompts y trucos que funcionaron.</div>
-        <div><span class="material-icons-round">check_circle</span> Conectar Figma para revisiones y handoff asistidos.</div>
-        <div><span class="material-icons-round">check_circle</span> Una biblioteca interna de "prompts de arranque" por tipo de pieza.</div>
+        <div><span class="material-icons-round">check_circle</span> Conectar las herramientas de cada equipo (Figma, HubSpot, Sheets) para revisiones y handoffs asistidos.</div>
+        <div><span class="material-icons-round">check_circle</span> Una biblioteca interna de "prompts de arranque" por tipo de pieza o tarea.</div>
         <div><span class="material-icons-round">check_circle</span> Un mini reto mensual: automatizar una tarea repetitiva con Claude.</div>
       </div>
     </div>
@@ -506,7 +757,7 @@
 <footer>
   <div class="wrap">
     <div class="row">
-      <p>Design AI Workshop · Clase 02 · uso educativo interno · 2026</p>
+      <p>Kidscorp Design AI Workshop · Clase 02 · uso educativo interno · 2026</p>
       <div class="fnav">
         <a href="../clase-01/index.html">Clase 01</a>
         <a href="../clase-03/index.html">Clase 03</a>
@@ -526,6 +777,53 @@
     el.style.transitionDelay = (i % 4 * 60) + 'ms';
     io.observe(el);
   });
+
+  // scroll progress bar + header lift
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // table-of-contents dropdown: toggle, outside-click close
+  const toc = document.querySelector('.toc');
+  const tocBtn = document.querySelector('.toc-btn');
+  const tocLabel = document.querySelector('.toc-label');
+  const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+  if (toc && tocBtn) {
+    tocBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !toc.classList.contains('open');
+      toc.classList.toggle('open', willOpen);
+      tocBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!toc.contains(e.target)) toc.classList.remove('open');
+    });
+    navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+  }
+
+  // scrollspy: highlight the active section in the dropdown + button label
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (tocLabel) tocLabel.textContent = link.textContent;
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
 </script>
 </body>
 </html>

@@ -3,167 +3,193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clase 04 · IA Generativa: texto, imagen, video y Google Labs</title>
-<meta name="description" content="Qué es la IA generativa, ejemplos por tipo de contenido (ChatGPT, Nano Banana, Veo), Google Labs actualizado y un caso real de foto a video.">
+<title>Clase 04 · Hosting, dominios y riesgos de publicar online</title>
+<meta name="description" content="Formas de usar una app hecha con Claude (local, Artifact, hosteada), qué es un host y un dominio, cómo publicar gratis con Vercel, y los riesgos de exponer una API online.">
 <link rel="stylesheet" href="assets/colors_and_type.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<div class="scroll-progress"></div>
 <header class="topper">
   <div class="bar">
     <a class="brand" href="../index.html">
       <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
-      <div class="name">Design AI Workshop</div>
+      <div class="name">Kidscorp Design AI Workshop</div>
     </a>
-    <nav>
-      <a href="#que-es">Qué es</a>
-      <a href="#ejemplos">Ejemplos</a>
-      <a href="#labs">Google Labs</a>
-      <a href="#caso-real">Caso real</a>
-    </nav>
+    <div class="toc" id="toc">
+      <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="material-icons-round">toc</span>
+        <span class="toc-label">Contenidos</span>
+        <span class="material-icons-round toc-chev">expand_more</span>
+      </button>
+      <div class="toc-menu">
+        <a href="#formas-de-usar">Formas de usar</a>
+        <a href="#host-dominio">Host y dominio</a>
+        <a href="#vercel">Publicar gratis</a>
+        <a href="#riesgos">Riesgos</a>
+      </div>
+    </div>
     <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <div class="crumb"><a href="../index.html">Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 04</span></div>
-    <div class="eyebrow"><span class="material-icons-round">auto_awesome</span> Clase 04 · Nuevo</div>
-    <h1>IA Generativa: texto, imagen, <span class="gr">video</span> y Google Labs</h1>
-    <p class="lead">En la Clase 01 vimos que la IA generativa es una de las tres familias de IA. Acá entramos a fondo: qué modelo conviene para cada formato, qué hay hoy en Google Labs, y un caso real armado en dos pasos, de una foto de producto a un video.</p>
+    <div class="crumb"><a href="../index.html">Kidscorp Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 04</span></div>
+    <div class="eyebrow"><span class="material-icons-round">public</span> Clase 04 · Nuevo</div>
+    <h1><span class="gr">De tu compu a internet</span>: hosting, dominios y riesgos</h1>
+    <p class="lead">Armaste algo con Claude, ¿y ahora? Cómo pasar de tenerlo corriendo en tu computadora a que cualquiera lo pueda abrir con un link, qué significan host y dominio, cómo publicar gratis, y los riesgos que hay que cuidar antes de hacerlo público.</p>
   </div>
 </section>
 
-<!-- QUÉ ES -->
-<section id="que-es">
+<!-- FORMAS DE USAR -->
+<section id="formas-de-usar">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker"><span class="material-icons-round" style="font-size:16px">psychology</span> El concepto</div>
-      <h2>Qué es la IA generativa</h2>
-      <p>Crea contenido nuevo, texto, imagen, audio o video, a partir de patrones que aprendió de datos existentes. No busca ni recupera algo que ya existe: le das un prompt (y a veces una referencia) y el modelo arma algo que no existía literalmente así hasta ese momento.</p>
-    </div>
-    <div class="callbox rv">
-      <p><b>No es lo mismo que conversar o que actuar:</b> la IA conversacional entiende y razona con vos (Claude, Gemini como chat), y la agéntica usa herramientas para completar tareas solas. La generativa es la que produce el archivo final: la imagen, el video, la canción.</p>
-    </div>
-  </div>
-</section>
-
-<!-- EJEMPLOS POR TIPO -->
-<section id="ejemplos" style="background:var(--panel);">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker"><span class="material-icons-round" style="font-size:16px">grid_view</span> Un modelo por formato</div>
-      <h2>Los mismos nombres, distintos trabajos</h2>
-      <p>ChatGPT, Gemini y Flow suenan parecido pero no compiten en lo mismo. Cada uno tiene un modelo especializado atrás según el formato que le pidas.</p>
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">devices</span> Antes de publicar nada</div>
+      <h2>Las formas de usar una app hecha con Claude</h2>
+      <p>No todo tiene que terminar con una URL pública. Depende de quién la necesita usar, y cuándo.</p>
     </div>
 
     <div class="defs">
-      <div class="def chat rv">
-        <div class="ic"><span class="material-icons-round">chat_bubble</span></div>
-        <h4>ChatGPT</h4>
-        <div class="who">OpenAI · texto y conversación</div>
-        <p>El modelo de conversación de OpenAI. Redacta, razona, resume, programa y también genera imágenes (GPT Image) directo desde el chat, sin cambiar de herramienta.</p>
-        <div class="ex">Lo usamos para pedirle que tome una foto de producto y arme una escena con un estilo definido (ver caso real más abajo).</div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--text-dimmer), #3E3E3E);"><span class="material-icons-round">computer</span></div>
+        <span class="mode-pill free">Gratis · sin deploy</span>
+        <h4>Local</h4>
+        <div class="who">corre en tu computadora</div>
+        <p>Vive y se ejecuta solo en tu máquina. Nadie más la puede abrir salvo que esté sentado enfrente tuyo (o en tu misma red).</p>
+        <div class="ex">Ideal para: probar una idea, una herramienta de uso personal, o algo que solo necesitás vos por ahora.</div>
       </div>
-      <div class="def image rv">
-        <div class="ic"><span class="material-icons-round">image</span></div>
-        <h4>Gemini + Nano Banana</h4>
-        <div class="who">Google · imagen</div>
-        <p>Nano Banana es el modelo de imagen de Gemini: genera y edita fotos a partir de texto y referencias, entiende contexto real y mantiene coherencia entre variaciones. Vive dentro de la app de Gemini y también dentro de Google Flow.</p>
-        <div class="ex">Nano Banana Pro sube la fidelidad para escenas complejas y detalle fino.</div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">auto_awesome</span></div>
+        <span class="mode-pill zero">Gratis · cero config</span>
+        <h4>Artifact / preview de Claude</h4>
+        <div class="who">Claude la hostea por vos</div>
+        <p>Claude publica la página y te da una URL al toque, sin que tengas que elegir hosting ni configurar nada. Esta misma web del taller nació así.</p>
+        <div class="ex">Ideal para: compartir algo rápido con el equipo. Ojo: no controlás el dominio ni el hosting real por detrás.</div>
       </div>
-      <div class="def video rv">
-        <div class="ic"><span class="material-icons-round">movie</span></div>
-        <h4>Google Flow + Veo</h4>
-        <div class="who">Google · video</div>
-        <p>Veo es el modelo de video dentro del workspace Flow: acepta una imagen de partida como primer frame y la anima, con audio sincronizado, en clips cortos listos para usar.</p>
-        <div class="ex">Es el paso 2 de nuestro caso real: la imagen que generó ChatGPT entra a Flow como primer frame.</div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--blue), #0079A6);"><span class="material-icons-round">cloud</span></div>
+        <span class="mode-pill setup">Requiere deploy</span>
+        <h4>Hosteada</h4>
+        <div class="who">vive en un servidor, 24/7</div>
+        <p>La subís a un servicio de hosting (gratis o pago) y queda corriendo todo el tiempo, con su propia URL pública y, si querés, un dominio propio.</p>
+        <div class="ex">Ideal para: algo que necesita estar siempre disponible para otras personas, no solo para vos.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GOOGLE LABS -->
-<section id="labs">
+<!-- HOST Y DOMINIO -->
+<section id="host-dominio" style="background:var(--panel);">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker"><span class="material-icons-round" style="font-size:16px">science</span> labs.google</div>
-      <h2>Qué hay hoy en Google Labs</h2>
-      <p>El espacio donde Google libera herramientas de IA antes de que sean "producto final". Acceso con tu cuenta de Google, sin instalar nada. Hoy tiene cuatro frentes: video, música, marca y diseño de UI.</p>
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">dns</span> Los dos términos que se confunden</div>
+      <h2>Qué es un host, qué es un dominio</h2>
+      <p>Se usan casi como sinónimos pero son cosas distintas, y contratás cada uno por separado.</p>
     </div>
 
-    <div class="labs">
-      <div class="lab-card rv">
-        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">movie</span><span class="pill">Video</span></div>
-        <h4>Google Flow</h4>
-        <p>El workspace de creación audiovisual: Gemini entiende la instrucción, Nano Banana genera y edita las imágenes, y Veo las anima con audio sincronizado. Absorbió lo que antes eran Whisk e ImageFX.</p>
+    <div class="defs cols-2">
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--blue), #0079A6);"><span class="material-icons-round">dns</span></div>
+        <h4>Host (hosting)</h4>
+        <div class="who">dónde vive tu app</div>
+        <p>Es el servidor que corre tu app las 24 horas y la entrega a quien la pida. Sin host, tu app solo existe mientras tu compu esté prendida y conectada a internet.</p>
+        <div class="ex">Ejemplo: Vercel, Netlify o Railway son servicios de hosting.</div>
       </div>
-      <div class="lab-card rv">
-        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">music_note</span><span class="pill">Música</span></div>
-        <h4>Google Flow Music</h4>
-        <p>El estudio de música con un productor de IA: compone canciones originales y video musicales, permite editar por secciones y armar covers completos de un track.</p>
-      </div>
-      <div class="lab-card rv">
-        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">storefront</span><span class="pill">Marca</span></div>
-        <h4>Pomelli</h4>
-        <p>Genera contenido de marketing on-brand y escalable: parte de tu identidad de marca y arma variaciones de contenido para conectar con tu audiencia más rápido.</p>
-      </div>
-      <div class="lab-card rv">
-        <div class="top-row"><span class="material-icons-round" style="color:var(--violet-soft); font-size:24px;">design_services</span><span class="pill">Diseño de UI</span></div>
-        <h4>Stitch</h4>
-        <p>Convierte una idea en pantallas de interfaz reales, en tiempo real. Es la respuesta de Google a herramientas como Claude Design: de la idea a la UI, sin pasar por Figma primero.</p>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">language</span></div>
+        <h4>Dominio</h4>
+        <div class="who">cómo la encuentran</div>
+        <p>Es la dirección fácil de recordar (kidscorp.digital) que apunta a tu host, en vez de tener que escribir una serie de números (la IP). Se alquila por año, no se compra para siempre.</p>
+        <div class="ex">Ejemplo: podés usar la URL gratis que te da el hosting (tuproyecto.vercel.app) o comprar tu propio dominio y apuntarlo ahí.</div>
       </div>
     </div>
 
-    <div class="market rv">
-      <h4>¿En qué se diferencia de Midjourney, Runway o Suno?</h4>
-      <p>La diferencia no es la calidad, es el acceso: Google lo mete gratis dentro de tu cuenta de Google, mientras que la mayoría de la competencia cobra suscripción desde el primer uso serio. A cambio, son herramientas experimentales: cambian de nombre, se fusionan (como pasó con Whisk e ImageFX dentro de Flow) y a veces desaparecen sin aviso. Buenas para probar una idea rápido, no para depender de ellas en un flujo de producción estable.</p>
+    <div class="callbox rv" style="margin-top:22px;">
+      <p><b>Una forma simple de pensarlo:</b> el host es la casa donde vive tu app, el dominio es la dirección postal para que la gente la encuentre. Podés vivir sin cartel con tu nombre (la URL gratis del hosting), o comprar un cartel propio (un dominio) y ponerlo en la puerta de esa misma casa.</p>
     </div>
   </div>
 </section>
 
-<!-- CASO REAL -->
-<section id="caso-real" style="background:var(--panel);">
+<!-- PUBLICAR GRATIS -->
+<section id="vercel">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker"><span class="material-icons-round" style="font-size:16px">auto_fix_high</span> De la teoría a un archivo real</div>
-      <h2>Foto de producto → escena con IA → video</h2>
-      <p>Un flujo real, en dos pasos: le dimos a ChatGPT una foto de producto lisa y le pedimos una escena con un estilo definido. Con esa imagen como primer frame, Google Flow generó el video.</p>
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">rocket_launch</span> Opciones gratuitas</div>
+      <h2>Publicar gratis: Vercel y alternativas</h2>
+      <p>Vercel es la más usada para proyectos como los que arma Claude Code, pero no es la única: Netlify, GitHub Pages y Railway cubren casos parecidos, todas con un plan gratuito que alcanza para un proyecto interno o un prototipo.</p>
     </div>
 
-    <div class="case-flow">
-      <div class="case-step rv">
-        <div class="media"><img src="media/imagen-referencia.png" alt="Foto de producto original en fondo blanco, usada como referencia"></div>
-        <div class="cap">
-          <div class="step-n">Paso 0 · La referencia</div>
-          <h4>Foto de producto</h4>
-          <p>Fondo blanco, sin escena ni estilo. Es lo único que definimos a mano.</p>
-        </div>
+    <div class="steps rv">
+      <div class="step">
+        <div class="b">1</div>
+        <div><h4>Subís tu proyecto a GitHub</h4><p>Un repositorio, aunque sea privado. Es el punto de partida que Vercel va a leer.</p></div>
       </div>
-      <span class="case-arrow material-icons-round">arrow_forward</span>
-      <div class="case-step rv">
-        <div class="media"><img src="media/imagen-generada-chatgpt.png" alt="Imagen generada por ChatGPT ubicando el producto en una escena real con estilo cinematográfico"></div>
-        <div class="cap">
-          <div class="step-n">Paso 1 · ChatGPT</div>
-          <h4>Escena con estilo</h4>
-          <p>Le pedimos que ubique el producto en una escena de uso real, con un estilo cálido y cinematográfico, manteniéndolo fiel a la referencia.</p>
-        </div>
+      <div class="step">
+        <div class="b">2</div>
+        <div><h4>Entrás a Vercel con tu cuenta de GitHub</h4><p>Gratis, sin tarjeta. Le das permiso para ver tus repositorios.</p></div>
       </div>
-      <span class="case-arrow material-icons-round">arrow_forward</span>
-      <div class="case-step rv">
-        <div class="media"><video src="media/video-generado-flow.mp4" controls muted loop playsinline></video></div>
-        <div class="cap">
-          <div class="step-n">Paso 2 · Google Flow</div>
-          <h4>Video animado</h4>
-          <p>Esa imagen entra a Flow como primer frame, y Veo la anima con sonido sincronizado.</p>
-        </div>
+      <div class="step">
+        <div class="b">3</div>
+        <div><h4>Elegís el repositorio</h4><p>Vercel detecta automáticamente qué tipo de proyecto es y lo configura solo, sin que tengas que tocar nada técnico.</p></div>
+      </div>
+      <div class="step">
+        <div class="b">4</div>
+        <div><h4>Le das "Deploy"</h4><p>En un par de minutos te da una URL pública (tuproyecto.vercel.app) que ya podés compartir.</p></div>
+      </div>
+      <div class="step">
+        <div class="b">5</div>
+        <div><h4>(Opcional) Conectás un dominio propio</h4><p>Desde la configuración del proyecto, apuntás tu dominio comprado a esa misma app.</p></div>
       </div>
     </div>
 
     <div class="callbox rv" style="margin-top:24px;">
-      <p><b>Por qué importa este orden:</b> generar el video directo desde un prompt de texto suele perder el producto real. Anclar primero una imagen fiel (con ChatGPT o con Nano Banana) y recién ahí animarla con Veo es lo que mantiene el producto reconocible en movimiento.</p>
+      <p><b>Después del primer deploy, se actualiza sola:</b> cada vez que subís un cambio a GitHub, Vercel vuelve a publicar automáticamente. No hace falta repetir el proceso a mano.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RIESGOS -->
+<section id="riesgos" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">warning</span> Antes de compartir el link</div>
+      <h2>Riesgos de hacer algo visible online</h2>
+      <p>Publicar es fácil; publicar sin cuidar esto es lo que sale caro o expone datos que no debían salir.</p>
+    </div>
+
+    <div class="defs cols-2">
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, #FF6161, #B91C1C);"><span class="material-icons-round">key_off</span></div>
+        <h4>API key expuesta en el frontend</h4>
+        <p>Si tu API key queda escrita en el código que corre en el navegador, cualquiera que abra "Ver código fuente" la puede copiar y usarla a tu costa.</p>
+        <div class="ex">Solución: las keys van del lado del servidor. Si tu app necesita usar una API paga, un backend intermedio la llama por vos, nunca el navegador directo.</div>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, #FF6161, #B91C1C);"><span class="material-icons-round">trending_up</span></div>
+        <h4>Sin límites de uso</h4>
+        <p>Una API pública sin límite de pedidos puede recibir miles de llamadas (por error o a propósito) y generarte una factura enorme, o directamente tirar el servicio.</p>
+        <div class="ex">Solución: poné límites de uso (rate limiting) y alertas de gasto desde el primer día.</div>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, #FF6161, #B91C1C);"><span class="material-icons-round">folder_off</span></div>
+        <h4>Datos sensibles en un repo público</h4>
+        <p>Contraseñas, claves o datos de usuarios pegados directo en el código, y ese repositorio queda visible para cualquiera en internet.</p>
+        <div class="ex">Solución: usá variables de entorno para cualquier dato sensible, y nunca las subas al repositorio.</div>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, #FF6161, #B91C1C);"><span class="material-icons-round">shield</span></div>
+        <h4>Permisos mal configurados</h4>
+        <p>Dejar que cualquier sitio o cualquier persona pueda leer o modificar datos que deberían ser solo tuyos o de tu equipo.</p>
+        <div class="ex">Solución: restringí accesos (CORS, autenticación) a lo mínimo que tu app realmente necesita.</div>
+      </div>
+    </div>
+
+    <div class="callbox warn rv" style="margin-top:24px;">
+      <p><b>La regla que resuelve casi todo:</b> nada sensible (keys, contraseñas, datos de gente) vive en el código que le llega al navegador del usuario. Si tenés dudas sobre si algo es "seguro" de mostrar, asumí que no lo es y ponelo del lado del servidor.</p>
     </div>
   </div>
 </section>
@@ -171,7 +197,7 @@
 <footer>
   <div class="wrap">
     <div class="row">
-      <p>Design AI Workshop · Clase 04 · uso educativo interno · 2026</p>
+      <p>Kidscorp Design AI Workshop · Clase 04 · uso educativo interno · 2026</p>
       <div class="fnav">
         <a href="../clase-01/index.html">Clase 01</a>
         <a href="../clase-02/index.html">Clase 02</a>
@@ -190,6 +216,53 @@
     el.style.transitionDelay = (i % 4 * 60) + 'ms';
     io.observe(el);
   });
+
+  // scroll progress bar + header lift
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // table-of-contents dropdown: toggle, outside-click close
+  const toc = document.querySelector('.toc');
+  const tocBtn = document.querySelector('.toc-btn');
+  const tocLabel = document.querySelector('.toc-label');
+  const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+  if (toc && tocBtn) {
+    tocBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !toc.classList.contains('open');
+      toc.classList.toggle('open', willOpen);
+      tocBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!toc.contains(e.target)) toc.classList.remove('open');
+    });
+    navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+  }
+
+  // scrollspy: highlight the active section in the dropdown + button label
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (tocLabel) tocLabel.textContent = link.textContent;
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
 </script>
 </body>
 </html>
