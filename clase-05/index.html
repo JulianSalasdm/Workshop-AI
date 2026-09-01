@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 05 · Entendiendo el Design System</title>
+<meta name="description" content="Qué es un design system, cómo está armado en tokens y componentes, y cómo Claude Design lo lee para trabajar con la marca de Kidscorp sin que se lo expliquemos cada vez.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Kidscorp Design AI Workshop</div>
+    </a>
+    <div class="toc" id="toc">
+      <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="material-icons-round">toc</span>
+        <span class="toc-label">Contenidos</span>
+        <span class="material-icons-round toc-chev">expand_more</span>
+      </button>
+      <div class="toc-menu">
+        <a href="#que-es">Qué es</a>
+        <a href="#tokens">Tokens</a>
+        <a href="#componentes">Componentes</a>
+        <a href="#figma">En Figma</a>
+        <a href="#claude-lee">Cómo lo lee Claude</a>
+      </div>
+    </div>
+    <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Kidscorp Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 05</span></div>
+    <div class="eyebrow"><span class="material-icons-round">palette</span> Clase 05 · Parte 3</div>
+    <h1>Antes de generar nada, <span class="gr">entendé el sistema</span> que Claude va a usar</h1>
+    <p class="lead">Un design system es la razón por la que Claude Design no inventa un violeta random o una tipografía distinta cada vez. Acá vemos qué es, cómo está armado, y cómo Claude lo lee para trabajar con la marca de Kidscorp sin que se lo expliquemos.</p>
+    <div class="cta-row">
+      <a href="#que-es" class="btn btn-primary"><span class="material-icons-round">rocket_launch</span> Empezar</a>
+      <a href="../clase-06/index.html" class="btn btn-ghost">Ir a la Clase 06 <span class="material-icons-round">arrow_forward</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ ES -->
+<section id="que-es">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">help_center</span> El problema que resuelve</div>
+      <h2>Qué es (y qué no es) un design system</h2>
+      <p>No es un PDF de marca ni una carpeta de logos. Es una fuente única de verdad, en un formato que tanto una persona como Claude pueden leer, que define cómo se ve y se siente todo lo que hacemos.</p>
+    </div>
+
+    <div class="defs cols-2">
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--text-dimmer), #3E3E3E);"><span class="material-icons-round">picture_as_pdf</span></div>
+        <h4>Guía de marca (PDF)</h4>
+        <div class="who">documento estático</div>
+        <p>Reglas escritas para que las lea una persona: colores, tipografías, ejemplos de uso. Vive aparte del trabajo real, en una carpeta de Drive.</p>
+        <div class="ex">El problema: hay que abrirlo, leerlo y aplicarlo a mano cada vez. Se desactualiza rápido y nadie lo revisa dos veces.</div>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">layers</span></div>
+        <h4>Design system</h4>
+        <div class="who">fuente única, viva</div>
+        <p>Las mismas decisiones, pero en un formato que también puede leer una herramienta: tokens, componentes y reglas conectadas al archivo de diseño real.</p>
+        <div class="ex">La ventaja: se actualiza en un solo lugar y se aplica sola, tanto si lo usa una persona como si lo usa Claude.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENS -->
+<section id="tokens" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">token</span> La unidad más chica</div>
+      <h2>Las 3 capas de tokens</h2>
+      <p>Un token es un valor de diseño con nombre, en vez de un número suelto. Kidscorp los organiza en 3 capas, cada una construida sobre la anterior.</p>
+    </div>
+
+    <div class="flow rv">
+      <div class="node">
+        <div class="lbl"><span class="material-icons-round">palette</span> Primitivo</div>
+        <div class="ex">--kc-violet-500 · #9414FA</div>
+      </div>
+      <span class="material-icons-round arrow">arrow_forward</span>
+      <div class="node">
+        <div class="lbl"><span class="material-icons-round">sell</span> Semántico</div>
+        <div class="ex">--kc-accent · "color primario"</div>
+      </div>
+      <span class="material-icons-round arrow">arrow_forward</span>
+      <div class="node">
+        <div class="lbl"><span class="material-icons-round">smart_button</span> De componente</div>
+        <div class="ex">--btn-primary-bg</div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Por qué en capas:</b> si mañana cambia el violeta de marca, se actualiza el primitivo una sola vez y se propaga solo a todo lo que use ese semántico y esos componentes. No hay que salir a buscar botón por botón.</p>
+    </div>
+
+    <div class="callbox rv" style="margin-top:14px;">
+      <p><b>Esto no es teoría:</b> el mismo taller que estás mirando usa este sistema. Los tokens de <span class="kc-mono" style="color:var(--violet-soft)">assets/colors_and_type.css</span> (<span class="kc-mono" style="color:var(--violet-soft)">--kc-violet-500</span>, <span class="kc-mono" style="color:var(--violet-soft)">--kc-radius-md</span>, <span class="kc-mono" style="color:var(--violet-soft)">--kc-fs-h1</span>) son exactamente esto: primitivos y semánticos con nombre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTES -->
+<section id="componentes">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">widgets</span> Piezas reutilizables</div>
+      <h2>Componentes y variantes</h2>
+      <p>Un componente es una pieza de UI ya resuelta (un botón, una card, un input) con sus variantes documentadas: estados, tamaños, versiones. Así no se rediseña un botón nuevo cada vez que hace falta uno.</p>
+    </div>
+
+    <div class="showcase rv">
+      <div class="item">
+        <div class="stage"><a href="#" class="btn btn-primary" onclick="return false;"><span class="material-icons-round">bolt</span> Primary</a></div>
+        <span class="lbl">Botón · variante primary</span>
+      </div>
+      <div class="item">
+        <div class="stage"><a href="#" class="btn btn-ghost" onclick="return false;">Ghost</a></div>
+        <span class="lbl">Botón · variante ghost</span>
+      </div>
+      <div class="item">
+        <div class="stage"><a href="#" class="btn btn-primary" style="opacity:.4; pointer-events:none;">Disabled</a></div>
+        <span class="lbl">Botón · estado disabled</span>
+      </div>
+      <div class="item">
+        <div class="stage" style="width:100%;"><div class="demo-card"><span class="material-icons-round">draft</span><span class="t">Card de contenido</span></div></div>
+        <span class="lbl">Card · default</span>
+      </div>
+      <div class="item">
+        <div class="stage"><span class="demo-tag">Tag / chip</span></div>
+        <span class="lbl">Tag · default</span>
+      </div>
+      <div class="item">
+        <div class="stage" style="width:100%;"><div class="demo-input">Placeholder de input…</div></div>
+        <span class="lbl">Input · default</span>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>El detalle importante:</b> cada variante ya tiene resuelto cómo se ve en cada estado. Claude no inventa un botón nuevo: elige entre las variantes que ya existen, igual que lo harías vos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FIGMA -->
+<section id="figma" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">draw</span> Dónde vive de verdad</div>
+      <h2>Cómo está armado en Figma</h2>
+      <p>Los tokens y componentes no son un concepto abstracto: viven en el archivo de Figma que usamos todos los días, en tres lugares concretos.</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">tune</span></div>
+        <h4>Variables</h4>
+        <p>Los tokens primitivos y semánticos, como valores reales de Figma: color, número, string. Un cambio ahí se propaga a todo el archivo.</p>
+        <div class="use">Ej: color/violet/500</div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">style</span></div>
+        <h4>Estilos</h4>
+        <p>Tipografías y efectos guardados con nombre, para aplicarlos con un clic en vez de configurar fuente y tamaño a mano cada vez.</p>
+        <div class="use">Ej: Heading/H1</div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">dashboard</span></div>
+        <h4>Librería de componentes</h4>
+        <p>Botones, cards, inputs ya armados con sus variantes, listos para arrastrar a cualquier pantalla nueva sin rehacer nada.</p>
+        <div class="use">Ej: Button / Primary / Large</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO LO LEE CLAUDE -->
+<section id="claude-lee">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">auto_awesome</span> La otra mitad</div>
+      <h2>Cómo lo lee Claude Design</h2>
+      <p>Dos piezas trabajan juntas: el skill que ya vimos en la Clase 02, y una conexión directa a Figma para leer tokens y componentes en tiempo real.</p>
+    </div>
+
+    <div class="doc rv">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Lo que Claude lee antes de armar algo</span>
+      </div>
+      <div class="body">
+        <div class="field">
+          <h5>SKILL.md · kidscorp-design-system</h5>
+          <p>Reglas de marca, voz y cuándo aplicarlas. Es lo mismo que vimos en la <b>Clase 02</b>: se activa solo, sin que se lo pidas.</p>
+        </div>
+        <div class="field">
+          <h5>Variables de Figma</h5>
+          <p>Los tokens reales —colores, tipografía, espaciado— leídos directo del archivo. No los adivina ni los memoriza: los consulta cada vez.</p>
+        </div>
+        <div class="field">
+          <h5>Librería de componentes</h5>
+          <p>Qué piezas ya existen, para reusarlas en vez de crear una versión distinta de un botón que ya estaba resuelto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Por qué te importa:</b> esto es lo que hace posible la Clase 06. Le vas a poder pedir una pantalla o una presentación nueva sin escribir "usá el violeta #9414FA y Montserrat" cada vez. Ya lo sabe.</p>
+    </div>
+
+    <div class="cta-row" style="margin-top:8px;">
+      <a href="../clase-06/index.html" class="btn btn-primary"><span class="material-icons-round">arrow_forward</span> Ir a la Clase 06: generar proyectos</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Kidscorp Design AI Workshop · Clase 05 · uso educativo interno · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-02/index.html">Clase 02</a>
+        <a href="../clase-03/index.html">Clase 03</a>
+        <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../clase-06/index.html">Clase 06</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const toc = document.querySelector('.toc');
+  const tocBtn = document.querySelector('.toc-btn');
+  const tocLabel = document.querySelector('.toc-label');
+  const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+  if (toc && tocBtn) {
+    tocBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !toc.classList.contains('open');
+      toc.classList.toggle('open', willOpen);
+      tocBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!toc.contains(e.target)) toc.classList.remove('open');
+    });
+    navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+  }
+
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (tocLabel) tocLabel.textContent = link.textContent;
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
+</script>
+</body>
+</html>

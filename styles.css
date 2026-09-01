@@ -61,11 +61,8 @@ a { color: inherit; }
 .brand .name span { color: var(--text-dim); font-weight: 500; }
 .topper nav {
   display: flex; gap: 22px; font-size: 14px; font-weight: 500;
-  min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 16px), transparent);
-  mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+  min-width: 0; flex-wrap: nowrap;
 }
-.topper nav::-webkit-scrollbar { display: none; }
 .topper nav a { position: relative; color: var(--text-dim); text-decoration: none; transition: color 150ms; white-space: nowrap; flex: none; padding-bottom: 3px; }
 .topper nav a::after {
   content: ""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 0%;

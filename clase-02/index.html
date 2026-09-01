@@ -336,6 +336,7 @@
       </button>
       <div class="toc-menu">
         <a href="#claudes">Los 4 Claude</a>
+        <a href="#artifacts">Artifacts</a>
         <a href="#modelos">Modelos</a>
         <a href="#interactuar">Interactuar</a>
         <a href="#prompting">Iterar o delegar</a>
@@ -401,14 +402,61 @@
       <div class="cc design rv">
         <div class="ic"><span class="material-icons-round">brush</span></div>
         <h3>Claude Design</h3>
-        <div class="where">plugin de diseño · Figma conectado</div>
-        <p>Claude especializado en diseño. Vive donde diseñás y trae skills propias: crítica de diseño, design system, handoff a devs, accesibilidad y UX copy. Lee y escribe en Figma.</p>
-        <div class="use"><span class="material-icons-round">bolt</span> Ideal para: revisar pantallas, documentar el sistema, specs para devs.</div>
+        <div class="where">con Figma conectado, o en su propio canvas</div>
+        <p>Claude especializado en diseño, con dos caras. Conectado a Figma trae skills propias (crítica de diseño, design system, handoff a devs, accesibilidad, UX copy) para quien diseña. Sin Figma, arma piezas propias —slides, infografías, one-pagers— en su propio canvas, para cualquier equipo.</p>
+        <div class="use"><span class="material-icons-round">bolt</span> Ideal para: revisar pantallas y documentar el sistema (con Figma), o armar presentaciones y piezas puntuales (sin Figma).</div>
       </div>
     </div>
     <div class="four-note">
       <span class="material-icons-round">lightbulb</span>
       <div><b style="color:#FAFAFC">Regla mental:</b> Chat es la base. Code, Cowork y Design son el mismo Claude pero con más herramientas y más autonomía según dónde lo necesites. Empezás en Chat y "subís de nivel" cuando la tarea lo pide.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIFACTS -->
+<section id="artifacts">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">dashboard_customize</span> Lo que armás, en su propio espacio</div>
+      <h2>Artifacts: cuando el resultado se gana un panel aparte</h2>
+      <p>Un Artifact es contenido que Claude abre en un panel al costado del chat en lugar de tirarlo dentro de la conversación: un documento, un código, un visual o una mini app. No se pierde entre los mensajes, se edita ahí mismo y queda con historial de versiones.</p>
+    </div>
+
+    <div class="princ">
+      <div class="pcard rv"><div class="n">01</div><h4>Código y apps</h4><p>Una página HTML, un componente React, un script. Se ejecuta y se ve en vivo dentro del panel, no solo como texto.</p></div>
+      <div class="pcard rv"><div class="n">02</div><h4>Documentos</h4><p>Un reporte, un brief, un plan largo. Formato limpio, fácil de leer y de exportar, sin el ruido del resto del chat.</p></div>
+      <div class="pcard rv"><div class="n">03</div><h4>Visuales</h4><p>Diagramas, infografías, ilustraciones en SVG. Algo pensado para mirarse, no para leerse como párrafo.</p></div>
+      <div class="pcard rv"><div class="n">04</div><h4>Apps interactivas</h4><p>Calculadoras, formularios, juegos, dashboards con datos propios. Con estado: se puede clickear, escribir, tocar.</p></div>
+      <div class="pcard rv"><div class="n">05</div><h4>Datos y gráficos</h4><p>Tablas, charts, comparativas. Útil para ver un análisis en formato visual en lugar de una lista de números.</p></div>
+      <div class="pcard rv"><div class="n">06</div><h4>Presentaciones</h4><p>Slides armadas en HTML, con su propio diseño, listas para pasar de una a otra dentro del mismo panel.</p></div>
+    </div>
+
+    <div class="modes" style="margin-top:36px;">
+      <div class="mode-card rv">
+        <div class="mic dark"><span class="material-icons-round">chat_bubble</span></div>
+        <h4>Respuesta en el chat</h4>
+        <div class="proscons">
+          <div class="pc bad"><span class="material-icons-round">remove_circle</span> Mezclada con el resto de la conversación.</div>
+          <div class="pc bad"><span class="material-icons-round">remove_circle</span> Si pedís un cambio, te la reescribe entera desde cero.</div>
+          <div class="pc bad"><span class="material-icons-round">remove_circle</span> Texto plano o bloques de código sueltos.</div>
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Ideal para una respuesta puntual, algo que se lee una vez.</div>
+        </div>
+      </div>
+      <div class="mode-card rv">
+        <div class="mic"><span class="material-icons-round">dashboard_customize</span></div>
+        <h4>Artifact</h4>
+        <div class="proscons">
+          <div class="pc good"><span class="material-icons-round">add_circle</span> En un panel aparte, al costado del chat.</div>
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Edita esa misma pieza: podés ver las versiones anteriores.</div>
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Código ejecutable, documento, visual o app completa.</div>
+          <div class="pc good"><span class="material-icons-round">add_circle</span> Ideal para algo que vas a iterar, guardar o compartir tal cual.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:26px;">
+      <p><b>Por qué te importa:</b> si le pedís algo que tiene sentido mirar, tocar o reusar (un mockup, un one-pager, una calculadora de presupuesto), decile que lo arme como Artifact. Se abre en su panel, lo podés seguir iterando ahí sin perder el hilo del chat, y después se comparte o se publica como página propia. Esta misma web del taller, en cambio, se armó con Claude Code: para un sitio grande con muchos archivos, Code rinde mejor que un Artifact suelto.</p>
     </div>
   </div>
 </section>
@@ -762,6 +810,8 @@
         <a href="../clase-01/index.html">Clase 01</a>
         <a href="../clase-03/index.html">Clase 03</a>
         <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../clase-05/index.html">Clase 05</a>
+        <a href="../clase-06/index.html">Clase 06</a>
         <a href="../index.html">Volver al temario</a>
       </div>
     </div>

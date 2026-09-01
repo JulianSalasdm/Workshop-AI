@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 06 · Generando proyectos con Claude Design</title>
+<meta name="description" content="Cómo usar Claude Design para armar presentaciones, infografías y one-pagers con la marca de Kidscorp aplicada, sin saber de diseño. Para sales, marketing, growth y cualquier equipo.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Kidscorp Design AI Workshop</div>
+    </a>
+    <div class="toc" id="toc">
+      <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="material-icons-round">toc</span>
+        <span class="toc-label">Contenidos</span>
+        <span class="material-icons-round toc-chev">expand_more</span>
+      </button>
+      <div class="toc-menu">
+        <a href="#que-podes-armar">Qué podés armar</a>
+        <a href="#flujo">El flujo típico</a>
+        <a href="#practica">Caso práctico</a>
+        <a href="#consistencia">Consistencia</a>
+        <a href="#iterar">Iterar</a>
+        <a href="#buenas-practicas">Buenas prácticas</a>
+        <a href="#cierre">Cierre del taller</a>
+      </div>
+    </div>
+    <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Kidscorp Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 06</span></div>
+    <div class="eyebrow"><span class="material-icons-round">auto_fix_high</span> Clase 06 · Último módulo</div>
+    <h1>De la idea a una <span class="gr">presentación lista</span>, sin abrir un editor de diseño</h1>
+    <p class="lead">Ya vimos cómo está armado el sistema de marca en la <a href="../clase-05/index.html" style="color:var(--violet-soft); text-decoration:none;">Clase 05</a>. Ahora lo usamos: cómo pedirle a Claude Design una presentación, una infografía o un one-pager, y que salga con la marca aplicada, sin saber nada de diseño.</p>
+    <div class="cta-row">
+      <a href="#que-podes-armar" class="btn btn-primary"><span class="material-icons-round">rocket_launch</span> Empezar</a>
+      <a href="#practica" class="btn btn-ghost">Ir al caso práctico</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ PODÉS ARMAR -->
+<section id="que-podes-armar" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">category</span> Los formatos más pedidos</div>
+      <h2>Qué podés armar</h2>
+      <p>Cualquier pieza visual puntual, no solo slides.</p>
+    </div>
+
+    <div class="labs">
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">📊</span><span class="pill">Lo más pedido</span></div>
+        <h4>Presentaciones</h4>
+        <p>Decks completos, slide por slide, con portada, contenido y cierre coherentes entre sí.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🧩</span><span class="pill">Para explicar rápido</span></div>
+        <h4>Infografías</h4>
+        <p>Un dato o un proceso resumido en una sola pieza visual, fácil de compartir en un chat.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">📄</span><span class="pill">Para un link o PDF</span></div>
+        <h4>One-pagers</h4>
+        <p>Un resumen de una página: una propuesta, un resultado, la descripción de un producto.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🎯</span><span class="pill">Para redes o mail</span></div>
+        <h4>Banners y piezas puntuales</h4>
+        <p>Una imagen puntual para una campaña, un anuncio interno o la firma de un mail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EL FLUJO TÍPICO -->
+<section id="flujo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">route</span> Cómo se arma, en la práctica</div>
+      <h2>El flujo típico</h2>
+      <p>Siempre el mismo circuito, sea una presentación de 3 slides o de 20.</p>
+    </div>
+
+    <div class="tline rv">
+      <div class="tline-steps">
+        <div class="tline-line"><div class="tline-fill"></div></div>
+        <div class="tstep" style="--i:0">
+          <div class="tdot">1</div>
+          <h4>Le contás el objetivo</h4>
+          <p>Qué es, para quién es y cuánto tiene que durar: 5 slides, una página, una sola pieza.</p>
+        </div>
+        <div class="tstep" style="--i:1">
+          <div class="tdot">2</div>
+          <h4>Claude arma la pieza</h4>
+          <p>Aplica solo los tokens y componentes del design system (Clase 05), sin que le digas el violeta o la tipografía.</p>
+        </div>
+        <div class="tstep" style="--i:2">
+          <div class="tdot">3</div>
+          <h4>Revisás en el canvas</h4>
+          <p>Ves el resultado armado, en su propio panel, editable ahí mismo sin perder el hilo de la conversación.</p>
+        </div>
+        <div class="tstep" style="--i:3">
+          <div class="tdot">4</div>
+          <h4>Pedís ajustes</h4>
+          <p>"Más corto", "cambiá el orden", "sumá un dato acá": se ajusta esa pieza, no rehace todo de cero.</p>
+        </div>
+        <div class="tstep" style="--i:4">
+          <div class="tdot">5</div>
+          <h4>Lo compartís</h4>
+          <p>Queda listo para compartir con un link o exportar, sin pasar por ningún otro programa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASO PRÁCTICO -->
+<section id="practica" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">movie</span> Ejemplo en vivo</div>
+      <h2>Caso práctico: armar una presentación desde cero</h2>
+      <p>Todo empieza en cómo se lo pedís. La diferencia entre un pedido flojo y uno que rinde es la misma que vimos en la Clase 02, aplicada a slides.</p>
+    </div>
+
+    <div class="defs cols-2">
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--text-dimmer), #3E3E3E);"><span class="material-icons-round">thumb_down</span></div>
+        <h4>Pedido flojo</h4>
+        <div class="prompt">"Hacéme una presentación de la campaña."</div>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">thumb_up</span></div>
+        <h4>Pedido que rinde</h4>
+        <div class="prompt">"Armá una presentación de 6 slides sobre los resultados de la campaña de verano: portada, objetivo, 3 métricas clave con gráfico, y cierre con próximos pasos. Audiencia: dirección, tono ejecutivo."</div>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:52px; margin-bottom:24px;">
+      <h2 style="font-size:24px;">Así queda: 3 slides del mismo deck</h2>
+      <p>Portada, contenido y cierre, resueltos con el mismo sistema de marca sin que lo pidas slide por slide.</p>
+    </div>
+
+    <div class="deck rv">
+      <div class="slide cover">
+        <span class="tag">Portada</span>
+        <div class="bar lg" style="background:rgba(255,255,255,0.9); width:70%;"></div>
+        <div class="bar sm" style="background:rgba(255,255,255,0.55);"></div>
+      </div>
+      <div class="slide content">
+        <span class="tag" style="color:var(--text-dimmer); background:var(--panel-2);">Contenido</span>
+        <div class="bars">
+          <div class="bar sm" style="background:var(--violet-soft); width:30%;"></div>
+          <div class="bar lg" style="width:75%;"></div>
+        </div>
+        <div class="chart">
+          <div style="height:45%;"></div>
+          <div style="height:70%;"></div>
+          <div style="height:55%;"></div>
+          <div style="height:90%;"></div>
+        </div>
+      </div>
+      <div class="slide closing">
+        <span class="tag" style="color:var(--text-dimmer); background:var(--panel-2);">Cierre</span>
+        <div class="bar lg" style="width:60%;"></div>
+        <span class="pill">Próximos pasos →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSISTENCIA -->
+<section id="consistencia">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">verified</span> Que no se note que fueron varios pedidos</div>
+      <h2>Mantener consistencia entre slides</h2>
+      <p>El riesgo de armar de a partes es que la slide 4 no se parezca a la slide 1. El design system evita justamente eso.</p>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Por qué no se rompe:</b> como Claude arma cada slide leyendo el mismo sistema de tokens y componentes de la Clase 05, la portada, el contenido y el cierre comparten la misma paleta, tipografía y espaciado sin que vos tengas que revisarlo.</p>
+    </div>
+    <div class="callbox rv" style="margin-top:14px;">
+      <p><b>Tip:</b> si igual notás algo distinto —una slide vieja, una pieza que armó otra persona— pedile "unificá el estilo con el resto del deck" y lo corrige sin rehacer el contenido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ITERAR -->
+<section id="iterar" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">refresh</span> No hace falta rehacer todo</div>
+      <h2>Iterar sobre lo generado</h2>
+      <p>Cuatro pedidos típicos que se hacen sobre una pieza ya armada, en vez de empezar de cero.</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">short_text</span></div>
+        <div><h4>Más corto</h4><p>"Estas 2 slides sobran, resumilas en una."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">swap_horiz</span></div>
+        <div><h4>Cambiar el orden</h4><p>"Pasá el cierre antes que las métricas."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">bar_chart</span></div>
+        <div><h4>Sumar un dato</h4><p>"Agregá un gráfico con la comparación mes a mes acá."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">edit</span></div>
+        <div><h4>Ajustar el tono</h4><p>"Hacelo más informal, esto es para el equipo interno."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUENAS PRÁCTICAS -->
+<section id="buenas-practicas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">tips_and_updates</span> Para que rinda mejor</div>
+      <h2>Buenas prácticas</h2>
+      <p>Las mismas ideas de "cómo hablarle" de la Clase 02, aplicadas a piezas visuales.</p>
+    </div>
+
+    <div class="doc rv">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Checklist antes de pedir</span>
+      </div>
+      <div class="body">
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Sé específico con el objetivo.</b> Cuántas slides, qué secciones, qué no puede faltar.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Dale contexto de audiencia y tono.</b> No es lo mismo para dirección que para el equipo interno.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Mostrale un ejemplo que te gustó.</b> Un deck anterior, una captura, una referencia: acelera todo.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Pedí variantes si no estás seguro.</b> "Dame 2 formas de mostrar esta portada" te da con qué elegir.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE DEL TALLER -->
+<section id="cierre" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">flag</span> Fin del taller</div>
+      <h2>Eso es todo: ya tenés las 6 clases</h2>
+      <p>De no saber qué es un LLM a armar tu propia presentación con la marca aplicada. Un repaso rápido de todo el recorrido.</p>
+    </div>
+
+    <div class="finale rv">
+      <div class="finale-top">
+        <div class="finale-icon"><span class="material-icons-round">military_tech</span></div>
+        <div>
+          <div class="finale-stat">6<span>/6</span></div>
+          <div class="finale-label">clases completadas</div>
+        </div>
+      </div>
+      <div class="class-pills">
+        <span class="pill-done"><span class="material-icons-round">check</span> 01 · Tipos de IA y conexiones</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 02 · Los 4 Claude</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 03 · IA Generativa</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 04 · Hosting y dominios</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 05 · Design System</span>
+        <span class="pill-current"><span class="material-icons-round">flag</span> 06 · Generando proyectos (esta)</span>
+      </div>
+    </div>
+
+    <div class="next-head rv">
+      <h3>Próximos pasos para el equipo</h3>
+      <p>Ideas simples para que esto no quede en "vi el taller una vez".</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">rocket_launch</span></div>
+        <div><h4>Empezá esta semana</h4><p>Probá armar tu primer deck real con Claude Design.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">folder_special</span></div>
+        <div><h4>Sumate al Proyecto del equipo</h4><p>El Proyecto compartido de la Clase 02, si todavía no lo hiciste.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">bookmark</span></div>
+        <div><h4>Guardá lo que funciona</h4><p>Los prompts que rindieron bien son la base de tu próximo skill.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">quiz</span></div>
+        <div><h4>Repasá si hace falta</h4><p>El cuestionario del taller, si algo no quedó claro.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top:36px; justify-content:center;">
+      <a href="../cuestionario/index.html" class="btn btn-primary"><span class="material-icons-round">quiz</span> Ir al cuestionario</a>
+      <a href="../index.html" class="btn btn-ghost">Volver al temario</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Kidscorp Design AI Workshop · Clase 06 · uso educativo interno · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-02/index.html">Clase 02</a>
+        <a href="../clase-03/index.html">Clase 03</a>
+        <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../clase-05/index.html">Clase 05</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const toc = document.querySelector('.toc');
+  const tocBtn = document.querySelector('.toc-btn');
+  const tocLabel = document.querySelector('.toc-label');
+  const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+  if (toc && tocBtn) {
+    tocBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !toc.classList.contains('open');
+      toc.classList.toggle('open', willOpen);
+      tocBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!toc.contains(e.target)) toc.classList.remove('open');
+    });
+    navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+  }
+
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (tocLabel) tocLabel.textContent = link.textContent;
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
+</script>
+</body>
+</html>

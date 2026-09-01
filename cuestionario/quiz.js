@@ -192,6 +192,64 @@ const QUESTION_BANK = [
     correct: 1,
     explain: "La regla que resuelve casi todo: nada sensible vive en el código que le llega al navegador del usuario."
   },
+
+  // ── Clase 05: qué es un design system, capas de tokens, componentes, Figma, cómo lo lee Claude ──
+  {
+    q: "¿Cuál es la diferencia clave entre una guía de marca en PDF y un design system?",
+    options: ["Un PDF es más lindo visualmente", "El design system está en un formato que también puede leer una herramienta, no solo una persona", "El PDF se actualiza solo", "No hay ninguna diferencia real"],
+    correct: 1,
+    explain: "El PDF es estático y solo lo lee una persona; el design system vive en un formato que también leen herramientas como Claude, así se actualiza en un solo lugar y se aplica solo."
+  },
+  {
+    q: "Según la Clase 05, ¿cuáles son las 3 capas de tokens, en orden?",
+    options: ["Primitivo → semántico → de componente", "Semántico → primitivo → de componente", "De componente → semántico → primitivo", "Primitivo → de componente → semántico"],
+    correct: 0,
+    explain: "Primitivo (el valor crudo, ej. #9414FA), semántico (el nombre con sentido, ej. color primario) y de componente (aplicado a una pieza puntual, ej. el fondo de un botón)."
+  },
+  {
+    q: "¿Por qué conviene organizar los tokens en capas en vez de un solo nivel?",
+    options: ["Porque así se ve más profesional", "Porque si cambia el color primitivo, se propaga solo a todo lo que lo use sin buscar botón por botón", "Porque Figma lo exige", "Porque así pesa menos el archivo"],
+    correct: 1,
+    explain: "Cambiar el primitivo una sola vez actualiza automáticamente todo lo que dependa de ese semántico y esos componentes."
+  },
+  {
+    q: "En Figma, ¿dónde viven los tokens primitivos y semánticos como valores reales?",
+    options: ["En comentarios del archivo", "En variables", "En el nombre del archivo", "En un plugin externo"],
+    correct: 1,
+    explain: "Las variables de Figma son los tokens reales (color, número, string); un cambio ahí se propaga a todo el archivo."
+  },
+  {
+    q: "¿Qué dos piezas trabajan juntas para que Claude Design lea la marca de Kidscorp sin que se lo expliquen cada vez?",
+    options: ["Un PDF y un mail de instrucciones", "El skill kidscorp-design-system y una conexión directa a Figma", "Un plugin de terceros y una API key", "Una captura de pantalla y un prompt largo"],
+    correct: 1,
+    explain: "El skill trae las reglas de marca y voz; la conexión a Figma le da acceso en tiempo real a los tokens y componentes reales."
+  },
+
+  // ── Clase 06: para quién sirve, flujo típico, caso práctico, consistencia, iterar ──
+  {
+    q: "Según la Clase 06, ¿para quién sirve especialmente generar proyectos con Claude Design?",
+    options: ["Solo para diseñadores con experiencia en Figma", "Para cualquier equipo (sales, marketing, growth) aunque no sepan de diseño", "Solo para el equipo de desarrollo", "Solo para presentaciones internas de RRHH"],
+    correct: 1,
+    explain: "La Clase 06 está pensada para que cualquier equipo arme piezas reales sin saber de diseño, aplicando la marca automáticamente."
+  },
+  {
+    q: "En el flujo típico de la Clase 06, ¿qué pasa justo después de contarle el objetivo a Claude?",
+    options: ["Se exporta directo a PDF", "Claude arma la pieza aplicando los tokens y componentes del design system", "Hay que abrir Figma manualmente", "Se pide autorización a un administrador"],
+    correct: 1,
+    explain: "Claude aplica solo los tokens y componentes del design system de la Clase 05, sin que le digas el color o la tipografía."
+  },
+  {
+    q: "¿Por qué un pedido detallado (con cantidad de slides, estructura y audiencia) rinde mejor que uno vago como 'Hacéme una presentación de la campaña'?",
+    options: ["Porque es más corto", "Porque define estructura y audiencia, dejando menos a la interpretación", "Porque menciona la palabra 'campaña' dos veces", "Porque no rinde mejor, da igual"],
+    correct: 1,
+    explain: "Cuanto más específico el objetivo (estructura, contenido, audiencia y tono), mejor sale el resultado sin necesidad de ida y vuelta."
+  },
+  {
+    q: "Si una slide del deck no comparte el estilo del resto, ¿qué recomienda la Clase 06 para corregirlo sin rehacer el contenido?",
+    options: ["Borrar esa slide y no usarla", "Pedirle a Claude que 'unifique el estilo con el resto del deck'", "Empezar el deck de nuevo desde cero", "Abrir Figma para ajustarla a mano"],
+    correct: 1,
+    explain: "Como todas las slides comparten el mismo sistema de tokens y componentes, alcanza con pedirle que unifique el estilo sin tocar el contenido."
+  },
 ];
 
 function shuffle(arr) {
