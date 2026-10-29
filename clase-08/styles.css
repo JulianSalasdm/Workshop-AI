@@ -245,6 +245,7 @@ section { padding: 80px 0; }
 .class-pills span { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; padding: 8px 14px; border-radius: 20px; }
 .class-pills span .material-icons-round { font-size: 15px; }
 .pill-done { background: rgba(8,160,69,0.14); color: #4ADE80; }
+.pill-next { background: var(--panel-2); color: var(--text-dim); border: 1px dashed var(--border); }
 .pill-current { background: linear-gradient(135deg, var(--violet), var(--pink)); color: #fff; }
 .next-head { margin-top: 52px; margin-bottom: 22px; }
 .next-head h3 { font-size: 22px; font-weight: 800; margin: 0 0 6px; }

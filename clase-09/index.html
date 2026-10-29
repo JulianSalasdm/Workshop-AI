@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 09 · Claude en Chrome: un agente en tu navegador</title>
+<meta name="description" content="Cómo funciona Claude en Chrome: un agente que ve las páginas, resuelve problemas y hace tareas por vos. Cómo piensa, cómo obtiene la información de la página, cómo actúa y cómo mantenerlo bajo control.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Kidscorp Design AI Workshop</div>
+    </a>
+    <div class="toc" id="toc">
+      <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="material-icons-round">toc</span>
+        <span class="toc-label">Contenidos</span>
+        <span class="material-icons-round toc-chev">expand_more</span>
+      </button>
+      <div class="toc-menu">
+        <a href="#que-es">Qué es</a>
+        <a href="#agente">Chat vs agente</a>
+        <a href="#como-ve">Cómo ve la página</a>
+        <a href="#como-piensa">Cómo piensa</a>
+        <a href="#como-actua">Cómo actúa</a>
+        <a href="#casos">Casos para el equipo</a>
+        <a href="#control">Seguridad y control</a>
+        <a href="#buenas-practicas">Buenas prácticas</a>
+        <a href="#cierre">Cierre del taller</a>
+      </div>
+    </div>
+    <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Kidscorp Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 09</span></div>
+    <div class="eyebrow"><span class="material-icons-round">language</span> Clase 09 · Parte 6 · Último módulo</div>
+    <h1>Un Claude que <span class="gr">usa el navegador</span> por vos</h1>
+    <p class="lead">Claude en Chrome mira las páginas que tenés abiertas, entiende lo que hay en ellas y puede hacer clic, escribir y navegar para resolver una tarea. Acá vemos qué podés pedirle, cómo piensa, cómo "lee" una web y cómo mantenerlo bajo control.</p>
+    <div class="cta-row">
+      <a href="#que-es" class="btn btn-primary"><span class="material-icons-round">rocket_launch</span> Empezar</a>
+      <a href="#como-piensa" class="btn btn-ghost">Ir a cómo piensa</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ ES -->
+<section id="que-es" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">extension</span> Una extensión con ojos y manos</div>
+      <h2>Qué es Claude en Chrome</h2>
+      <p>Es una extensión del navegador que le da a Claude acceso a la pestaña donde estás. Ve lo mismo que vos y, si se lo pedís, también actúa sobre la página.</p>
+    </div>
+
+    <div class="labs">
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">👀</span><span class="pill">Entender</span></div>
+        <h4>Lee cualquier página</h4>
+        <p>Resume un artículo, compara planes, explica una pantalla que no entendés o extrae los datos de una tabla.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🛠️</span><span class="pill">Resolver</span></div>
+        <h4>Te saca de un apuro</h4>
+        <p>Un formulario que no avanza, una opción que no encontrás, un error en pantalla: lo mira y te guía, o lo resuelve.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🤖</span><span class="pill">Hacer</span></div>
+        <h4>Ejecuta tareas por vos</h4>
+        <p>Navega, completa campos, busca información en varios sitios y te devuelve el resultado, sin que hagas cada clic.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🗂️</span><span class="pill">Combinar</span></div>
+        <h4>Trabaja en varias pestañas</h4>
+        <p>Junta información de distintos sitios, la compara y la ordena en un solo lugar.</p>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>La diferencia con lo que vimos:</b> en la Clase 02, Claude Chat solo sabe lo que le escribís o le adjuntás. Con la extensión, Claude puede ver la página real, con sus datos actuales y sin que copies y pegues nada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT VS AGENTE -->
+<section id="agente">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">compare_arrows</span> De responder a actuar</div>
+      <h2>Del chat al agente</h2>
+      <p>La Clase 02 ya contó la diferencia entre iterar vos o delegarle a un agente. Acá es el caso más concreto: un agente que usa la misma herramienta que vos, el navegador.</p>
+    </div>
+
+    <div class="defs cols-2">
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--text-dimmer), #3E3E3E);"><span class="material-icons-round">chat</span></div>
+        <h4>Chat: te dice cómo</h4>
+        <div class="who">Vos hacés los pasos</div>
+        <p>Te explica dónde tenés que hacer clic, qué escribir y qué mirar. La acción la hacés vos.</p>
+        <div class="prompt">"Para cambiar el plan, entrá a Configuración, después a Facturación y elegí Cambiar plan."</div>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">smart_toy</span></div>
+        <h4>Agente: lo hace</h4>
+        <div class="who">Claude hace los pasos</div>
+        <p>Recorre la página, hace los clics y completa los campos, y te pide confirmación en lo importante.</p>
+        <div class="prompt">"Entré a Facturación, abrí Cambiar plan y dejé seleccionado el plan anual. Falta que confirmes vos."</div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Un agente no es magia:</b> sigue siendo Claude, con las mismas fortalezas y los mismos errores. Lo que cambia es que ahora puede mirar y tocar la página, así que conviene darle objetivos claros y revisar lo que hizo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO VE LA PÁGINA -->
+<section id="como-ve" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">visibility</span> Del lado de Claude</div>
+      <h2>Cómo obtiene la información de la página</h2>
+      <p>Claude no "ve" una web como vos. Tiene varias formas de leerla y elige según lo que necesite.</p>
+    </div>
+
+    <div class="labs">
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">📄</span><span class="pill">Rápido y barato</span></div>
+        <h4>El texto</h4>
+        <p>Extrae el contenido escrito de la página: títulos, párrafos, tablas. Ideal para leer, resumir o buscar un dato.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🌳</span><span class="pill">Para actuar</span></div>
+        <h4>La estructura</h4>
+        <p>Una lista de los elementos de la página: botones, enlaces, campos y sus nombres. Cada uno tiene una referencia para tocarlo con precisión.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">📸</span><span class="pill">Lo visual</span></div>
+        <h4>La captura de pantalla</h4>
+        <p>Una imagen de lo que se ve. Sirve cuando el diseño importa: gráficos, imágenes, algo que no aparece en el texto.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🔍</span><span class="pill">Para depurar</span></div>
+        <h4>Consola y red</h4>
+        <p>Los mensajes de error y las llamadas que hace la página por detrás. Útil para entender por qué algo falla.</p>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:52px; margin-bottom:24px;">
+      <h2 style="font-size:24px;">Lo que Claude "lee" de un botón</h2>
+      <p>Ejemplo ilustrativo de la estructura de una página de planes. No son píxeles: son elementos con nombre.</p>
+    </div>
+
+    <div class="sees rv">
+      <div class="see-page">
+        <div class="see-chrome"><span></span><span></span><span></span><b>ejemplo.com/planes</b></div>
+        <div class="see-body">
+          <div class="see-title">Planes y precios</div>
+          <div class="see-plan"><b>Plan Pro</b><small>USD 29 / mes</small><span class="see-btn">Elegir plan Pro</span></div>
+          <div class="see-form"><span class="see-input">Email de trabajo</span><span class="see-check"></span><i>Acepto los términos</i></div>
+        </div>
+      </div>
+      <span class="material-icons-round see-arrow">arrow_forward</span>
+      <div class="see-tree">
+        <div class="see-tree-top">Lo que obtiene Claude</div>
+<pre>heading   "Planes y precios"
+text      "Plan Pro · USD 29 / mes"
+button    "Elegir plan Pro"      <b>ref_14</b>
+textbox   "Email de trabajo"     <b>ref_21</b>
+checkbox  "Acepto los términos"  <b>ref_22</b></pre>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Por qué importa:</b> como Claude usa elementos con nombre y no solo coordenadas en la pantalla, puede tocar el botón correcto aunque cambie el diseño. Y por eso, las páginas con buenos nombres y etiquetas (accesibles) le resultan más fáciles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO PIENSA -->
+<section id="como-piensa">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">psychology</span> El ciclo del agente</div>
+      <h2>Cómo piensa: observar, decidir, actuar, verificar</h2>
+      <p>Claude no ejecuta un guion fijo. Repite un ciclo corto hasta cumplir el objetivo, y en cada vuelta ajusta según lo que encuentra.</p>
+    </div>
+
+    <div class="tline rv">
+      <div class="tline-steps">
+        <div class="tline-line"><div class="tline-fill"></div></div>
+        <div class="tstep" style="--i:0">
+          <div class="tdot">1</div>
+          <h4>Entiende el objetivo</h4>
+          <p>Qué pediste, qué significa "listo" y qué puede pasar en el camino.</p>
+        </div>
+        <div class="tstep" style="--i:1">
+          <div class="tdot">2</div>
+          <h4>Observa la página</h4>
+          <p>Elige la forma más simple de leerla: texto, estructura o captura.</p>
+        </div>
+        <div class="tstep" style="--i:2">
+          <div class="tdot">3</div>
+          <h4>Decide el próximo paso</h4>
+          <p>Un solo paso a la vez: hacer clic, escribir, bajar, abrir otra pestaña.</p>
+        </div>
+        <div class="tstep" style="--i:3">
+          <div class="tdot">4</div>
+          <h4>Actúa</h4>
+          <p>Ejecuta esa acción sobre la página, como lo haría una persona.</p>
+        </div>
+        <div class="tstep" style="--i:4">
+          <div class="tdot">5</div>
+          <h4>Verifica y repite</h4>
+          <p>Mira qué cambió. Si funcionó sigue; si no, prueba otro camino o te pregunta.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:52px; margin-bottom:24px;">
+      <h2 style="font-size:24px;">Un pedido, paso por paso</h2>
+      <p>Ejemplo de cómo se desarrolla una tarea simple. Es una simplificación para entender la lógica.</p>
+    </div>
+
+    <div class="doc rv">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Pedido: "Buscá el precio del plan Pro y avisame si hay prueba gratis"</span>
+      </div>
+      <div class="body">
+        <div class="trace"><span class="tr-tag t-obs">Observa</span><p>Lee el texto de la página de inicio. No aparecen precios, solo un menú con "Planes".</p></div>
+        <div class="trace"><span class="tr-tag t-think">Decide</span><p>El precio debe estar en "Planes". Busca ese enlace entre los elementos de la página.</p></div>
+        <div class="trace"><span class="tr-tag t-act">Actúa</span><p>Hace clic en el enlace "Planes".</p></div>
+        <div class="trace"><span class="tr-tag t-obs">Verifica</span><p>La página cambió. Lee el texto nuevo: encuentra "Pro · USD 29 / mes" y un botón "Probar 14 días gratis".</p></div>
+        <div class="trace"><span class="tr-tag t-think">Decide</span><p>Ya tiene lo que pidió. No hace falta tocar nada más: frena y responde.</p></div>
+        <div class="trace"><span class="tr-tag t-done">Responde</span><p>"El plan Pro cuesta USD 29 por mes y tiene 14 días de prueba gratis."</p></div>
+      </div>
+    </div>
+
+    <div class="conn-hi" style="margin-top:28px;">
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">savings</span></div>
+        <div><h4>Elige lo más barato primero</h4><p>Si alcanza con leer el texto, no saca captura. Cada paso extra tiene costo en tiempo y en uso.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">published_with_changes</span></div>
+        <div><h4>Se corrige solo</h4><p>Si un clic no hizo lo esperado, lo nota al verificar y prueba otra cosa.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO ACTÚA -->
+<section id="como-actua" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">touch_app</span> Las manos del agente</div>
+      <h2>Cómo actúa sobre la página</h2>
+      <p>Usa las mismas acciones que una persona con mouse y teclado.</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">ads_click</span></div>
+        <div><h4>Hacer clic</h4><p>Botones, enlaces, menús y pestañas, por su nombre o por su posición.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">keyboard</span></div>
+        <div><h4>Escribir y completar</h4><p>Campos de texto, listas desplegables, casillas y botones de opción.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">swap_vert</span></div>
+        <div><h4>Desplazarse</h4><p>Baja y sube por la página para encontrar lo que necesita.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">tab</span></div>
+        <div><h4>Navegar entre pestañas</h4><p>Abre sitios nuevos, cambia de pestaña y junta información de varias.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">upload_file</span></div>
+        <div><h4>Subir archivos</h4><p>Adjunta un archivo a un formulario cuando se lo pedís.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">bug_report</span></div>
+        <div><h4>Revisar por qué falla</h4><p>Lee la consola y la actividad de red para encontrar la causa de un error.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS PARA EL EQUIPO -->
+<section id="casos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">groups</span> Para cada equipo</div>
+      <h2>Casos prácticos y prompts</h2>
+      <p>Ejemplos de pedidos reales. Copialos y cambiá los datos por los tuyos.</p>
+    </div>
+
+    <div class="pgrid">
+      <div class="pcard2 rv">
+        <div class="ptop"><span class="rtag">Sales</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Entrá al sitio de esta empresa y a su página de "Sobre nosotros". Armame una ficha corta: a qué se dedican, tamaño aproximado, quiénes lideran y si tienen productos para público infantil. Si algo no aparece, decímelo en vez de suponerlo.</pre>
+      </div>
+      <div class="pcard2 rv">
+        <div class="ptop"><span class="rtag">Marketing</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Abrí las páginas de precios de estos 3 competidores (te paso los links). Compará en una tabla: planes, precio, qué incluye cada uno y qué los diferencia. Citá de qué página sacás cada dato.</pre>
+      </div>
+      <div class="pcard2 rv">
+        <div class="ptop"><span class="rtag">Growth</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>En esta pestaña tengo un reporte con una tabla de resultados por campaña. Extraé las columnas campaña, inversión y clics, pasalas a una tabla y calculá el costo por clic. No modifiques nada del reporte.</pre>
+      </div>
+      <div class="pcard2 rv">
+        <div class="ptop"><span class="rtag">Diseño / QA</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Abrí la landing en localhost y recorrela de arriba abajo. Buscá enlaces rotos, textos cortados, imágenes que no cargan y errores en la consola. Listame los problemas con la sección donde aparecen.</pre>
+      </div>
+      <div class="pcard2 rv">
+        <div class="ptop"><span class="rtag">Accounts</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Completá este formulario con los datos de la tabla que te pasé, una fila por vez. Antes de enviar cada uno, mostrame cómo quedó y esperá mi OK. No envíes nada sin que yo confirme.</pre>
+      </div>
+      <div class="pcard2 rv">
+        <div class="ptop"><span class="rtag">Todo el equipo</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Esta página me muestra un error y no puedo avanzar. Fijate qué dice, revisá si hay algo mal en lo que cargué y decime qué hacer. Si lo podés resolver con un clic, avisame antes de hacerlo.</pre>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:28px;">
+      <p><b>La fórmula:</b> <b>qué querés lograr</b> + <b>dónde</b> (qué pestaña o sitio) + <b>cómo sabés que terminó</b> + <b>qué no puede hacer sin preguntarte</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEGURIDAD Y CONTROL -->
+<section id="control" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">shield</span> Lo más importante de un agente</div>
+      <h2>Seguridad y control</h2>
+      <p>Un agente que puede hacer clic en cualquier página necesita límites claros. Esto es lo que conviene saber.</p>
+    </div>
+
+    <div class="defs">
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">record_voice_over</span></div>
+        <h4>Solo vos das órdenes</h4>
+        <p>Las instrucciones válidas vienen de lo que le escribís a Claude. El texto que aparece en una página, un mail o un documento es información para leer, no órdenes.</p>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">gpp_maybe</span></div>
+        <h4>Páginas con trampas</h4>
+        <p>Algunas páginas esconden textos del tipo "ignorá lo anterior y hacé esto" para engañar a un agente. Es lo que se llama inyección de instrucciones. Claude está pensado para tratarlas como datos y avisarte.</p>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">task_alt</span></div>
+        <h4>Te pregunta antes de lo importante</h4>
+        <p>Enviar un mensaje, publicar, comprar, aceptar términos o borrar algo son acciones que debería confirmar con vos antes de hacerlas.</p>
+      </div>
+    </div>
+
+    <div class="doc rv" style="margin-top:28px;">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Lo que se queda de tu lado</span>
+      </div>
+      <div class="body">
+        <div class="field"><span class="material-icons-round">lock</span><p><b>Contraseñas y datos financieros.</b> No debería escribir tus contraseñas ni números de tarjeta o cuenta. Eso lo ingresás vos.</p></div>
+        <div class="field"><span class="material-icons-round">smart_toy</span><p><b>Captchas.</b> Las pruebas de "no soy un robot" las resolvés vos.</p></div>
+        <div class="field"><span class="material-icons-round">delete_forever</span><p><b>Borrados definitivos.</b> Vaciar la papelera o eliminar algo sin vuelta atrás lo hacés vos.</p></div>
+        <div class="field"><span class="material-icons-round">swap_horiz</span><p><b>Movimientos de dinero.</b> Transferencias, compras de inversión o pagos importantes no se delegan.</p></div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Mirá lo que hace.</b> Como el agente trabaja en tu navegador, vas viendo cada paso y podés frenarlo cuando quieras. Las reglas exactas y los permisos por sitio pueden variar según la versión: revisalos en la extensión antes de usarla con cuentas importantes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUENAS PRÁCTICAS -->
+<section id="buenas-practicas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">tips_and_updates</span> Para que rinda mejor</div>
+      <h2>Buenas prácticas</h2>
+      <p>Las ideas de siempre, más las específicas de un agente que toca páginas.</p>
+    </div>
+
+    <div class="doc rv">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Checklist antes de delegar una tarea</span>
+      </div>
+      <div class="body">
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Empezá leyendo, después actuá.</b> Primero pedile que resuma o investigue. Cuando confíes, pasá a que complete o haga clic.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Decile cuándo está terminado.</b> "Listo cuando tengas la tabla con 5 filas" evita que siga de más o frene antes.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Pedí confirmación antes de enviar.</b> "Mostrame cómo queda y esperá mi OK" en cualquier formulario o mensaje.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Dividí las tareas largas.</b> Mejor tres pedidos cortos que uno enorme: se controla mejor y se corrige más fácil.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Cuidá qué sesiones tenés abiertas.</b> Si estás logueado en una cuenta importante, el agente trabaja con ese acceso. Usalo con criterio.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Revisá el resultado.</b> Puede equivocarse al leer una tabla o elegir un elemento. Verificá lo que va a usarse en serio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE DEL TALLER -->
+<section id="cierre" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">flag</span> Fin del taller</div>
+      <h2>Eso es todo: ya tenés las 9 clases</h2>
+      <p>De no saber qué es un LLM a tener un agente que trabaja en tu navegador. Un repaso rápido del recorrido completo.</p>
+    </div>
+
+    <div class="finale rv">
+      <div class="finale-top">
+        <div class="finale-icon"><span class="material-icons-round">military_tech</span></div>
+        <div>
+          <div class="finale-stat">9<span>/9</span></div>
+          <div class="finale-label">clases completadas</div>
+        </div>
+      </div>
+      <div class="class-pills">
+        <span class="pill-done"><span class="material-icons-round">check</span> 01 · Tipos de IA y conexiones</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 02 · Los 4 Claude</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 03 · IA Generativa</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 04 · Hosting y dominios</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 05 · Design System</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 06 · Generando proyectos</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 07 · Rutinas</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 08 · Videos</span>
+        <span class="pill-current"><span class="material-icons-round">flag</span> 09 · Claude en Chrome (esta)</span>
+      </div>
+    </div>
+
+    <div class="next-head rv">
+      <h3>Próximos pasos para el equipo</h3>
+      <p>Ideas simples para que esto no quede en "vi el taller una vez".</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">visibility</span></div>
+        <div><h4>Empezá por leer</h4><p>Pedile que resuma o compare páginas. Es lo más simple y sin riesgo.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">task_alt</span></div>
+        <div><h4>Sumá tareas repetitivas</h4><p>Una vez que confíes, delegá formularios y extracción de datos, con confirmación.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">bookmark</span></div>
+        <div><h4>Guardá los pedidos que funcionan</h4><p>Son la base de una rutina o de un skill para el equipo.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">quiz</span></div>
+        <div><h4>Repasá si hace falta</h4><p>El cuestionario del taller, si algo no quedó claro.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top:36px; justify-content:center;">
+      <a href="../cuestionario/index.html" class="btn btn-primary"><span class="material-icons-round">quiz</span> Ir al cuestionario</a>
+      <a href="../index.html" class="btn btn-ghost">Volver al temario</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Kidscorp Design AI Workshop · Clase 09 · uso educativo interno · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-02/index.html">Clase 02</a>
+        <a href="../clase-03/index.html">Clase 03</a>
+        <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../clase-05/index.html">Clase 05</a>
+        <a href="../clase-06/index.html">Clase 06</a>
+        <a href="../clase-07/index.html">Clase 07</a>
+        <a href="../clase-08/index.html">Clase 08</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const toc = document.querySelector('.toc');
+  const tocBtn = document.querySelector('.toc-btn');
+  const tocLabel = document.querySelector('.toc-label');
+  const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+  if (toc && tocBtn) {
+    tocBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !toc.classList.contains('open');
+      toc.classList.toggle('open', willOpen);
+      tocBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!toc.contains(e.target)) toc.classList.remove('open');
+    });
+    navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+  }
+
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (tocLabel) tocLabel.textContent = link.textContent;
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
+
+  // Copiar prompt
+  document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', async () => {
+    const text = btn.closest('.pcard2').querySelector('pre').textContent.trim();
+    const label = btn.querySelector('.ctext');
+    try { await navigator.clipboard.writeText(text); label.textContent = 'Copiado'; }
+    catch (e) { label.textContent = 'Seleccioná y copiá'; }
+    btn.classList.add('done');
+    setTimeout(() => { label.textContent = 'Copiar'; btn.classList.remove('done'); }, 1800);
+  }));
+</script>
+</body>
+</html>
