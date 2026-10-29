@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 07 · Rutinas: que Claude trabaje por vos</title>
+<meta name="description" content="Cómo programar tareas en Claude para que se ejecuten solas cada cierto tiempo: un brief matutino conectado a Notion y Calendar, resúmenes semanales y más ejemplos prácticos para el equipo.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Kidscorp Design AI Workshop</div>
+    </a>
+    <div class="toc" id="toc">
+      <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="material-icons-round">toc</span>
+        <span class="toc-label">Contenidos</span>
+        <span class="material-icons-round toc-chev">expand_more</span>
+      </button>
+      <div class="toc-menu">
+        <a href="#que-es">Qué es una rutina</a>
+        <a href="#anatomia">Las 4 piezas</a>
+        <a href="#brief">Caso estrella: brief matutino</a>
+        <a href="#ejemplos">Más ejemplos para el equipo</a>
+        <a href="#paso-a-paso">Cómo armarla</a>
+        <a href="#frecuencias">Frecuencias</a>
+        <a href="#cuidados">Cuidados</a>
+        <a href="#cierre">Lo que sigue</a>
+      </div>
+    </div>
+    <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Kidscorp Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 07</span></div>
+    <div class="eyebrow"><span class="material-icons-round">schedule</span> Clase 07 · Parte 4</div>
+    <h1>Que Claude <span class="gr">trabaje antes</span> de que abras la compu</h1>
+    <p class="lead">Hasta ahora le pedías cosas a Claude cuando se te ocurrían. Con las rutinas lo programás una vez y se ejecuta solo, todos los días o cuando vos digas: un brief a la mañana, un resumen los viernes, un aviso cuando algo se atrasa.</p>
+    <div class="cta-row">
+      <a href="#que-es" class="btn btn-primary"><span class="material-icons-round">rocket_launch</span> Empezar</a>
+      <a href="#brief" class="btn btn-ghost">Ir al brief matutino</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ ES -->
+<section id="que-es" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">autorenew</span> De pedir a programar</div>
+      <h2>Qué es una rutina</h2>
+      <p>Una rutina es un pedido a Claude que se guarda junto con un horario. Llegada la hora, Claude lo ejecuta sin que tengas que escribirle nada.</p>
+    </div>
+
+    <div class="defs cols-2">
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--text-dimmer), #3E3E3E);"><span class="material-icons-round">chat</span></div>
+        <h4>Un chat normal</h4>
+        <div class="who">vos pedís → Claude responde</div>
+        <p>Depende de que te acuerdes de preguntar, y de volver a escribir el mismo pedido cada vez.</p>
+        <div class="prompt">"¿Qué tengo para hoy?" (todos los días, a mano)</div>
+      </div>
+      <div class="def rv">
+        <div class="ic" style="background:linear-gradient(135deg, var(--violet), var(--pink));"><span class="material-icons-round">schedule</span></div>
+        <h4>Una rutina</h4>
+        <div class="who">horario → Claude ejecuta → te llega el resultado</div>
+        <p>El pedido se escribe una sola vez. Claude lo repite solo, con datos frescos de tus herramientas en cada corrida.</p>
+        <div class="prompt">"Todos los días hábiles a las 8:30, armame mi brief del día."</div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Es la unión de dos cosas que ya vimos:</b> las <b>conexiones</b> de la Clase 02 (el acceso a Notion, Calendar, Gmail) más un <b>horario</b>. Sin conexiones, una rutina no tiene de dónde sacar información real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ANATOMÍA -->
+<section id="anatomia">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">extension</span> Qué lleva siempre</div>
+      <h2>Las 4 piezas de una rutina</h2>
+      <p>Toda rutina, sea simple o complicada, se define respondiendo estas cuatro preguntas.</p>
+    </div>
+
+    <div class="labs">
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">⏰</span><span class="pill">Cuándo</span></div>
+        <h4>El horario</h4>
+        <p>Cada cuánto corre: todos los días, solo días hábiles, los lunes, el primer día del mes. Y a qué hora.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">📝</span><span class="pill">Qué</span></div>
+        <h4>El pedido</h4>
+        <p>El prompt que Claude ejecuta cada vez. Se escribe igual que en la Clase 02: contexto, objetivo y formato de salida.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🔌</span><span class="pill">Con qué</span></div>
+        <h4>Las conexiones</h4>
+        <p>Qué herramientas puede leer: Notion, Calendar, Gmail, HubSpot, Slack. Solo las que la rutina necesita.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">📬</span><span class="pill">Dónde llega</span></div>
+        <h4>La salida</h4>
+        <p>Dónde aparece el resultado: en la app, en un mail a vos mismo, en una página de Notion o en un canal privado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIEF MATUTINO -->
+<section id="brief" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">wb_sunny</span> Ejemplo en vivo</div>
+      <h2>Caso estrella: el brief matutino</h2>
+      <p>La rutina que más se le saca provecho. Todas las mañanas, antes de empezar, Claude junta lo que necesitás saber del día en un solo lugar.</p>
+    </div>
+
+    <div class="sources rv">
+      <div class="src"><span class="material-icons-round">task_alt</span><b>Notion</b><small>tareas y proyectos</small></div>
+      <div class="src"><span class="material-icons-round">event</span><b>Calendar</b><small>agenda del día</small></div>
+      <div class="src"><span class="material-icons-round">mail</span><b>Gmail</b><small>mails sin responder</small></div>
+      <div class="src"><span class="material-icons-round">newspaper</span><b>Noticias</b><small>búsqueda web de tus temas</small></div>
+      <span class="material-icons-round arrow">arrow_forward</span>
+      <div class="src out"><span class="material-icons-round">wb_sunny</span><b>Brief 8:30</b><small>una sola página</small></div>
+    </div>
+
+    <div class="sec-head" style="margin-top:52px; margin-bottom:24px;">
+      <h2 style="font-size:24px;">1. El pedido que se programa</h2>
+      <p>Una sola vez. Fijate que dice qué mirar en cada fuente y cómo ordenar la salida.</p>
+    </div>
+
+    <div class="doc rv">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">rutina · brief-matutino · días hábiles 8:30</span>
+      </div>
+      <div class="body">
+        <div class="routine-prompt">
+Armame mi brief del día. Usá estas fuentes:
+
+1. NOTION: las tareas asignadas a mí que vencen hoy o están atrasadas, y las que están "En curso". Agrupalas por proyecto.
+2. CALENDAR: mis reuniones de hoy con horario y quién participa. Marcá si hay huecos de más de 1 hora para trabajar concentrado.
+3. GMAIL: mails de las últimas 48 hs que parezcan esperar mi respuesta. Máximo 5, con una línea de qué piden.
+4. NOTICIAS: lo más relevante de ayer sobre publicidad para chicos y teens, gaming y Roblox. Máximo 3, con link.
+
+Formato: títulos cortos, bullets, nada de relleno. Cerrá con "Lo más importante de hoy" en una sola línea.
+No envíes mails ni cambies nada en Notion: solo leé y resumí.</div>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:52px; margin-bottom:24px;">
+      <h2 style="font-size:24px;">2. Así te llega cada mañana</h2>
+      <p>Un ejemplo de salida, con datos inventados, para que veas el formato.</p>
+    </div>
+
+    <div class="brief rv">
+      <div class="brief-head">
+        <span class="material-icons-round">wb_sunny</span>
+        <div><h4>Buen día. Brief del martes</h4><small>Generado a las 8:30 · 4 fuentes</small></div>
+      </div>
+      <div class="brief-grid">
+        <div class="bcard">
+          <h5><span class="material-icons-round">task_alt</span> Notion · Para hoy</h5>
+          <ul>
+            <li><b>Atrasada:</b> revisar copys del kit de prensa</li>
+            <li>Entregar versión final de la presentación de resultados</li>
+            <li>Aprobar piezas de la campaña de verano</li>
+          </ul>
+        </div>
+        <div class="bcard">
+          <h5><span class="material-icons-round">event</span> Calendar · Agenda</h5>
+          <ul>
+            <li><b>10:00</b> Daily del equipo</li>
+            <li><b>11:30</b> Reunión con cliente (3 personas)</li>
+            <li><b>15:00 a 17:00</b> Hueco libre para trabajo concentrado</li>
+          </ul>
+        </div>
+        <div class="bcard">
+          <h5><span class="material-icons-round">mail</span> Gmail · Esperan respuesta</h5>
+          <ul>
+            <li>Pedido de presupuesto actualizado (hace 2 días)</li>
+            <li>Duda sobre formatos de un banner</li>
+          </ul>
+        </div>
+        <div class="bcard">
+          <h5><span class="material-icons-round">newspaper</span> Noticias</h5>
+          <ul>
+            <li>Roblox anunció cambios en su política para menores</li>
+            <li>Nuevo informe sobre consumo de video en teens</li>
+          </ul>
+        </div>
+      </div>
+      <div class="brief-foot"><span class="material-icons-round">flag</span><p><b>Lo más importante de hoy:</b> la presentación de resultados antes de la reunión de las 11:30.</p></div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Cómo se lo pedís:</b> no hace falta configurar nada raro. Le decís "quiero que esto corra todos los días hábiles a las 8:30" y Claude te arma la rutina. Los pasos están más abajo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MÁS EJEMPLOS -->
+<section id="ejemplos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">groups</span> Para cada equipo</div>
+      <h2>Más rutinas para el equipo</h2>
+      <p>El brief es una idea. La misma lógica sirve para cualquier tarea repetitiva que arranca con "revisar" o "juntar".</p>
+    </div>
+
+    <div class="rgrid">
+      <div class="rcard rv">
+        <div class="rtop"><span class="rtag">Sales</span><span class="rwhen"><span class="material-icons-round">schedule</span> Lunes 9:00</span></div>
+        <h4>Foco de la semana comercial</h4>
+        <p>Cruza HubSpot con Calendar: negocios que llevan días sin movimiento, reuniones de la semana y a quién hay que escribirle primero.</p>
+        <div class="rconn"><span>HubSpot</span><span>Calendar</span></div>
+      </div>
+      <div class="rcard rv">
+        <div class="rtop"><span class="rtag">Marketing</span><span class="rwhen"><span class="material-icons-round">schedule</span> Todos los días 9:00</span></div>
+        <h4>Radar de noticias y competencia</h4>
+        <p>Busca novedades sobre tus marcas, competidores y temas de la industria, y te deja un resumen corto con links.</p>
+        <div class="rconn"><span>Búsqueda web</span><span>Notion</span></div>
+      </div>
+      <div class="rcard rv">
+        <div class="rtop"><span class="rtag">Creative Lab</span><span class="rwhen"><span class="material-icons-round">schedule</span> Viernes 16:00</span></div>
+        <h4>Cierre semanal de proyectos</h4>
+        <p>Resume qué se terminó, qué quedó en curso y qué se arrastra a la próxima semana, a partir del tablero de Notion.</p>
+        <div class="rconn"><span>Notion</span></div>
+      </div>
+      <div class="rcard rv">
+        <div class="rtop"><span class="rtag">Accounts</span><span class="rwhen"><span class="material-icons-round">schedule</span> Días hábiles 8:00</span></div>
+        <h4>Pendientes con clientes</h4>
+        <p>Mails de clientes sin responder hace más de 24 hs y reuniones del día con el contexto de cada cuenta.</p>
+        <div class="rconn"><span>Gmail</span><span>Calendar</span><span>HubSpot</span></div>
+      </div>
+      <div class="rcard rv">
+        <div class="rtop"><span class="rtag">Growth</span><span class="rwhen"><span class="material-icons-round">schedule</span> Lunes 9:30</span></div>
+        <h4>Resumen de métricas</h4>
+        <p>Lee la planilla de resultados y cuenta en tres líneas qué subió, qué bajó y qué conviene mirar esta semana.</p>
+        <div class="rconn"><span>Google Sheets</span></div>
+      </div>
+      <div class="rcard rv">
+        <div class="rtop"><span class="rtag">Todo el equipo</span><span class="rwhen"><span class="material-icons-round">schedule</span> Viernes 15:00</span></div>
+        <h4>Recordatorio de tareas vencidas</h4>
+        <p>Revisa en Notion lo que está atrasado y te lo deja en una lista corta, para que no lo descubras el lunes.</p>
+        <div class="rconn"><span>Notion</span></div>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:28px;">
+      <p><b>Una buena señal:</b> si hacés lo mismo cada día o cada semana abriendo las mismas 3 herramientas para juntar información, es candidato a rutina.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PASO A PASO -->
+<section id="paso-a-paso" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">route</span> Cómo se arma, en la práctica</div>
+      <h2>De la idea a la rutina funcionando</h2>
+      <p>No la programes de entrada. Primero comprobá que el pedido sale bien una vez.</p>
+    </div>
+
+    <div class="tline rv">
+      <div class="tline-steps">
+        <div class="tline-line"><div class="tline-fill"></div></div>
+        <div class="tstep" style="--i:0">
+          <div class="tdot">1</div>
+          <h4>Probalo a mano</h4>
+          <p>Corré el pedido en un chat común y mirá si el resultado es el que esperabas.</p>
+        </div>
+        <div class="tstep" style="--i:1">
+          <div class="tdot">2</div>
+          <h4>Ajustá el pedido</h4>
+          <p>Cambiá lo que no te sirvió: más corto, otro orden, menos fuentes. Iterá como en la Clase 02.</p>
+        </div>
+        <div class="tstep" style="--i:2">
+          <div class="tdot">3</div>
+          <h4>Pedí que lo programe</h4>
+          <p>"Convertilo en una rutina que corra de lunes a viernes a las 8:30."</p>
+        </div>
+        <div class="tstep" style="--i:3">
+          <div class="tdot">4</div>
+          <h4>Hacé una corrida de prueba</h4>
+          <p>Ejecutala una vez ahora, sin esperar al horario, y aprobá los permisos que pida.</p>
+        </div>
+        <div class="tstep" style="--i:4">
+          <div class="tdot">5</div>
+          <h4>Revisala la primera semana</h4>
+          <p>Fijate si lo que llega te sirve. Si algo sobra o falta, se edita la rutina, no se rehace.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRECUENCIAS -->
+<section id="frecuencias">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">calendar_month</span> Cada cuánto</div>
+      <h2>Elegir la frecuencia</h2>
+      <p>Se lo decís en lenguaje normal. Más seguido no siempre es mejor: una rutina que llega todos los días y nadie lee es ruido.</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">today</span></div>
+        <div><h4>Todos los días hábiles</h4><p>"De lunes a viernes a las 8:30." Para el brief y lo que cambia todos los días.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">date_range</span></div>
+        <div><h4>Una vez por semana</h4><p>"Los lunes a las 9." o "los viernes a las 16." Para planificar y cerrar la semana.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">calendar_month</span></div>
+        <div><h4>Una vez por mes</h4><p>"El primer día hábil del mes." Para reportes de resultados y revisiones.</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">looks_one</span></div>
+        <div><h4>Una sola vez</h4><p>"Mañana a las 15 recordame revisar esto." Un aviso programado, que no se repite.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUIDADOS -->
+<section id="cuidados" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">shield</span> Antes de dejarla sola</div>
+      <h2>Cuidados con las rutinas</h2>
+      <p>Una rutina corre sin que estés mirando, así que conviene definir bien qué puede y qué no puede hacer.</p>
+    </div>
+
+    <div class="doc rv">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Checklist antes de programar</span>
+      </div>
+      <div class="body">
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Empezá solo con lectura.</b> Que lea y resuma. Escribir en Notion o mandar mails automáticamente es otro nivel: hacelo recién cuando la rutina ya demostró que sale bien.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Escribí lo que no tiene que hacer.</b> "No envíes mails, no modifiques tareas." Evita sorpresas.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Conectá solo lo necesario.</b> Cada conexión es acceso a información real. Si la rutina no usa Gmail, no la conectes con Gmail.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Cuidá los datos sensibles.</b> Información de clientes, contratos o datos de menores no va en una rutina compartida ni en una salida que lea más gente de la necesaria.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Revisá el resultado seguido, sobre todo al principio.</b> Claude puede equivocarse o leer mal una fuente. Una rutina automática no significa que no haya que mirar.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Ponele un nombre claro y apagala si ya no sirve.</b> "Brief matutino · Julián" se entiende solo. Las rutinas olvidadas consumen uso sin aportar nada.</p></div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Dónde corre depende de dónde la crees.</b> Algunas rutinas necesitan que tu computadora esté prendida y la app abierta a la hora programada; otras corren en la nube y no dependen de tu equipo. Los límites y la disponibilidad pueden variar según tu plan: confirmalo en tu cuenta antes de depender de una rutina para algo crítico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE DEL TALLER -->
+<section id="cierre">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">flag</span> Casi terminamos</div>
+      <h2>Ya tenés 7 de las 8 clases</h2>
+      <p>De no saber qué es un LLM a tener a Claude trabajando solo cada mañana. Falta una: usarlo para armar videos y motion graphics.</p>
+    </div>
+
+    <div class="finale rv">
+      <div class="finale-top">
+        <div class="finale-icon"><span class="material-icons-round">military_tech</span></div>
+        <div>
+          <div class="finale-stat">7<span>/8</span></div>
+          <div class="finale-label">clases completadas</div>
+        </div>
+      </div>
+      <div class="class-pills">
+        <span class="pill-done"><span class="material-icons-round">check</span> 01 · Tipos de IA y conexiones</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 02 · Los 4 Claude</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 03 · IA Generativa</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 04 · Hosting y dominios</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 05 · Design System</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 06 · Generando proyectos</span>
+        <span class="pill-current"><span class="material-icons-round">flag</span> 07 · Rutinas (esta)</span>
+        <span class="pill-next"><span class="material-icons-round">schedule</span> 08 · Videos</span>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top:36px; justify-content:center;">
+      <a href="../clase-08/index.html" class="btn btn-primary"><span class="material-icons-round">arrow_forward</span> Ir a la Clase 08: Videos</a>
+      <a href="../index.html" class="btn btn-ghost">Volver al temario</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Kidscorp Design AI Workshop · Clase 07 · uso educativo interno · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-02/index.html">Clase 02</a>
+        <a href="../clase-03/index.html">Clase 03</a>
+        <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../clase-05/index.html">Clase 05</a>
+        <a href="../clase-06/index.html">Clase 06</a>
+        <a href="../clase-08/index.html">Clase 08</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const toc = document.querySelector('.toc');
+  const tocBtn = document.querySelector('.toc-btn');
+  const tocLabel = document.querySelector('.toc-label');
+  const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+  if (toc && tocBtn) {
+    tocBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !toc.classList.contains('open');
+      toc.classList.toggle('open', willOpen);
+      tocBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!toc.contains(e.target)) toc.classList.remove('open');
+    });
+    navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+  }
+
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (tocLabel) tocLabel.textContent = link.textContent;
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
+</script>
+</body>
+</html>

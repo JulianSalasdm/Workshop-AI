@@ -250,6 +250,82 @@ const QUESTION_BANK = [
     correct: 1,
     explain: "Como todas las slides comparten el mismo sistema de tokens y componentes, alcanza con pedirle que unifique el estilo sin tocar el contenido."
   },
+
+  // ── Clase 07: qué es una rutina, piezas, brief matutino, cuidados ──
+  {
+    q: "Según la Clase 07, ¿qué es una rutina en Claude?",
+    options: ["Un pedido guardado junto con un horario, que Claude ejecuta solo", "Un tipo de modelo más rápido que Haiku", "Un skill que solo sirve para diseño", "Una carpeta con archivos del Proyecto"],
+    correct: 0,
+    explain: "Una rutina es un pedido que se escribe una vez y se ejecuta automáticamente en el horario que definas, con datos actualizados en cada corrida."
+  },
+  {
+    q: "¿Cuáles son las 4 piezas que define toda rutina?",
+    options: ["Modelo, tokens, Figma y hosting", "Cuándo corre, qué pide, con qué conexiones y dónde llega el resultado", "Nombre, logo, color y tipografía", "Chat, Code, Cowork y Design"],
+    correct: 1,
+    explain: "Toda rutina responde: cuándo (horario), qué (el pedido), con qué (las conexiones) y dónde llega (la salida)."
+  },
+  {
+    q: "En el brief matutino de la Clase 07, ¿para qué sirve conectar Notion y Calendar?",
+    options: ["Para que Claude tenga de dónde leer tus tareas y tu agenda reales cada día", "Para que Claude cambie el horario de las reuniones", "Para exportar el brief a PDF", "No hace falta conectar nada"],
+    correct: 0,
+    explain: "Sin conexiones la rutina no tiene datos reales: Notion aporta las tareas y Calendar la agenda del día."
+  },
+  {
+    q: "¿Cuál es la recomendación al armar una rutina nueva?",
+    options: ["Programarla directo y no revisarla más", "Probar el pedido a mano primero, empezar solo con lectura y revisar los resultados al principio", "Darle acceso a todas las conexiones por si acaso", "Programarla para que corra cada minuto"],
+    correct: 1,
+    explain: "Conviene comprobar que el pedido funciona, limitarla a leer y resumir, conectar solo lo necesario y mirar lo que llega las primeras veces."
+  },
+  {
+    q: "En la Clase 07, ¿qué tipo de tarea es candidata ideal a convertirse en rutina?",
+    options: ["Una decisión estratégica única y delicada", "Algo repetitivo que hacés cada día o semana abriendo las mismas herramientas para juntar información", "Un diseño que se hace una sola vez", "Cualquier tarea, sin importar si se repite"],
+    correct: 1,
+    explain: "Si repetís lo mismo en un horario fijo y siempre juntás datos de las mismas fuentes, una rutina lo hace por vos."
+  },
+  {
+    q: "¿Por qué conviene empezar una rutina solo con lectura (leer y resumir) y no con acciones como mandar mails?",
+    options: ["Porque las acciones no se pueden programar", "Porque la rutina corre sin que estés mirando: conviene confirmar que sale bien antes de darle poder de enviar o modificar", "Porque leer consume más", "No hay ninguna razón"],
+    correct: 1,
+    explain: "Al correr sola, un error con permisos de escritura puede tener consecuencias. Primero se valida que lea y resuma bien."
+  },
+
+  // ── Clase 08: video y motion graphics con Claude ──
+  {
+    q: "Según la Clase 08, ¿qué hace Claude para generar un motion graphic?",
+    options: ["Genera video fotorrealista con cámara real, como Veo o Sora", "Escribe la animación como código (HTML, CSS, JavaScript) que luego se exporta a video", "Dibuja cada cuadro a mano en un editor de timeline", "Solo puede describir la idea en texto"],
+    correct: 1,
+    explain: "Claude diseña y programa la animación (por ejemplo con GSAP); después se renderiza cuadro por cuadro a MP4. Por eso es editable y repetible."
+  },
+  {
+    q: "¿Qué se necesita para editar un archivo de video existente (recortar, unir, subtitular) con Claude?",
+    options: ["Nada, funciona igual en cualquier chat", "Herramientas en tu computadora, como las que usan Claude Code o Cowork", "Un plan especial de Figma", "Haber armado antes una rutina"],
+    correct: 1,
+    explain: "Editar archivos de video requiere herramientas locales que Claude Code y Cowork pueden ejecutar; en Chat se arma y se ve la animación, pero no se edita el archivo."
+  },
+  {
+    q: "¿Qué muestra Prompt Motion, el sitio mencionado en la Clase 08?",
+    options: ["Un editor de video online", "Una colección de videos de motion hechos con Claude, con los prompts que los generaron", "Un listado de precios de herramientas de video", "Videos fotorrealistas generados por Sora"],
+    correct: 1,
+    explain: "Es una colección pública de videos de motion hechos con Claude, con prompts (y a veces skills) para copiar y adaptar."
+  },
+  {
+    q: "¿Cuál de estos pedidos va a dar mejor resultado al pedir una animación?",
+    options: ["\"Hacé un video copado\"", "\"Video de 8 segundos, 16:9, texto 'X' que entra con rebote suave y cierra con el logo\"", "\"Algo dinámico para redes\"", "\"Animá todo lo que puedas\""],
+    correct: 1,
+    explain: "Duración, formato, texto exacto y movimiento concreto (\"rebote suave\") dejan menos a la interpretación y evitan ida y vuelta."
+  },
+  {
+    q: "¿Cuál de estos pedidos corresponde a editar un video que ya existe, según la Clase 08?",
+    options: ["Hacer un logo reveal desde cero", "Recortar del 01:20 al 02:05, sacar silencios y exportar en MP4", "Animar un gráfico de barras con datos nuevos", "Crear un fondo animado en loop"],
+    correct: 1,
+    explain: "Recortar, unir, subtitular o cambiar de formato se hace sobre un archivo existente, con herramientas de video en tu computadora (Code o Cowork)."
+  },
+  {
+    q: "Para ajustes finos de ritmo, color o corte exacto al cuadro, ¿qué recomienda la Clase 08?",
+    options: ["Seguir pidiéndoselo a Claude sin límite", "Usar un editor como Premiere, DaVinci o CapCut para el retoque final", "No editar nada", "Rehacer el video desde cero"],
+    correct: 1,
+    explain: "Claude resuelve bien lo mecánico y repetitivo; el retoque fino conviene hacerlo en un editor de video."
+  },
 ];
 
 function shuffle(arr) {

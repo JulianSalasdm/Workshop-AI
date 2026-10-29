@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clase 08 · Videos y motion graphics con Claude</title>
+<meta name="description" content="Qué puede hacer hoy Claude con video: generar motion graphics, editar y recortar, subtitular y adaptar formatos. Con dos reels reales de Kidscorp, ejemplos de Prompt Motion y prompts listos para copiar.">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<header class="topper">
+  <div class="bar">
+    <a class="brand" href="../index.html">
+      <div class="mark"><img src="assets/logos/iso-full-color.png" alt="Kidscorp"></div>
+      <div class="name">Kidscorp Design AI Workshop</div>
+    </a>
+    <div class="toc" id="toc">
+      <button class="toc-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="material-icons-round">toc</span>
+        <span class="toc-label">Contenidos</span>
+        <span class="material-icons-round toc-chev">expand_more</span>
+      </button>
+      <div class="toc-menu">
+        <a href="#que-puede">Qué puede hacer hoy</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#reels">Nuestros reels</a>
+        <a href="#prompt-motion">Prompt Motion</a>
+        <a href="#prompts">Prompts para copiar</a>
+        <a href="#editar">Editar y recortar</a>
+        <a href="#buenas-practicas">Buenas prácticas</a>
+        <a href="#cierre">Cierre del taller</a>
+      </div>
+    </div>
+    <a class="back" href="../index.html"><span class="material-icons-round">arrow_back</span> Temario</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Kidscorp Design AI Workshop</a><span class="material-icons-round">chevron_right</span><span>Clase 08</span></div>
+    <div class="eyebrow"><span class="material-icons-round">movie_filter</span> Clase 08 · Parte 5 · Último módulo</div>
+    <h1>Del prompt al <span class="gr">video en movimiento</span>, sin abrir un editor</h1>
+    <p class="lead">Claude puede armar animaciones, motion graphics y piezas de video con la marca aplicada, y también ayudarte a recortar, subtitular y adaptar videos que ya tenés. Acá vemos qué se puede hacer hoy, dos ejemplos reales de Kidscorp y prompts para empezar.</p>
+    <div class="cta-row">
+      <a href="#reels" class="btn btn-primary"><span class="material-icons-round">play_circle</span> Ver los reels</a>
+      <a href="#prompts" class="btn btn-ghost">Ir a los prompts</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ PUEDE HACER -->
+<section id="que-puede" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">auto_awesome</span> Capacidades actuales</div>
+      <h2>Qué puede hacer Claude con video</h2>
+      <p>Cuatro cosas distintas. Conviene tenerlas separadas porque se piden, y se resuelven, de formas diferentes.</p>
+    </div>
+
+    <div class="labs">
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">🎬</span><span class="pill">Lo más fuerte</span></div>
+        <h4>Motion graphics</h4>
+        <p>Texto animado, logos, gráficos de datos, interfaces, diagramas y fondos en movimiento, con tu marca aplicada.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">✂️</span><span class="pill">Con Code o Cowork</span></div>
+        <h4>Editar y recortar</h4>
+        <p>Cortar un tramo, unir clips, sacar silencios, achicar el peso o cambiar de formato un video que ya existe.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">💬</span><span class="pill">Accesibilidad</span></div>
+        <h4>Subtítulos y textos</h4>
+        <p>Transcribir el audio, armar subtítulos en varios idiomas y sumarlos al video.</p>
+      </div>
+      <div class="lab-card rv">
+        <div class="top-row"><span class="emoji">📝</span><span class="pill">Antes de producir</span></div>
+        <h4>Guion y storyboard</h4>
+        <p>Pensar la idea, el guion y la secuencia de escenas, y dejar el pedido listo para animar.</p>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Qué no es:</b> Claude no genera video fotorrealista con personas, paisajes o cámara real, como hacen Veo, HeyGen o Sora. Eso lo vimos en la <a href="../clase-03/index.html" style="color:var(--violet-soft); text-decoration:none;">Clase 03</a>. Lo que hace Claude es <b>diseñar y programar animación</b>: es ideal para piezas gráficas, explicativas y de marca.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">route</span> Por dentro</div>
+      <h2>Cómo se arma un video con Claude</h2>
+      <p>Claude no "dibuja" cuadro por cuadro. Escribe la animación como código y después se convierte en video. Por eso es preciso, editable y repetible.</p>
+    </div>
+
+    <div class="tline rv">
+      <div class="tline-steps">
+        <div class="tline-line"><div class="tline-fill"></div></div>
+        <div class="tstep" style="--i:0">
+          <div class="tdot">1</div>
+          <h4>Le pedís la pieza</h4>
+          <p>Duración, formato, estilo, texto exacto y qué tiene que pasar en cada momento.</p>
+        </div>
+        <div class="tstep" style="--i:1">
+          <div class="tdot">2</div>
+          <h4>Claude escribe la animación</h4>
+          <p>Con HTML, CSS y JavaScript, usando librerías de animación como GSAP, y aplicando el design system.</p>
+        </div>
+        <div class="tstep" style="--i:2">
+          <div class="tdot">3</div>
+          <h4>La ves en vivo</h4>
+          <p>Se previsualiza al instante en el navegador, sin esperar a que se renderice.</p>
+        </div>
+        <div class="tstep" style="--i:3">
+          <div class="tdot">4</div>
+          <h4>Pedís ajustes</h4>
+          <p>"Más rápido", "cambiá el color", "agregá una escena". Se retoca el código, no se rehace.</p>
+        </div>
+        <div class="tstep" style="--i:4">
+          <div class="tdot">5</div>
+          <h4>Se exporta a MP4</h4>
+          <p>Se captura la animación cuadro por cuadro y se arma el archivo de video final.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Dónde pasa cada cosa:</b> en <b>Chat</b> o <b>Design</b> se arma y se ve la animación en vivo. Para exportarla como MP4 y para editar archivos de video hacen falta herramientas en tu computadora, que es lo que hacen <b>Claude Code</b> y <b>Cowork</b>. Las capacidades cambian rápido: confirmá qué puede exportar tu versión.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUESTROS REELS -->
+<section id="reels" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">play_circle</span> Ejemplos reales</div>
+      <h2>Dos reels hechos en Kidscorp con Claude</h2>
+      <p>Los dos son animaciones HTML renderizadas a video, 1920×1080. Acá se ven en versión liviana.</p>
+    </div>
+
+    <div class="vgrid">
+      <article class="vcard rv">
+        <div class="vframe"><video controls playsinline preload="metadata" src="assets/videos/rebrand-reel.mp4#t=0.5"></video></div>
+        <div class="vinfo">
+          <div class="vmeta"><span class="vtag">Rebrand</span><span>30 s · 16:9</span></div>
+          <h4>Reel de rebrand de Kidscorp</h4>
+          <p>Presenta la nueva identidad de Kidscorp con texto en movimiento, la marca aplicada y recursos 3D.</p>
+          <div class="rconn"><span>HTML</span><span>GSAP</span><span>three.js</span><span>Render a MP4</span></div>
+        </div>
+      </article>
+      <article class="vcard rv">
+        <div class="vframe"><video controls playsinline preload="metadata" src="assets/videos/u18dsp-reel.mp4#t=0.5"></video></div>
+        <div class="vinfo">
+          <div class="vmeta"><span class="vtag">Producto</span><span>46 s · 16:9</span></div>
+          <h4>Reel de la plataforma U18 DSP</h4>
+          <p>Presenta la plataforma escena por escena, con cifras animadas y piezas de contenido, y una cámara que salta de una escena a otra.</p>
+          <div class="rconn"><span>HTML</span><span>SVG</span><span>GSAP</span><span>Render a MP4</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Lo que muestran:</b> piezas de más de 30 segundos, con varias escenas, cámara, texto y datos, armadas sin un editor de video. Y como son código, se pueden cambiar un texto, un color o una escena y volver a exportar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPT MOTION -->
+<section id="prompt-motion">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">explore</span> Dato extra</div>
+      <h2>Más inspiración: Prompt Motion</h2>
+      <p>Una colección pública de videos de motion hechos con Claude Opus 5.5. Cada uno trae el prompt, y algunos, el skill que está detrás. Sirve para ver qué se puede pedir y copiar ideas.</p>
+    </div>
+
+    <div class="pm rv">
+      <div class="pm-frame">
+        <div class="pm-chrome"><span></span><span></span><span></span><b>prompt-motion.com</b></div>
+        <video autoplay muted loop playsinline preload="metadata" src="assets/videos/prompt-motion-scroll.webm"></video>
+      </div>
+      <div class="pm-side">
+        <h4>Qué vas a encontrar</h4>
+        <p>Los videos se filtran por tipo de animación:</p>
+        <div class="rconn" style="margin-top:0">
+          <span>Product UI</span><span>Kinetic type</span><span>Charts</span><span>Diagrams</span><span>Particles</span><span>Shapes</span><span>Phone</span><span>Characters</span><span>Photos</span><span>Music</span><span>Code</span>
+        </div>
+        <p style="margin-top:16px;">Ideal para empezar: elegí uno parecido a lo que necesitás, copiá su prompt y adaptalo a tu marca.</p>
+        <a class="btn btn-primary" href="https://prompt-motion.com/" target="_blank" rel="noopener"><span class="material-icons-round">open_in_new</span> Abrir Prompt Motion</a>
+        <small>Sitio externo, no es de Kidscorp. Video: captura de la página, para tener una vista previa acá.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPTS -->
+<section id="prompts" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">edit_note</span> Para copiar y adaptar</div>
+      <h2>Ejemplos de prompts por tipo de animación</h2>
+      <p>Cada uno cubre un estilo distinto. Cambiá los textos, los datos y los tiempos por los tuyos.</p>
+    </div>
+
+    <div class="ptabs rv" role="tablist" aria-label="Filtrar prompts por tipo">
+      <button type="button" class="ptab active" data-f="all">Todos</button>
+      <button type="button" class="ptab" data-f="anim">Animación</button>
+      <button type="button" class="ptab" data-f="datos">Datos y producto</button>
+      <button type="button" class="ptab" data-f="edicion">Edición</button>
+    </div>
+
+    <div class="pgrid">
+      <div class="pcard2 rv" data-c="anim">
+        <div class="ptop"><span class="rtag">Texto cinético</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Armá un video de 8 segundos, 1920×1080, con fondo oscuro. Texto cinético con la frase "Publicidad segura para audiencias U18": cada palabra entra con un golpe de escala y un rebote suave, y la palabra "segura" se resalta con el degradé violeta de la marca. Ritmo rápido. Cerrá con el logo centrado.</pre>
+      </div>
+      <div class="pcard2 rv" data-c="anim">
+        <div class="ptop"><span class="rtag">Logo reveal</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Logo reveal de 4 segundos con el isotipo de Kidscorp: las dos formas entran desde los costados, se ensamblan con un pequeño rebote, un destello recorre el logo y aparece el nombre debajo. Terminá con un fade limpio y dejá 1 segundo de pausa al final.</pre>
+      </div>
+      <div class="pcard2 rv" data-c="anim">
+        <div class="ptop"><span class="rtag">Fondo en loop</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Fondo animado de 6 segundos que se repita en loop sin cortes: formas geométricas violetas que flotan con parallax suave y partículas pequeñas que derivan lento. Colores de la marca, movimiento calmo, que no distraiga del texto que se va a poner encima.</pre>
+      </div>
+      <div class="pcard2 rv" data-c="datos">
+        <div class="ptop"><span class="rtag">Gráfico animado</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Animá un gráfico de barras de 10 segundos con estos datos: Q1 120, Q2 180, Q3 150, Q4 260. Las barras crecen de izquierda a derecha con un pequeño desfase, los valores cuentan hasta su número final y la barra más alta se destaca. Estilo limpio, sin 3D, con el título "Resultados del año".</pre>
+      </div>
+      <div class="pcard2 rv" data-c="datos">
+        <div class="ptop"><span class="rtag">Interfaz de producto</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Simulá en 12 segundos una pantalla de dashboard de campañas: aparece el título, tres tarjetas de métricas cuentan hasta su valor, un cursor hace clic en "Crear campaña" y se abre un panel lateral. Cámara con zoom lento hacia el panel. Aplicá el design system de Kidscorp.</pre>
+      </div>
+      <div class="pcard2 rv" data-c="datos">
+        <div class="ptop"><span class="rtag">Diagrama de proceso</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Explicá en 15 segundos cómo funciona una campaña: cuatro pasos conectados por líneas que se dibujan solas (Brief, Plan, Lanzamiento, Reporte). Cada paso se ilumina cuando se nombra. Textos cortos, un ícono por paso, ritmo constante.</pre>
+      </div>
+      <div class="pcard2 rv" data-c="edicion">
+        <div class="ptop"><span class="rtag">Recortar</span><span class="req">Code o Cowork</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Tengo el archivo entrevista.mp4. Recortá del minuto 01:20 al 02:05, sacá los silencios de más de 1 segundo y exportá en MP4. No toques el original: guardá el resultado con otro nombre.</pre>
+      </div>
+      <div class="pcard2 rv" data-c="edicion">
+        <div class="ptop"><span class="rtag">Subtítulos</span><span class="req">Code o Cowork</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Transcribí el audio de video.mp4 y generá subtítulos en español en un archivo .srt. Después incrustalos en el video, abajo y centrados, en Montserrat, máximo 2 líneas por pantalla. Avisame si hay partes donde no entendiste bien lo que dicen.</pre>
+      </div>
+      <div class="pcard2 rv" data-c="edicion">
+        <div class="ptop"><span class="rtag">Adaptar formatos</span><span class="req">Code o Cowork</span><button type="button" class="copy"><span class="material-icons-round">content_copy</span><span class="ctext">Copiar</span></button></div>
+        <pre>Tomá reel.mp4 (16:9) y generá dos versiones: una vertical 9:16 y una cuadrada 1:1, con el contenido centrado y sin cortar el texto. Máximo 30 segundos y menos de 20 MB cada una, listas para redes.</pre>
+      </div>
+    </div>
+
+    <div class="callbox rv" style="margin-top:28px;">
+      <p><b>La fórmula que se repite:</b> <b>duración</b> + <b>formato</b> + <b>estilo</b> + <b>texto exacto</b> + <b>qué pasa y en qué orden</b> + <b>cómo termina</b>. Cuanto más concreto el movimiento ("rebote suave", "zoom lento"), mejor sale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDITAR Y RECORTAR -->
+<section id="editar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">content_cut</span> Sobre videos que ya existen</div>
+      <h2>Editar y recortar</h2>
+      <p>No es un editor con timeline: Claude usa herramientas de video por detrás y vos le pedís el resultado en palabras.</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">content_cut</span></div>
+        <div><h4>Recortar un tramo</h4><p>"Quedate con del 00:45 al 01:30."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">merge</span></div>
+        <div><h4>Unir clips</h4><p>"Juntá estos 3 videos en este orden con una transición corta."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">compress</span></div>
+        <div><h4>Achicar el peso</h4><p>"Bajalo a menos de 10 MB para mandarlo por mail."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">aspect_ratio</span></div>
+        <div><h4>Cambiar de formato</h4><p>"Hacelo vertical para stories."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">graphic_eq</span></div>
+        <div><h4>Trabajar el audio</h4><p>"Sacame el audio como mp3" o "bajá la música debajo de la voz."</p></div>
+      </div>
+      <div class="conn-card rv">
+        <div class="ic"><span class="material-icons-round">subtitles</span></div>
+        <div><h4>Subtitular</h4><p>"Transcribilo y agregá subtítulos en español."</p></div>
+      </div>
+    </div>
+
+    <div class="callbox rv">
+      <p><b>Cuándo no alcanza:</b> para ajustes finos de ritmo, color o corte "al cuadro", un editor como Premiere, DaVinci o CapCut sigue siendo mejor. Claude resuelve bien lo mecánico y repetitivo, y te deja el material listo para el retoque final.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUENAS PRÁCTICAS -->
+<section id="buenas-practicas" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">tips_and_updates</span> Para que rinda mejor</div>
+      <h2>Buenas prácticas</h2>
+      <p>Las mismas ideas de las clases anteriores, aplicadas a video.</p>
+    </div>
+
+    <div class="doc rv">
+      <div class="top">
+        <span class="dot" style="background:#FF5F56"></span><span class="dot" style="background:#FFBD2E"></span><span class="dot" style="background:#27C93F"></span>
+        <span class="fn">Checklist antes de pedir un video</span>
+      </div>
+      <div class="body">
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Definí duración, formato y dónde se va a ver.</b> No es lo mismo un reel vertical de 15 s que una pieza de 45 s para una presentación.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Escribí el texto exacto.</b> Si lo dejás librado, Claude lo inventa. Pasale los textos, los números y los nombres tal como van.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Usá la marca.</b> Pedile que aplique el design system de la Clase 05 para que colores, tipografía y logo salgan bien sin repetirlos.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Pedí primero una versión corta.</b> Un borrador de 5 segundos para validar el estilo antes de armar los 30 completos.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Describí el movimiento con palabras concretas.</b> "Entra desde la izquierda con rebote suave" funciona mejor que "que se vea dinámico".</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Revisá textos y datos antes de publicar.</b> Ortografía, cifras y nombres. Y cuidá los derechos de la música y las imágenes que uses.</p></div>
+        <div class="field"><span class="material-icons-round">check_circle</span><p><b>Mirá un ejemplo que te guste.</b> Una captura, un video de referencia o un prompt de Prompt Motion acelera todo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE DEL TALLER -->
+<section id="cierre">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker"><span class="material-icons-round" style="font-size:16px">flag</span> Fin del taller</div>
+      <h2>Eso es todo: ya tenés las 8 clases</h2>
+      <p>De no saber qué es un LLM a tener a Claude armando videos con la marca aplicada. Un repaso rápido del recorrido completo.</p>
+    </div>
+
+    <div class="finale rv">
+      <div class="finale-top">
+        <div class="finale-icon"><span class="material-icons-round">military_tech</span></div>
+        <div>
+          <div class="finale-stat">8<span>/8</span></div>
+          <div class="finale-label">clases completadas</div>
+        </div>
+      </div>
+      <div class="class-pills">
+        <span class="pill-done"><span class="material-icons-round">check</span> 01 · Tipos de IA y conexiones</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 02 · Los 4 Claude</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 03 · IA Generativa</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 04 · Hosting y dominios</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 05 · Design System</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 06 · Generando proyectos</span>
+        <span class="pill-done"><span class="material-icons-round">check</span> 07 · Rutinas</span>
+        <span class="pill-current"><span class="material-icons-round">flag</span> 08 · Videos (esta)</span>
+      </div>
+    </div>
+
+    <div class="next-head rv">
+      <h3>Próximos pasos para el equipo</h3>
+      <p>Ideas simples para que esto no quede en "vi el taller una vez".</p>
+    </div>
+
+    <div class="conn-hi">
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">play_circle</span></div>
+        <div><h4>Probá un logo reveal esta semana</h4><p>Es la pieza más corta y la que más rápido te muestra cómo funciona.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">explore</span></div>
+        <div><h4>Explorá Prompt Motion</h4><p>Elegí un video que te guste y adaptá su prompt a la marca.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">bookmark</span></div>
+        <div><h4>Guardá los prompts que funcionan</h4><p>Son la base de tu próximo skill de video para el equipo.</p></div>
+      </div>
+      <div class="conn-card plain rv">
+        <div class="ic"><span class="material-icons-round">quiz</span></div>
+        <div><h4>Repasá si hace falta</h4><p>El cuestionario del taller, si algo no quedó claro.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top:36px; justify-content:center;">
+      <a href="../cuestionario/index.html" class="btn btn-primary"><span class="material-icons-round">quiz</span> Ir al cuestionario</a>
+      <a href="../index.html" class="btn btn-ghost">Volver al temario</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <p>Kidscorp Design AI Workshop · Clase 08 · uso educativo interno · 2026</p>
+      <div class="fnav">
+        <a href="../clase-01/index.html">Clase 01</a>
+        <a href="../clase-02/index.html">Clase 02</a>
+        <a href="../clase-03/index.html">Clase 03</a>
+        <a href="../clase-04/index.html">Clase 04</a>
+        <a href="../clase-05/index.html">Clase 05</a>
+        <a href="../clase-06/index.html">Clase 06</a>
+        <a href="../clase-07/index.html">Clase 07</a>
+        <a href="../index.html">Volver al temario</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 60) + 'ms';
+    io.observe(el);
+  });
+
+  const progressBar = document.querySelector('.scroll-progress');
+  const topper = document.querySelector('.topper');
+  const onScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (topper) topper.classList.toggle('scrolled', scrollTop > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const toc = document.querySelector('.toc');
+  const tocBtn = document.querySelector('.toc-btn');
+  const tocLabel = document.querySelector('.toc-label');
+  const navLinks = document.querySelectorAll('.toc-menu a[href^="#"]');
+  if (toc && tocBtn) {
+    tocBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !toc.classList.contains('open');
+      toc.classList.toggle('open', willOpen);
+      tocBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    document.addEventListener('click', (e) => {
+      if (!toc.contains(e.target)) toc.classList.remove('open');
+    });
+    navLinks.forEach(a => a.addEventListener('click', () => toc.classList.remove('open')));
+  }
+
+  const navSections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  if (navSections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const link = document.querySelector(`.toc-menu a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (tocLabel) tocLabel.textContent = link.textContent;
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    navSections.forEach(s => spy.observe(s));
+  }
+
+  // Filtro de prompts
+  const tabs = document.querySelectorAll('.ptab');
+  const cards = document.querySelectorAll('.pcard2');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.toggle('active', x === t));
+    cards.forEach(c => { c.hidden = t.dataset.f !== 'all' && c.dataset.c !== t.dataset.f; });
+  }));
+
+  // Copiar prompt
+  document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', async () => {
+    const text = btn.closest('.pcard2').querySelector('pre').textContent.trim();
+    const label = btn.querySelector('.ctext');
+    try { await navigator.clipboard.writeText(text); label.textContent = 'Copiado'; }
+    catch (e) { label.textContent = 'Seleccioná y copiá'; }
+    btn.classList.add('done');
+    setTimeout(() => { label.textContent = 'Copiar'; btn.classList.remove('done'); }, 1800);
+  }));
+</script>
+</body>
+</html>
